@@ -10,7 +10,7 @@ const config: StorybookConfig = {
 
   // 必要的插件配置
   addons: [
-    '@storybook/addon-essentials', // 基础插件集合
+    // '@storybook/addon-essentials', // 版本兼容问题，暂时注释
     '@storybook/addon-a11y', // 无障碍访问检查
     '@storybook/addon-interactions', // 交互测试
   ],

@@ -71,15 +71,15 @@ export const Default: Story = {
 export const Variants: Story = {
   render: () => (
     <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-      <Card variant='elevated' title='Elevated Card' description='带有阴影效果的卡片'>
+      <Card description='带有阴影效果的卡片' title='Elevated Card' variant='elevated'>
         这是一个带阴影的卡片，适合用于需要突出显示的内容。
       </Card>
 
-      <Card variant='outlined' title='Outlined Card' description='带有边框的卡片'>
+      <Card description='带有边框的卡片' title='Outlined Card' variant='outlined'>
         这是一个带边框的卡片，风格更加简洁。
       </Card>
 
-      <Card variant='filled' title='Filled Card' description='填充背景的卡片'>
+      <Card description='填充背景的卡片' title='Filled Card' variant='filled'>
         这是一个填充背景的卡片，适合用于次要内容。
       </Card>
     </div>
@@ -100,16 +100,16 @@ export const WithCoverImage: Story = {
       <Card
         coverImage='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop'
         coverImageAlt='Beautiful landscape'
-        title='风景摄影'
         description='探索大自然的美丽瞬间'
         primaryAction={{
           label: '查看详情',
-          onClick: () => console.log('View details'),
+          onClick: () => console.warn('View details'),
         }}
         secondaryAction={{
           label: '收藏',
-          onClick: () => console.log('Add to favorites'),
+          onClick: () => console.warn('Add to favorites'),
         }}
+        title='风景摄影'
       >
         这张照片拍摄于挪威的罗弗敦群岛，展现了北欧自然风光的壮丽景色。
       </Card>
@@ -130,20 +130,20 @@ export const Clickable: Story = {
     <div className='grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl'>
       <Card
         clickable
-        title='可点击卡片'
         description='点击这张卡片可以触发操作'
-        onClick={() => alert('卡片被点击了！')}
+        title='可点击卡片'
+        onClick={() => console.warn('卡片被点击了！')}
       >
         这是一个可点击的卡片，鼠标悬停时会有视觉反馈。
       </Card>
 
       <Card
         clickable
-        variant='outlined'
-        title='项目报告'
         description='2024年第一季度'
-        onClick={() => console.log('Open report')}
         footer='最后更新：2024-03-15'
+        title='项目报告'
+        variant='outlined'
+        onClick={() => console.warn('Open report')}
       >
         点击查看详细的项目进度报告和数据分析。
       </Card>
@@ -163,28 +163,28 @@ export const WithActions: Story = {
   render: () => (
     <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
       <Card
-        title='用户邀请'
         description='邀请新用户加入团队'
         primaryAction={{
           label: '发送邀请',
-          onClick: () => console.log('Send invitation'),
+          onClick: () => console.warn('Send invitation'),
         }}
+        title='用户邀请'
       >
         输入邮箱地址来邀请新成员加入您的团队协作。
       </Card>
 
       <Card
-        title='文档更新'
         description='检测到新的版本更新'
         primaryAction={{
           label: '立即更新',
-          onClick: () => console.log('Update now'),
+          onClick: () => console.warn('Update now'),
           loading: false,
         }}
         secondaryAction={{
           label: '稍后提醒',
-          onClick: () => console.log('Remind later'),
+          onClick: () => console.warn('Remind later'),
         }}
+        title='文档更新'
       >
         新版本包含重要的安全更新和功能改进。
       </Card>
@@ -234,11 +234,11 @@ export const Complex: Story = {
   render: () => (
     <div className='max-w-md'>
       <Card
-        variant='elevated'
+        divider
         coverImage='https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=400&h=200&fit=crop'
         coverImageAlt='Modern office space'
-        title='产品发布会'
         description='2024年春季新品发布'
+        footer='地点：上海国际会展中心'
         header={
           <div className='flex items-center justify-between'>
             <span className='inline-flex items-center rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-800'>
@@ -249,14 +249,14 @@ export const Complex: Story = {
         }
         primaryAction={{
           label: '立即报名',
-          onClick: () => console.log('Register now'),
+          onClick: () => console.warn('Register now'),
         }}
         secondaryAction={{
           label: '了解更多',
-          onClick: () => console.log('Learn more'),
+          onClick: () => console.warn('Learn more'),
         }}
-        footer='地点：上海国际会展中心'
-        divider
+        title='产品发布会'
+        variant='elevated'
       >
         <div className='space-y-3'>
           <p>加入我们的春季新品发布会，了解最新的产品功能和技术创新。</p>
@@ -282,18 +282,18 @@ export const LoadingState: Story = {
   render: () => (
     <div className='max-w-sm'>
       <Card
-        title='处理中...'
         description='正在保存您的更改'
         primaryAction={{
           label: '保存中...',
-          onClick: () => console.log('Saving'),
+          onClick: () => console.warn('Saving'),
           loading: true,
         }}
         secondaryAction={{
           label: '取消',
-          onClick: () => console.log('Cancel'),
+          onClick: () => console.warn('Cancel'),
           disabled: true,
         }}
+        title='处理中...'
       >
         请稍候，系统正在处理您的请求。
       </Card>
@@ -320,7 +320,7 @@ export const Interactive: Story = {
     divider: false,
     primaryAction: {
       label: '主要操作',
-      onClick: () => console.log('Primary action'),
+      onClick: () => console.warn('Primary action'),
     },
   },
   parameters: {

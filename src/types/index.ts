@@ -111,7 +111,7 @@ export interface FormFieldProps extends BaseComponentProps, AccessibilityProps {
 }
 
 // 通用组件工厂类型
-export interface ComponentFactory<T = {}> {
+export interface ComponentFactory<T = Record<string, unknown>> {
   (props: T): ReactNode;
   displayName?: string;
 }

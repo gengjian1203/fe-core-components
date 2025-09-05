@@ -6,7 +6,7 @@ import type { ColorVariant, ComponentSize } from '@/types';
  * @returns 合并后的类名字符串
  */
 export const cn = (
-  ...classes: (string | undefined | null | boolean | Record<string, any>)[]
+  ...classes: (string | undefined | null | boolean | Record<string, boolean>)[]
 ): string => {
   return classes
     .map(cls => {
@@ -97,7 +97,7 @@ export const getVariantClasses = (
  * @param wait - 等待时间（毫秒）
  * @returns 防抖后的函数
  */
-export const debounce = <T extends (...args: any[]) => any>(
+export const debounce = <T extends (...args: readonly unknown[]) => unknown>(
   func: T,
   wait: number
 ): ((...args: Parameters<T>) => void) => {
@@ -115,7 +115,7 @@ export const debounce = <T extends (...args: any[]) => any>(
  * @param limit - 限制时间（毫秒）
  * @returns 节流后的函数
  */
-export const throttle = <T extends (...args: any[]) => any>(
+export const throttle = <T extends (...args: readonly unknown[]) => unknown>(
   func: T,
   limit: number
 ): ((...args: Parameters<T>) => void) => {
@@ -154,7 +154,7 @@ export const formatFileSize = (bytes: number, decimals = 2): string => {
 
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
 };
 
 /**
@@ -166,7 +166,7 @@ export const isValidUrl = (string: string): boolean => {
   try {
     new URL(string);
     return true;
-  } catch (_) {
+  } catch {
     return false;
   }
 };
@@ -198,7 +198,10 @@ export const truncateText = (text: string, maxLength: number, suffix = '...'): s
  * @param sources - 源对象数组
  * @returns 合并后的对象
  */
-export const deepMerge = <T>(target: T, ...sources: Partial<T>[]): T => {
+export const deepMerge = <T extends Record<string, unknown>>(
+  target: T,
+  ...sources: Partial<T>[]
+): T => {
   if (!sources.length) return target;
   const source = sources.shift();
 
@@ -209,11 +212,14 @@ export const deepMerge = <T>(target: T, ...sources: Partial<T>[]): T => {
 
       if (sourceValue && typeof sourceValue === 'object' && !Array.isArray(sourceValue)) {
         if (!targetValue || typeof targetValue !== 'object') {
-          (target as any)[key] = {};
+          (target as Record<string, unknown>)[key] = {};
         }
-        deepMerge((target as any)[key], sourceValue as any);
+        deepMerge(
+          (target as Record<string, unknown>)[key] as Record<string, unknown>,
+          sourceValue as Record<string, unknown>
+        );
       } else {
-        (target as any)[key] = sourceValue;
+        (target as Record<string, unknown>)[key] = sourceValue;
       }
     });
   }

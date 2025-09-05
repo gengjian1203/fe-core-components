@@ -1,11 +1,16 @@
 import React from 'react';
+import { Card as AntdCard } from 'antd';
+import type { CardProps as AntdCardProps } from 'antd';
 import type { HTMLAttributes, ReactNode } from 'react';
 import type { BaseComponentProps } from '@/types';
-import { cn } from '@/utils';
 import { Button } from '@/components/atoms';
 
 // Card组件属性接口
-export interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'>, BaseComponentProps {
+export interface CardProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'title'>,
+    Omit<BaseComponentProps, 'className'> {
+  /** 自定义CSS类名 */
+  className?: string;
   /** 卡片标题 */
   title?: ReactNode;
   /** 卡片描述 */
@@ -44,8 +49,8 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'>
 }
 
 /**
- * Card 组件 - 卡片容器组件，用于展示结构化内容
- * 
+ * Card 组件 - 基于 Antd Card 的二次封装，用于展示结构化内容
+ *
  * @example
  * ```tsx
  * <Card
@@ -75,146 +80,128 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       padding = 'md',
       className,
       onClick,
+      style,
       ...props
     },
     ref
   ) => {
-    // 构建CSS类名
-    const cardClasses = cn(
-      // 基础样式
-      'relative',
-      'bg-white',
-      'dark:bg-neutral-800',
-      'rounded-lg',
-      'transition-all',
-      'duration-200',
-      'overflow-hidden',
-      
-      // 变体样式
-      {
-        // elevated变体 - 带阴影
-        'shadow-soft hover:shadow-medium': variant === 'elevated',
-        
-        // outlined变体 - 带边框
-        'border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600': 
-          variant === 'outlined',
-          
-        // filled变体 - 填充背景
-        'bg-neutral-50 dark:bg-neutral-900': variant === 'filled'
-      },
-      
-      // 可点击样式
-      {
-        'cursor-pointer hover:scale-[1.02] active:scale-[0.98]': clickable,
-        'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2': clickable
-      },
-      
-      className
-    );
+    // 构建自定义样式
+    const cardStyle: React.CSSProperties = {
+      ...(clickable && {
+        cursor: 'pointer',
+        transition: 'all 0.2s ease-in-out',
+      }),
+      ...(variant === 'filled' && {
+        backgroundColor: '#f5f5f5',
+      }),
+      ...style,
+    };
 
-    // 内容区域的内边距
-    const paddingClasses = cn({
-      'p-0': padding === 'none',
-      'p-4': padding === 'sm',
-      'p-6': padding === 'md',
-      'p-8': padding === 'lg'
-    });
+    // 获取卡片尺寸
+    const getCardSize = (): AntdCardProps['size'] => {
+      switch (padding) {
+        case 'sm':
+        case 'none':
+          return 'small';
+        case 'lg':
+          return 'default';
+        default:
+          return 'default';
+      }
+    };
 
     // 渲染封面图片
-    const renderCoverImage = (): ReactNode => {
+    const renderCover = (): ReactNode => {
       if (!coverImage) return null;
 
       return (
-        <div className="aspect-video w-full overflow-hidden">
-          <img
-            src={coverImage}
-            alt={coverImageAlt || ''}
-            className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-          />
-        </div>
+        <img
+          alt={coverImageAlt ?? ''}
+          src={coverImage}
+          style={{
+            width: '100%',
+            height: '200px',
+            objectFit: 'cover',
+            transition: 'transform 0.3s ease',
+          }}
+          onMouseEnter={e => {
+            (e.target as HTMLImageElement).style.transform = 'scale(1.05)';
+          }}
+          onMouseLeave={e => {
+            (e.target as HTMLImageElement).style.transform = 'scale(1)';
+          }}
+        />
       );
     };
 
-    // 渲染头部
-    const renderHeader = (): ReactNode => {
-      if (!header && !title && !description) return null;
+    // 渲染标题区域
+    const renderTitle = (): ReactNode => {
+      if (!title && !description && !header) return undefined;
 
       return (
-        <div className={cn('space-y-2', paddingClasses, { 'pb-0': children || footer })}>
+        <div>
           {header}
           {title && (
-            <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
-              {title}
-            </h3>
+            <h3 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>{title}</h3>
           )}
           {description && (
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              {description}
-            </p>
+            <p style={{ fontSize: '14px', color: '#666', margin: 0 }}>{description}</p>
           )}
         </div>
       );
     };
 
-    // 渲染内容
-    const renderContent = (): ReactNode => {
-      if (!children) return null;
+    // 渲染操作按钮
+    const renderActions = (): ReactNode[] | undefined => {
+      const actions: ReactNode[] = [];
 
-      return (
-        <div className={cn('text-neutral-700 dark:text-neutral-300', paddingClasses, {
-          'pt-0': header || title || description,
-          'pb-0': footer || primaryAction || secondaryAction
-        })}>
-          {children}
-        </div>
-      );
+      if (secondaryAction) {
+        actions.push(
+          <Button
+            key='secondary'
+            disabled={secondaryAction.disabled}
+            size='sm'
+            variant='outline'
+            onClick={secondaryAction.onClick}
+          >
+            {secondaryAction.label}
+          </Button>
+        );
+      }
+
+      if (primaryAction) {
+        actions.push(
+          <Button
+            key='primary'
+            disabled={primaryAction.disabled ?? false}
+            loading={primaryAction.loading ?? false}
+            size='sm'
+            variant='primary'
+            onClick={primaryAction.onClick}
+          >
+            {primaryAction.label}
+          </Button>
+        );
+      }
+
+      return actions.length > 0 ? actions : undefined;
     };
 
-    // 渲染操作按钮区域
-    const renderActions = (): ReactNode => {
-      if (!primaryAction && !secondaryAction) return null;
+    // 渲染底部内容
+    const renderFooterContent = (): ReactNode => {
+      if (!footer) return undefined;
 
       return (
-        <div className={cn('flex gap-3', paddingClasses, 'pt-0')}>
-          {secondaryAction && (
-            <Button
-              variant="outline"
-              size="sm"
-              disabled={secondaryAction.disabled}
-              onClick={secondaryAction.onClick}
-              className="flex-1"
-            >
-              {secondaryAction.label}
-            </Button>
-          )}
-          {primaryAction && (
-            <Button
-              variant="primary"
-              size="sm"
-              loading={primaryAction.loading}
-              disabled={primaryAction.disabled}
-              onClick={primaryAction.onClick}
-              className={cn({ 'flex-1': !secondaryAction })}
-            >
-              {primaryAction.label}
-            </Button>
-          )}
-        </div>
-      );
-    };
-
-    // 渲染底部
-    const renderFooter = (): ReactNode => {
-      if (!footer) return null;
-
-      return (
-        <div className={cn(paddingClasses, 'pt-0')}>
+        <div>
           {divider && (
-            <div className="mb-4 border-t border-neutral-200 dark:border-neutral-700" />
+            <div
+              style={{
+                borderTop: '1px solid #f0f0f0',
+                marginBottom: '16px',
+              }}
+            />
           )}
-          <div className="text-sm text-neutral-500 dark:text-neutral-400">
-            {footer}
-          </div>
+          <div style={{ fontSize: '12px', color: '#888' }}>{footer}</div>
         </div>
       );
     };
@@ -226,27 +213,47 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       }
     };
 
+    // 处理键盘事件
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+      if (clickable && (event.key === 'Enter' || event.key === ' ') && onClick) {
+        event.preventDefault();
+        // Create a synthetic mouse event for keyboard activation
+        const syntheticEvent = {
+          ...event,
+          button: 0,
+          buttons: 1,
+          clientX: 0,
+          clientY: 0,
+          pageX: 0,
+          pageY: 0,
+          screenX: 0,
+          screenY: 0,
+          relatedTarget: null,
+        } as React.MouseEvent<HTMLDivElement>;
+        onClick(syntheticEvent);
+      }
+    };
+
     return (
-      <div
+      <AntdCard
         ref={ref}
-        className={cardClasses}
-        onClick={handleClick}
+        actions={renderActions()}
+        bordered={variant === 'outlined'}
+        className={className}
+        cover={renderCover()}
+        hoverable={clickable}
         role={clickable ? 'button' : undefined}
+        size={getCardSize()}
+        style={cardStyle}
         tabIndex={clickable ? 0 : undefined}
-        onKeyDown={clickable ? (e) => {
-          if ((e.key === 'Enter' || e.key === ' ') && onClick) {
-            e.preventDefault();
-            onClick(e as any);
-          }
-        } : undefined}
+        title={renderTitle()}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
         {...props}
       >
-        {renderCoverImage()}
-        {renderHeader()}
-        {renderContent()}
-        {renderActions()}
-        {renderFooter()}
-      </div>
+        {children}
+        {renderFooterContent()}
+      </AntdCard>
     );
   }
 );

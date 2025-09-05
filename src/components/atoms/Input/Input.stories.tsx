@@ -76,10 +76,10 @@ export const Default: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className='space-y-4'>
-      <Input size='sm' label='Small' placeholder='Small input' />
-      <Input size='md' label='Medium' placeholder='Medium input' />
-      <Input size='lg' label='Large' placeholder='Large input' />
-      <Input size='xl' label='Extra Large' placeholder='Extra large input' />
+      <Input label='Small' placeholder='Small input' size='sm' />
+      <Input label='Medium' placeholder='Medium input' size='md' />
+      <Input label='Large' placeholder='Large input' size='lg' />
+      <Input label='Extra Large' placeholder='Extra large input' size='xl' />
     </div>
   ),
   parameters: {
@@ -95,9 +95,9 @@ export const Sizes: Story = {
 export const Variants: Story = {
   render: () => (
     <div className='space-y-4'>
-      <Input variant='default' label='Default' placeholder='Default variant' />
-      <Input variant='filled' label='Filled' placeholder='Filled variant' />
-      <Input variant='outlined' label='Outlined' placeholder='Outlined variant' />
+      <Input label='Default' placeholder='Default variant' variant='default' />
+      <Input label='Filled' placeholder='Filled variant' variant='filled' />
+      <Input label='Outlined' placeholder='Outlined variant' variant='outlined' />
     </div>
   ),
   parameters: {
@@ -115,27 +115,27 @@ export const WithIcons: Story = {
     <div className='space-y-4'>
       <Input
         label='搜索'
-        placeholder='搜索内容...'
         leftIcon={
-          <svg viewBox='0 0 24 24' fill='currentColor'>
+          <svg fill='currentColor' viewBox='0 0 24 24'>
             <path d='M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z' />
           </svg>
         }
+        placeholder='搜索内容...'
       />
       <Input
         label='邮箱'
-        type='email'
-        placeholder='请输入邮箱地址'
         leftIcon={
-          <svg viewBox='0 0 24 24' fill='currentColor'>
+          <svg fill='currentColor' viewBox='0 0 24 24'>
             <path d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z' />
           </svg>
         }
+        placeholder='请输入邮箱地址'
         rightIcon={
-          <svg viewBox='0 0 24 24' fill='currentColor'>
+          <svg fill='currentColor' viewBox='0 0 24 24'>
             <path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z' />
           </svg>
         }
+        type='email'
       />
     </div>
   ),
@@ -155,13 +155,13 @@ export const Clearable: Story = {
 
     return (
       <Input
+        clearable
+        helperText='点击右侧的 × 按钮可以清除内容'
         label='可清除输入框'
         placeholder='输入一些内容...'
         value={value}
         onChange={e => setValue(e.target.value)}
-        clearable
         onClear={() => setValue('')}
-        helperText='点击右侧的 × 按钮可以清除内容'
       />
     );
   },
@@ -178,20 +178,20 @@ export const Clearable: Story = {
 export const States: Story = {
   render: () => (
     <div className='space-y-4'>
-      <Input label='正常状态' placeholder='正常的输入框' helperText='这是一个正常状态的输入框' />
-      <Input label='必填输入框' placeholder='请输入必填内容' required helperText='此字段为必填项' />
+      <Input helperText='这是一个正常状态的输入框' label='正常状态' placeholder='正常的输入框' />
+      <Input required helperText='此字段为必填项' label='必填输入框' placeholder='请输入必填内容' />
       <Input
+        defaultValue='invalid-input'
+        error='用户名格式不正确'
         label='错误状态'
         placeholder='有错误的输入框'
-        error='用户名格式不正确'
-        defaultValue='invalid-input'
       />
       <Input
-        label='禁用状态'
-        placeholder='禁用的输入框'
         disabled
         defaultValue='禁用的内容'
         helperText='此输入框已被禁用'
+        label='禁用状态'
+        placeholder='禁用的输入框'
       />
     </div>
   ),
@@ -208,37 +208,37 @@ export const States: Story = {
 export const InputTypes: Story = {
   render: () => (
     <div className='space-y-4'>
-      <Input type='text' label='文本输入' placeholder='请输入文本' />
+      <Input label='文本输入' placeholder='请输入文本' type='text' />
       <Input
-        type='email'
         label='邮箱输入'
-        placeholder='请输入邮箱地址'
         leftIcon={
-          <svg viewBox='0 0 24 24' fill='currentColor'>
+          <svg fill='currentColor' viewBox='0 0 24 24'>
             <path d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z' />
           </svg>
         }
+        placeholder='请输入邮箱地址'
+        type='email'
       />
       <Input
-        type='password'
         label='密码输入'
-        placeholder='请输入密码'
         leftIcon={
-          <svg viewBox='0 0 24 24' fill='currentColor'>
+          <svg fill='currentColor' viewBox='0 0 24 24'>
             <path d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z' />
           </svg>
         }
+        placeholder='请输入密码'
+        type='password'
       />
-      <Input type='number' label='数字输入' placeholder='请输入数字' min={0} max={100} />
+      <Input label='数字输入' max={100} min={0} placeholder='请输入数字' type='number' />
       <Input
-        type='tel'
         label='电话输入'
-        placeholder='请输入电话号码'
         leftIcon={
-          <svg viewBox='0 0 24 24' fill='currentColor'>
+          <svg fill='currentColor' viewBox='0 0 24 24'>
             <path d='M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z' />
           </svg>
         }
+        placeholder='请输入电话号码'
+        type='tel'
       />
     </div>
   ),
@@ -257,11 +257,11 @@ export const FullWidth: Story = {
     <div className='space-y-4'>
       <Input
         fullWidth
+        helperText='输入框会占满容器的全部宽度'
         label='全宽输入框'
         placeholder='这是一个全宽的输入框'
-        helperText='输入框会占满容器的全部宽度'
       />
-      <Input label='默认宽度' placeholder='这是默认宽度的输入框' helperText='输入框使用自动宽度' />
+      <Input helperText='输入框使用自动宽度' label='默认宽度' placeholder='这是默认宽度的输入框' />
     </div>
   ),
   parameters: {
@@ -296,6 +296,7 @@ export const FormExample: Story = {
       if (errors[field]) {
         setErrors(prev => {
           const newErrors = { ...prev };
+          // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
           delete newErrors[field];
           return newErrors;
         });
@@ -326,94 +327,94 @@ export const FormExample: Story = {
       setErrors(newErrors);
 
       if (Object.keys(newErrors).length === 0) {
-        alert('表单提交成功！');
+        console.warn('表单提交成功！');
       }
     };
 
     return (
-      <form onSubmit={handleSubmit} className='space-y-4 max-w-md'>
+      <form className='space-y-4 max-w-md' onSubmit={handleSubmit}>
         <Input
           fullWidth
           required
-          label='用户名'
-          placeholder='请输入用户名'
-          value={formData.username}
-          onChange={handleChange('username')}
           error={errors.username}
+          label='用户名'
           leftIcon={
-            <svg viewBox='0 0 24 24' fill='currentColor'>
+            <svg fill='currentColor' viewBox='0 0 24 24'>
               <path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z' />
             </svg>
           }
+          placeholder='请输入用户名'
+          value={formData.username}
+          onChange={handleChange('username')}
         />
 
         <Input
           fullWidth
           required
-          type='email'
-          label='邮箱'
-          placeholder='请输入邮箱地址'
-          value={formData.email}
-          onChange={handleChange('email')}
           error={errors.email}
+          label='邮箱'
           leftIcon={
-            <svg viewBox='0 0 24 24' fill='currentColor'>
+            <svg fill='currentColor' viewBox='0 0 24 24'>
               <path d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z' />
             </svg>
           }
+          placeholder='请输入邮箱地址'
+          type='email'
+          value={formData.email}
+          onChange={handleChange('email')}
         />
 
         <Input
           fullWidth
           required
-          type='password'
-          label='密码'
-          placeholder='请输入密码'
-          value={formData.password}
-          onChange={handleChange('password')}
           error={errors.password}
           helperText={!errors.password ? '密码长度至少为6位' : undefined}
+          label='密码'
           leftIcon={
-            <svg viewBox='0 0 24 24' fill='currentColor'>
+            <svg fill='currentColor' viewBox='0 0 24 24'>
               <path d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z' />
             </svg>
           }
+          placeholder='请输入密码'
+          type='password'
+          value={formData.password}
+          onChange={handleChange('password')}
         />
 
         <Input
           fullWidth
           required
-          type='password'
-          label='确认密码'
-          placeholder='请再次输入密码'
-          value={formData.confirmPassword}
-          onChange={handleChange('confirmPassword')}
           error={errors.confirmPassword}
+          label='确认密码'
           leftIcon={
-            <svg viewBox='0 0 24 24' fill='currentColor'>
+            <svg fill='currentColor' viewBox='0 0 24 24'>
               <path d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z' />
             </svg>
           }
+          placeholder='请再次输入密码'
+          type='password'
+          value={formData.confirmPassword}
+          onChange={handleChange('confirmPassword')}
         />
 
         <Input
           fullWidth
-          type='tel'
-          label='手机号码'
-          placeholder='请输入手机号码'
-          value={formData.phone}
-          onChange={handleChange('phone')}
           helperText='选填项目'
+          label='手机号码'
           leftIcon={
-            <svg viewBox='0 0 24 24' fill='currentColor'>
+            <svg fill='currentColor' viewBox='0 0 24 24'>
               <path d='M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z' />
             </svg>
           }
+          placeholder='请输入手机号码'
+          type='tel'
+          value={formData.phone}
+          onChange={handleChange('phone')}
         />
 
         <button
-          type='submit'
           className='w-full bg-primary-600 hover:bg-primary-700 text-white py-3 px-4 rounded-lg font-medium transition-colors duration-200'
+          type='submit'
         >
           提交注册
         </button>

@@ -13,9 +13,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Testing & Quality
 
-- `pnpm test` - Run Jest test suite
-- `pnpm test:watch` - Run tests in watch mode
-- `pnpm test:coverage` - Generate test coverage report (80% threshold required)
 - `pnpm lint` - Run ESLint and fix issues automatically
 - `pnpm lint:check` - Run ESLint without fixing issues
 - `pnpm typecheck` - Run TypeScript compiler checks without emitting files
@@ -42,7 +39,6 @@ Each component follows this structure:
 ComponentName/
 ├── ComponentName.tsx       # Main component
 ├── ComponentName.stories.tsx # Storybook stories
-├── ComponentName.test.tsx  # Jest tests
 └── index.ts               # Exports
 ```
 
@@ -85,7 +81,6 @@ The project uses TypeScript path mapping:
 
 - **ESLint** with TypeScript, React, accessibility, and Storybook rules
 - **Prettier** for code formatting
-- **Jest + React Testing Library** for testing
 - **Husky + lint-staged** for pre-commit hooks
 - **Conventional commits** with commitizen
 
@@ -95,10 +90,8 @@ The project uses TypeScript path mapping:
 
 1. Create component folder in appropriate atomic level
 2. Implement component with TypeScript interfaces
-3. Write comprehensive tests with React Testing Library
-4. Create Storybook stories with controls and documentation
-5. Export component in respective index files
-6. Ensure tests pass and coverage meets 80% threshold
+3. Create Storybook stories with controls and documentation
+4. Export component in respective index files
 
 ### Theme Customization
 

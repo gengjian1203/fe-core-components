@@ -59,7 +59,7 @@ function App() {
         description='fe-core-components 组件库'
         primaryAction={{
           label: '开始使用',
-          onClick: () => console.log('开始使用'),
+          onClick: () => console.debug('开始使用'),
         }}
       >
         这是一个现代化的 React 组件库，提供了丰富的 UI 组件。

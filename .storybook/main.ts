@@ -3,10 +3,7 @@ import path from 'path';
 
 const config: StorybookConfig = {
   // Story文件路径配置
-  stories: [
-    '../src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-    '../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-  ],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
 
   // 必要的插件配置
   addons: [

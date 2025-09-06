@@ -20,6 +20,12 @@ on:
       - '**.md'
       - '.github/workflows/**'
 
+permissions:
+  contents: write
+  id-token: write
+  actions: read
+  deployments: write
+
 jobs:
   version-and-tag:
     if: github.ref == 'refs/heads/main'

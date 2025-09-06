@@ -26,7 +26,6 @@ jobs:
     uses: ./.github/workflows/auto-increment-tag.yml
     with:
       version_type: ${{ github.event.inputs.version_type || 'fix' }}
-      update_package_json_path: 'package.json'
 
   publish:
     needs: [version-and-tag]

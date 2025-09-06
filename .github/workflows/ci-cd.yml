@@ -43,6 +43,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Pull latest code
+        run: |
+          git fetch origin ${{ github.ref_name }}
+          git reset --hard origin/${{ github.ref_name }}
+
+      - name: Update package.json version
+        run: |
+          VERSION_WITHOUT_V=$(echo "${{ needs.increment-tag.outputs.new_version }}" | sed 's/^v//')
+          sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"$VERSION_WITHOUT_V\"/" ./package.json
+          echo "Updated package.json version to: $VERSION_WITHOUT_V"
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -53,19 +64,6 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile

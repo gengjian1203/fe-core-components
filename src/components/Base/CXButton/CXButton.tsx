@@ -1,4 +1,4 @@
-import { Button, type ButtonProps } from 'antd';
+import Button, { type ButtonProps } from 'antd/es/button';
 import React from 'react';
 import { cn } from '../../../utils';
 

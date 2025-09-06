@@ -1,5 +1,8 @@
 import React from 'react';
-import { Avatar, Card, type CardProps, Space, Tag } from 'antd';
+import Avatar from 'antd/es/avatar';
+import Card, { type CardProps } from 'antd/es/card';
+import Space from 'antd/es/space';
+import Tag from 'antd/es/tag';
 import { cn } from '../../../utils';
 
 export interface CXCardProps extends Omit<CardProps, 'cover' | 'variant'> {

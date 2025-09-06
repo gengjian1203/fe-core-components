@@ -16,14 +16,27 @@ const external = [
   'react',
   'react-dom',
   'react/jsx-runtime',
-  'react/jsx-dev-runtime'
+  'react/jsx-dev-runtime',
+  // Ant Design 相关依赖
+  'antd',
+  /^antd\//,
+  '@ant-design/icons',
+  '@ant-design/v5-patch-for-react-19'
 ];
 
 // 全局变量映射 - 用于UMD构建
 const globals = {
   react: 'React',
   'react-dom': 'ReactDOM',
-  'react/jsx-runtime': 'jsxRuntime'
+  'react/jsx-runtime': 'jsxRuntime',
+  antd: 'antd',
+  '@ant-design/icons': 'AntdIcons',
+  // Ant Design 具体组件全局变量
+  'antd/es/button': 'antd.Button',
+  'antd/es/card': 'antd.Card', 
+  'antd/es/avatar': 'antd.Avatar',
+  'antd/es/space': 'antd.Space',
+  'antd/es/tag': 'antd.Tag'
 };
 
 // 通用插件配置
@@ -44,7 +57,8 @@ const getPlugins = (format) => [
   typescript({
     tsconfig: './tsconfig.build.json',
     declaration: format === 'esm', // 只在ESM构建中生成类型声明
-    declarationDir: 'dist/types',
+    declarationDir: format === 'esm' ? 'dist/types' : undefined,
+    declarationMap: format === 'esm',
     rootDir: 'src',
     exclude: [
       '**/*.test.{ts,tsx}',
@@ -86,25 +100,39 @@ const getPlugins = (format) => [
     }
   }),
   
-  // 生产环境压缩
-  ...(process.env.NODE_ENV === 'production' ? [
-    terser({
-      compress: {
-        drop_console: true, // 移除console语句
-        drop_debugger: true, // 移除debugger语句
-        pure_getters: true, // 假设getter无副作用
-        unsafe: true,
-        unsafe_comps: true,
-        warnings: false
-      },
-      mangle: {
-        safari10: true // 修复Safari 10的问题
-      },
-      output: {
-        comments: false // 移除注释
+  // 生产环境压缩 - 始终启用以减小包大小
+  terser({
+    compress: {
+      drop_console: true, // 移除console语句
+      drop_debugger: true, // 移除debugger语句
+      pure_getters: true, // 假设getter无副作用
+      unsafe: true,
+      unsafe_comps: true,
+      warnings: false,
+      // 更激进的压缩选项
+      passes: 2, // 多次压缩优化
+      pure_funcs: ['console.log', 'console.warn'], // 移除特定函数调用
+      dead_code: true, // 移除死代码
+      unused: true, // 移除未使用的变量
+      collapse_vars: true, // 合并变量
+      reduce_vars: true, // 减少变量使用
+      keep_infinity: true, // 保持 Infinity
+      toplevel: true // 顶级作用域压缩
+    },
+    mangle: {
+      safari10: true, // 修复Safari 10的问题
+      toplevel: true, // 压缩顶级作用域名称
+      properties: {
+        regex: /^_/ // 压缩以 _ 开头的属性名
       }
-    })
-  ] : []),
+    },
+    output: {
+      comments: false, // 移除注释
+      ascii_only: true, // 确保输出为ASCII
+      beautify: false // 不美化输出
+    },
+    ecma: 2020 // 使用ES2020语法优化
+  }),
   
   // 包大小分析 - 只在构建完成后生成
   ...(format === 'esm' ? [

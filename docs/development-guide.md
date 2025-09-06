@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-fe-cosx-ui 是一个基于 React 19、TypeScript、Tailwind CSS 和 Storybook 构建的现代化组件库。采用原子设计方法论，提供高质量、可复用的 UI 组件。
+fe-core-components 是一个基于 React 19、TypeScript、Tailwind CSS 和 Storybook 构建的现代化组件库。采用原子设计方法论，提供高质量、可复用的 UI 组件。
 
 ## 技术栈
 
@@ -18,7 +18,7 @@ fe-cosx-ui 是一个基于 React 19、TypeScript、Tailwind CSS 和 Storybook �
 ## 项目结构
 
 ```
-fe-cosx-ui/
+fe-core-components/
 ├── src/
 │   ├── components/
 │   │   ├── atoms/          # 原子组件（Button, Input 等）

@@ -1,5 +1,5 @@
 {
-  "name": "fe-cosx-ui",
+  "name": "@cosx/fe-core-components",
   "version": "1.0.0",
   "description": "Professional React component library with React 19, Tailwind CSS, and Storybook",
   "main": "dist/cjs/index.js",
@@ -34,7 +34,7 @@
     "prepare": "husky install",
     "commit": "cz",
     "prepublishOnly": "pnpm build",
-    "analyze": "pnpm build && npx bundlesize",
+    "analyze": "pnpm build && npx size-limit",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "release:patch": "node scripts/release-check.js && npm version patch && git push && git push --tags",
     "release:minor": "node scripts/release-check.js && npm version minor && git push && git push --tags",
@@ -76,6 +76,7 @@
     "@rollup/plugin-node-resolve": "^15.3.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
+    "@size-limit/preset-big-lib": "^11.2.0",
     "@storybook/addon-a11y": "^9.1.4",
     "@storybook/addon-docs": "^9.1.4",
     "@storybook/addon-interactions": "9.0.0-alpha.10",
@@ -89,7 +90,6 @@
     "@typescript-eslint/eslint-plugin": "^8.42.0",
     "@typescript-eslint/parser": "^8.42.0",
     "autoprefixer": "^10.4.21",
-    "bundlesize": "^0.18.2",
     "commitizen": "^4.3.1",
     "conventional-changelog-cli": "^4.1.0",
     "cssnano": "^6.1.2",
@@ -110,6 +110,7 @@
     "rollup": "^4.50.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-visualizer": "^5.14.0",
+    "size-limit": "^11.2.0",
     "storybook": "^9.1.4",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.9.2",
@@ -129,23 +130,13 @@
       "prettier --write"
     ]
   },
-  "bundlesize": [
-    {
-      "path": "./dist/esm/index.js",
-      "maxSize": "50kb"
-    },
-    {
-      "path": "./dist/cjs/index.js",
-      "maxSize": "55kb"
-    }
-  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-org/fe-cosx-ui.git"
+    "url": "git+https://github.com/your-org/fe-core-components.git"
   },
   "bugs": {
-    "url": "https://github.com/your-org/fe-cosx-ui/issues"
+    "url": "https://github.com/your-org/fe-core-components/issues"
   },
-  "homepage": "https://github.com/your-org/fe-cosx-ui#readme",
+  "homepage": "https://github.com/your-org/fe-core-components#readme",
   "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
 }

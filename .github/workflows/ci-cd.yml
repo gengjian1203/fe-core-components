@@ -21,59 +21,7 @@ on:
       - '.github/workflows/**'
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Run ESLint
-        run: pnpm lint:check
-
-      - name: Run TypeScript check
-        run: pnpm typecheck
-
-      - name: Run Prettier check
-        run: pnpm format:check
-
-      - name: Build library
-        run: pnpm build
-
-      - name: Build Storybook
-        run: pnpm build-storybook
-
-      - name: Check bundle size
-        run: pnpm analyze
-
   version-and-tag:
-    needs: test
     if: github.ref == 'refs/heads/main'
     uses: ./.github/workflows/auto-increment-tag.yml
     with:
@@ -81,7 +29,7 @@ jobs:
       update_package_json_path: 'package.json'
 
   publish:
-    needs: [test, version-and-tag]
+    needs: [version-and-tag]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 

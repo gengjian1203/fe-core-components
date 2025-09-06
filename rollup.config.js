@@ -58,8 +58,12 @@ const getPlugins = format => [
     declaration: format === 'esm', // 只在ESM构建中生成类型声明
     declarationDir: format === 'esm' ? 'dist/types' : undefined,
     declarationMap: format === 'esm',
-    rootDir: 'src',
     exclude: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}', '**/*.stories.{ts,tsx}', 'stories/**/*'],
+    compilerOptions: {
+      rootDir: 'src',
+      declarationDir: format === 'esm' ? 'dist/types' : undefined,
+      outDir: format === 'esm' ? undefined : `dist/${format}`,
+    }
   }),
 
   // Babel转译 - 确保浏览器兼容性

@@ -49,11 +49,20 @@
 本项目发布到 GitHub Package Registry，需要先配置 npm 源：
 
 ```bash
-# 配置 GitHub Package Registry（仅针对 @gengjian1203 scope）
-npm config set @gengjian1203:registry https://npm.pkg.github.com
+vim ~/.npmrc
 
-# 或在项目根目录创建 .npmrc 文件
-echo "@gengjian1203:registry=https://npm.pkg.github.com" >> .npmrc
+# 将以下行添加到你的 .npmrc 文件中
+@gengjian1203:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+
+vim ~/.bashrc
+
+# 将以下行添加到你的 ~/.bashrc, ~/.zshrc 或 ~/.bash_profile 文件中
+export GITHUB_TOKEN='ghp_yourActualTokenHere'
+
+# 然后让配置生效
+source ~/.bashrc  #（或其他对应的配置文件）
+
 ```
 
 ### 2.2 安装组件库

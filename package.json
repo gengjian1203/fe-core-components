@@ -1,5 +1,5 @@
 {
-  "name": "@cosx/fe-core-components",
+  "name": "@gengjian1203/fe-core-components",
   "version": "999.999.999",
   "description": "Professional React component library with React 19, Tailwind CSS, and Storybook",
   "main": "dist/cjs/index.js",

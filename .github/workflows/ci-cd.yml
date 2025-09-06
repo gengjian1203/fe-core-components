@@ -28,16 +28,14 @@ permissions:
   deployments: write
 
 jobs:
-  version-and-tag:
-    if: github.ref == 'refs/heads/main'
+  increment-tag:
     uses: ./.github/workflows/auto-increment-tag.yml
     with:
       version_type: ${{ github.event.inputs.version_type || 'fix' }}
 
   publish:
-    needs: [version-and-tag]
+    needs: [increment-tag]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout code

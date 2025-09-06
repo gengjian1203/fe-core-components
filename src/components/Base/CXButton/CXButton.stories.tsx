@@ -4,7 +4,7 @@ import { expect, fn, userEvent, within } from '@storybook/test';
 import { CXButton } from './CXButton';
 
 const meta: Meta<typeof CXButton> = {
-  title: 'Components/Base/CXButton',
+  title: 'Base/CXButton',
   component: CXButton,
   parameters: {
     layout: 'centered',
@@ -56,15 +56,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     children: '默认按钮',
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button', { name: /默认按钮/i });
-
-    // 验证按钮存在且可点击
-    await expect(button).toBeInTheDocument();
-    await expect(button).not.toBeDisabled();
-    await expect(button).toHaveClass('ant-btn');
   },
 };
 

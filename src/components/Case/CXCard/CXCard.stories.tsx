@@ -88,7 +88,7 @@ export const Variants: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 验证所有变体卡片存在
@@ -138,7 +138,7 @@ export const StatusStates: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 验证所有状态的卡片存在
@@ -195,7 +195,7 @@ export const WithHeaderElements: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 验证卡片标题存在
@@ -261,7 +261,7 @@ export const WithAvatar: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 验证卡片标题存在
@@ -321,7 +321,7 @@ export const WithTags: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 验证卡片标题存在
@@ -387,7 +387,7 @@ export const WithMetadata: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 验证卡片标题存在
@@ -438,7 +438,7 @@ export const WithCover: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 验证卡片标题存在
@@ -500,7 +500,7 @@ export const WithFooter: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 验证卡片标题存在
@@ -547,9 +547,9 @@ export const ClickableCard: Story = {
       },
     },
   },
-  play: async ({ args, canvasElement }) => {
+  play: async ({ args, canvasElement }: { args: any; canvasElement: HTMLElement }) => {
     // 使用 ant-card 类选择器来找到卡片元素
-    const card = canvasElement.querySelector('.ant-card');
+    const card = canvasElement.querySelector('.ant-card') as HTMLElement;
 
     // 验证卡片存在
     await expect(card).toBeInTheDocument();
@@ -558,14 +558,15 @@ export const ClickableCard: Story = {
     await expect(card).toHaveClass('cursor-pointer');
 
     // 重置 mock 函数的调用计数
-    (args.onCardClick as ReturnType<typeof fn>).mockClear();
+    const mockFn = args.onCardClick as ReturnType<typeof fn>;
+    mockFn.mockClear();
 
     // 点击卡片
     await userEvent.click(card as Element);
 
     // 验证回调函数被调用
-    await expect(args.onCardClick).toHaveBeenCalled();
-    await expect(args.onCardClick).toHaveBeenCalledTimes(1);
+    await expect(mockFn).toHaveBeenCalled();
+    await expect(mockFn).toHaveBeenCalledTimes(1);
   },
 };
 
@@ -588,7 +589,7 @@ export const LoadingState: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     // 使用 ant-card 类选择器来找到所有卡片元素
     const cards = canvasElement.querySelectorAll('.ant-card');
 
@@ -671,7 +672,7 @@ export const Complex: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 验证卡片标题和内容

@@ -1,0 +1,153 @@
+name: Auto Increment Tag
+
+run-name: Auto Increment Tag
+
+on:
+  workflow_call:
+    inputs:
+      version_type:
+        description: "Version increment type (major, feat, fix, repeat)"
+        required: true
+        type: string
+        default: "fix"
+
+      version_major_fixed:
+        description: "Fixed major version number"
+        required: false
+        type: string
+        default: ""
+
+      update_package_json_path:
+        description: "Update package json path"
+        required: false
+        type: string
+        default: ""
+
+    outputs:
+      new_version:
+        description: "The new version after increment"
+        value: ${{ jobs.increment-tag.outputs.new_version }}
+
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: "Version increment type (major, feat, fix, repeat)"
+        required: true
+        type: choice
+        default: "fix"
+        options:
+          - major
+          - feat
+          - fix
+          - repeat
+
+      version_major_fixed:
+        description: "Fixed major version number"
+        required: false
+        type: string
+        default: ""
+
+      update_package_json_path:
+        description: "Update package json path"
+        required: false
+        type: string
+        default: ""
+
+jobs:
+  increment-tag:
+    runs-on: ubuntu-latest
+
+    outputs:
+      new_version: ${{ steps.increment_version.outputs.new_version }}
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get latest tag
+        id: get_tag
+        run: |
+          if [ -n "${{ inputs.version_major_fixed }}" ]; then
+            MAJOR="${{ inputs.version_major_fixed }}"
+            LATEST_TAG=$(git tag -l "v${MAJOR}.*.*" --sort=-v:refname | head -n 1)
+            if [ -z "$LATEST_TAG" ]; then
+              LATEST_TAG="v${MAJOR}.0.0"
+            fi
+          else
+            LATEST_TAG=$(git tag -l --sort=-v:refname | head -n 1)
+            if [ -z "$LATEST_TAG" ]; then
+              LATEST_TAG="v0.0.0"
+            fi
+          fi
+          echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          echo "=== [Get latest tag][result] LATEST_TAG: $LATEST_TAG ==="
+
+      - name: Increment version
+        id: increment_version
+        run: |
+          echo "=== [Increment version][params] version_type: ${{ inputs.version_type }} ==="
+          echo "=== [Increment version][params] version_major_fixed: ${{ inputs.version_major_fixed }} ==="
+
+          VERSION=$(echo ${{ steps.get_tag.outputs.latest_tag }} | sed 's/^v//;s/v//g')
+          MAJOR=$(echo $VERSION | cut -d. -f1 || echo 0)
+          FEAT=$(echo $VERSION | cut -d. -f2 || echo 0)
+          FIX=$(echo $VERSION | cut -d. -f3 || echo 0)
+
+          if [ "${{ inputs.version_type }}" == "repeat" ]; then
+            NEW_VERSION="${{ steps.get_tag.outputs.latest_tag }}"
+          elif [ "${{ inputs.version_type }}" == "major" ]; then
+            MAJOR=$((MAJOR + 1))
+            FEAT=0
+            FIX=0
+            NEW_VERSION="v${MAJOR}.${FEAT}.${FIX}"
+          elif [ "${{ inputs.version_type }}" == "feat" ]; then
+            FEAT=$((FEAT + 1))
+            FIX=0
+            NEW_VERSION="v${MAJOR}.${FEAT}.${FIX}"
+          else
+            FIX=$((FIX + 1))
+            NEW_VERSION="v${MAJOR}.${FEAT}.${FIX}"
+          fi
+
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "version_without_v=$(echo $NEW_VERSION | sed 's/^v//')" >> $GITHUB_OUTPUT
+
+          echo "=== [Increment version][result] NEW_VERSION: $NEW_VERSION ==="
+
+      - name: Update package.json version
+        if: ${{ inputs.version_type != 'repeat' && inputs.update_package_json_path != '' }}
+        run: |
+          NEW_VERSION_WITHOUT_V="${{ steps.increment_version.outputs.version_without_v }}"
+          PACKAGE_JSON_PATH="${{ inputs.update_package_json_path }}"
+          
+          if [ -f "$PACKAGE_JSON_PATH" ]; then
+            echo "Updating $PACKAGE_JSON_PATH to version: $NEW_VERSION_WITHOUT_V"
+            
+            # Install Node.js and pnpm for package.json updating
+            curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            npm install -g pnpm
+            
+            # Update package.json version
+            cd $(dirname "$PACKAGE_JSON_PATH")
+            pnpm version --no-git-tag-version $NEW_VERSION_WITHOUT_V
+            
+            # Commit the package.json changes
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git add $(basename "$PACKAGE_JSON_PATH")
+            git commit -m "chore: bump version to $NEW_VERSION_WITHOUT_V"
+          else
+            echo "Package.json path not found: $PACKAGE_JSON_PATH"
+          fi
+
+      - name: Create new tag
+        if: ${{ inputs.version_type != 'repeat' }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git tag ${{ steps.increment_version.outputs.new_version }}
+          git push origin HEAD:main
+          git push origin ${{ steps.increment_version.outputs.new_version }}

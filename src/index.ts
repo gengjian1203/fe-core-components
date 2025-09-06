@@ -1,6 +1,3 @@
-// 应用 Antd React 19 兼容补丁
-import '@ant-design/v5-patch-for-react-19';
-
 // 导出样式文件
 import './styles/globals.css';
 

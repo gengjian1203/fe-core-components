@@ -1,6 +1,6 @@
 import { DownloadOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, fn, userEvent, within } from '@storybook/test';
+import { expect, fn, within } from '@storybook/test';
 import { CXButton } from './CXButton';
 
 const meta: Meta<typeof CXButton> = {
@@ -11,7 +11,7 @@ const meta: Meta<typeof CXButton> = {
     docs: {
       description: {
         component:
-          'CXButton 是基于 Ant Design Button 组件的二次封装，提供了更多的定制化选项和扩展功能。',
+          'CXButton 是自定义实现的按钮组件，提供了丰富的样式变体、尺寸选项、图标支持和加载状态。',
       },
     },
   },
@@ -78,7 +78,7 @@ export const Variants: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 验证所有变体按钮存在
@@ -94,9 +94,12 @@ export const Variants: Story = {
     await expect(ghostBtn).toBeInTheDocument();
     await expect(dangerBtn).toBeInTheDocument();
 
-    // 验证按钮样式类
-    await expect(primaryBtn).toHaveClass('ant-btn-primary');
-    await expect(dangerBtn).toHaveClass('ant-btn-dangerous');
+    // 验证按钮自定义样式类
+    await expect(primaryBtn).toHaveClass('bg-blue-600');
+    await expect(secondaryBtn).toHaveClass('bg-gray-100');
+    await expect(outlineBtn).toHaveClass('border-2');
+    await expect(ghostBtn).toHaveClass('bg-transparent');
+    await expect(dangerBtn).toHaveClass('bg-red-600');
   },
 };
 
@@ -115,7 +118,7 @@ export const Sizes: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 验证不同尺寸按钮存在
@@ -127,9 +130,10 @@ export const Sizes: Story = {
     await expect(mediumBtn).toBeInTheDocument();
     await expect(largeBtn).toBeInTheDocument();
 
-    // 验证尺寸样式类
-    await expect(smallBtn).toHaveClass('ant-btn-sm');
-    await expect(largeBtn).toHaveClass('ant-btn-lg');
+    // 验证自定义尺寸样式类
+    await expect(smallBtn).toHaveClass('h-7', 'text-sm');
+    await expect(mediumBtn).toHaveClass('h-8', 'text-base');
+    await expect(largeBtn).toHaveClass('h-10', 'text-lg');
   },
 };
 
@@ -160,7 +164,7 @@ export const WithIcons: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 获取所有按钮并通过文本内容验证
@@ -182,12 +186,19 @@ export const WithIcons: Story = {
     await expect(addProjectBtn).toBeInTheDocument();
     await expect(exportBtn).toBeInTheDocument();
 
-    // 验证图标存在
+    // 验证图标存在（Ant Design图标仍然会有anticon类名）
     const plusIcon = addBtn?.querySelector('.anticon-plus');
     const downloadIcon = downloadBtn?.querySelector('.anticon-download');
 
     await expect(plusIcon).toBeInTheDocument();
     await expect(downloadIcon).toBeInTheDocument();
+
+    // 验证按钮包含图标容器
+    const leftIconSpan = addBtn?.querySelector('.flex-shrink-0');
+    const rightIconSpan = downloadBtn?.querySelector('.flex-shrink-0');
+
+    await expect(leftIconSpan).toBeInTheDocument();
+    await expect(rightIconSpan).toBeInTheDocument();
   },
 };
 
@@ -210,7 +221,7 @@ export const LoadingStates: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 获取所有加载状态的按钮
@@ -220,14 +231,26 @@ export const LoadingStates: Story = {
       // 验证按钮处于加载状态时是禁用的
       await expect(button).toBeDisabled();
 
-      // 验证加载图标存在
-      const loadingIcon = button.querySelector('.anticon-loading');
-      await expect(loadingIcon).toBeInTheDocument();
+      // 验证自定义加载动画存在（检查旋转动画类）
+      const spinner = button.querySelector('.animate-spin');
+      await expect(spinner).toBeInTheDocument();
+
+      // 验证spinner的样式
+      await expect(spinner).toHaveClass(
+        'rounded-full',
+        'border-2',
+        'border-current',
+        'border-t-transparent'
+      );
     }
 
     // 验证自定义加载文本
     const customLoadingBtn = canvas.getByText(/处理中/i);
     await expect(customLoadingBtn).toBeInTheDocument();
+
+    // 验证加载状态按钮具有等待光标样式
+    const loadingBtn = canvas.getByRole('button', { name: /^Loading$/ });
+    await expect(loadingBtn).toHaveClass('cursor-wait');
   },
 };
 
@@ -250,7 +273,7 @@ export const DisabledStates: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
 
     // 验证禁用状态的按钮
@@ -267,8 +290,9 @@ export const DisabledStates: Story = {
     await expect(disabledOutlineBtn).toBeDisabled();
     await expect(disabledGhostBtn).toBeDisabled();
 
-    // 尝试点击禁用的按钮，验证不会触发事件
-    await userEvent.click(disabledBtn);
-    await expect(disabledBtn).toBeDisabled();
+    // 验证禁用按钮具有正确的样式类
+    await expect(disabledBtn).toHaveClass('pointer-events-none', 'opacity-50');
+    await expect(disabledOutlineBtn).toHaveClass('pointer-events-none', 'opacity-50');
+    await expect(disabledGhostBtn).toHaveClass('pointer-events-none', 'opacity-50');
   },
 };

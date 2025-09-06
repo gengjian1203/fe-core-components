@@ -73,18 +73,28 @@ yarn add @cosx/fe-core-components
 
 ```bash
 # 安装必需的对等依赖（项目中如果已经存在则不用安装）
-pnpm add react react-dom antd @ant-design/v5-patch-for-react-19 @ant-design/icons
+pnpm add react react-dom antd tailwindcss
 ```
 
 ### 2.4 快速集成
+
+⚠️ **重要提醒**：为了确保组件样式正确显示，必须在应用入口文件中导入组件库的样式文件。
 
 在应用入口文件中导入样式和兼容性补丁：
 
 ```tsx
 // main.tsx 或 App.tsx
-import '@cosx/fe-core-components/dist/styles.css';
-import '@cosx/fe-core-components'; // 自动应用 React 19 兼容性补丁
+import '@cosx/fe-core-components/styles'; // 导入样式文件（必须）
 ```
+
+或者使用完整路径：
+
+```tsx
+// main.tsx 或 App.tsx
+import '@cosx/fe-core-components/dist/styles.css'; // 完整路径导入样式
+```
+
+如果忘记导入样式文件，组件会正常渲染但没有任何样式效果。
 
 ### 2.5 基础使用示例
 
@@ -165,7 +175,7 @@ const MyButton: React.FC<CXButtonProps> = props => {
 
 ```bash
 # 安装依赖
-pnpm add @cosx/fe-core-components antd @ant-design/v5-patch-for-react-19
+pnpm add @cosx/fe-core-components antd tailwindcss @ant-design/v5-patch-for-react-19
 
 # 配置 vite.config.ts
 import { defineConfig } from 'vite';
@@ -184,7 +194,7 @@ export default defineConfig({
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import '@cosx/fe-core-components/dist/styles.css';
+import '@cosx/fe-core-components/styles'; // 导入样式文件（必须）
 import '@cosx/fe-core-components'; // 应用 React 19 兼容补丁
 import App from './App.tsx';
 
@@ -199,13 +209,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 ```bash
 # 安装依赖
-pnpm add @cosx/fe-core-components antd @ant-design/v5-patch-for-react-19
+pnpm add @cosx/fe-core-components antd tailwindcss @ant-design/v5-patch-for-react-19
 ```
 
 在 `app/layout.tsx` 中：
 
 ```tsx
-import '@cosx/fe-core-components/dist/styles.css';
+import '@cosx/fe-core-components/styles'; // 导入样式文件（必须）
 import '@cosx/fe-core-components';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -316,6 +326,19 @@ pnpm link --global @cosx/fe-core-components
 npm link @cosx/fe-core-components
 ```
 
+**⚠️ 本地 Link 开发时的样式导入**：
+
+在本地 link 开发模式下，由于链接的是 `dist` 目录，样式文件的导入路径需要调整：
+
+```tsx
+// 方式一：导入 ESM 版本样式（推荐）
+import '@cosx/fe-core-components/styles.css';
+
+// 方式二：如果方式一无法解析，使用相对路径
+import '@cosx/fe-core-components/dist/esm/styles.css';
+import '../node_modules/@cosx/fe-core-components/dist/esm/styles.css';
+```
+
 #### 3.5.3 开发时实时更新
 
 ```bash
@@ -351,9 +374,12 @@ npm unlink --global
 
 ### 3.6 宿主项目使用指南
 
-#### 3.6.1 在 React 项目中使用
+#### 3.6.1 在 React 项目中使用（本地 Link 开发）
 
 ```tsx
+// 宿主项目的入口文件（main.tsx 或 App.tsx）
+import '@cosx/fe-core-components/styles.css'; // 本地 link 开发时使用 ESM 版本样式
+
 // 导入组件
 import { CXButton, CXCard } from '@cosx/fe-core-components';
 
@@ -394,8 +420,8 @@ function MyComponent() {
 然后在项目中导入：
 
 ```tsx
-import '@cosx/fe-core-components/dist/styles.css';
-import './custom-theme.css';
+import '@cosx/fe-core-components/styles.css'; // 必须先导入组件库样式
+import './custom-theme.css'; // 再导入自定义主题
 ```
 
 ## 4. GitHub Actions 部署操作介绍

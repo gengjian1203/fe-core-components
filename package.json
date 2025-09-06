@@ -142,11 +142,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-org/fe-core-components.git"
+    "url": "git+https://github.com/gengjian1203/fe-core-components.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "bugs": {
-    "url": "https://github.com/your-org/fe-core-components/issues"
+    "url": "https://github.com/gengjian1203/fe-core-components/issues"
   },
-  "homepage": "https://github.com/your-org/fe-core-components#readme",
+  "homepage": "https://github.com/gengjian1203/fe-core-components#readme",
   "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
 }

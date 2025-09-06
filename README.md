@@ -1,6 +1,6 @@
-# fe-core-components
+# fe-cosx-ui
 
-[![npm version](https://badge.fury.io/js/fe-core-components.svg)](https://badge.fury.io/js/fe-core-components)
+[![npm version](https://badge.fury.io/js/fe-cosx-ui.svg)](https://badge.fury.io/js/fe-cosx-ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 
@@ -23,13 +23,13 @@
 
 ```bash
 # 使用 pnpm (推荐)
-pnpm add fe-core-components
+pnpm add fe-cosx-ui
 
 # 或使用 npm
-npm install fe-core-components
+npm install fe-cosx-ui
 
 # 或使用 yarn
-yarn add fe-core-components
+yarn add fe-cosx-ui
 ```
 
 ### 安装对等依赖
@@ -48,54 +48,58 @@ pnpm add react react-dom antd @ant-design/v5-patch-for-react-19 @ant-design/icon
 
 ```tsx
 // main.tsx 或 App.tsx
-import 'fe-core-components/dist/styles.css';
-import 'fe-core-components'; // 自动应用 React 19 兼容性补丁
+import 'fe-cosx-ui/dist/styles.css';
+import 'fe-cosx-ui'; // 自动应用 React 19 兼容性补丁
 ```
 
 ### 2. 使用组件
 
 ```tsx
-import { CXButton, CXCard } from 'fe-core-components';
+import { CXButton, CXCard } from 'fe-cosx-ui';
 import { UserOutlined, SettingOutlined } from '@ant-design/icons';
 
 function App() {
   return (
-    <div className="p-6 space-y-4">
+    <div className='p-6 space-y-4'>
       {/* 基础按钮使用 */}
-      <div className="space-x-2">
-        <CXButton variant="primary" size="medium" leftIcon={<UserOutlined />}>
+      <div className='space-x-2'>
+        <CXButton variant='primary' size='medium' leftIcon={<UserOutlined />}>
           主要按钮
         </CXButton>
-        <CXButton variant="outline" size="medium">
+        <CXButton variant='outline' size='medium'>
           次要按钮
         </CXButton>
-        <CXButton variant="danger" loading>
+        <CXButton variant='danger' loading>
           危险按钮
         </CXButton>
       </div>
 
       {/* 卡片组件使用 */}
       <CXCard
-        title="项目概览"
-        variant="shadow"
-        status="success"
+        title='项目概览'
+        variant='shadow'
+        status='success'
         headerIcon={<SettingOutlined />}
         avatar={{
           icon: <UserOutlined />,
-          size: 'default'
+          size: 'default',
         }}
         tags={[
           { text: '进行中', color: 'blue' },
-          { text: '优先级高', color: 'red', variant: 'outlined' }
+          { text: '优先级高', color: 'red', variant: 'outlined' },
         ]}
         metadata={[
           { label: '创建时间', value: '2024-01-01' },
-          { label: '负责人', value: '张三' }
+          { label: '负责人', value: '张三' },
         ]}
         footer={
-          <div className="flex justify-end space-x-2">
-            <CXButton size="small" variant="ghost">取消</CXButton>
-            <CXButton size="small" variant="primary">确认</CXButton>
+          <div className='flex justify-end space-x-2'>
+            <CXButton size='small' variant='ghost'>
+              取消
+            </CXButton>
+            <CXButton size='small' variant='primary'>
+              确认
+            </CXButton>
           </div>
         }
         clickable
@@ -115,6 +119,7 @@ function App() {
 基于 Ant Design 组件封装的基础组件：
 
 #### CXButton
+
 - **功能**: 扩展 Ant Design Button，支持更多变体和图标配置
 - **特性**: 5种变体、加载状态、左右图标、自定义样式
 - **变体**: `primary` | `secondary` | `outline` | `ghost` | `danger`
@@ -125,6 +130,7 @@ function App() {
 更复杂的业务场景组件：
 
 #### CXCard
+
 - **功能**: 功能丰富的卡片组件，适用于展示复杂信息
 - **特性**: 头像、标签、元数据、状态指示、点击交互
 - **变体**: `default` | `bordered` | `shadow` | `minimal`
@@ -136,8 +142,8 @@ function App() {
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-org/fe-core-components.git
-cd fe-core-components
+git clone https://github.com/your-org/fe-cosx-ui.git
+cd fe-cosx-ui
 
 # 安装依赖
 pnpm install
@@ -161,7 +167,7 @@ pnpm dev
 ```bash
 # 1. 克隆并安装
 git clone <your-repo-url>
-cd fe-core-components
+cd fe-cosx-ui
 pnpm install
 
 # 2. 启动开发环境
@@ -201,7 +207,7 @@ src/
 
 ```bash
 # 在组件库项目根目录
-cd fe-core-components
+cd fe-cosx-ui
 
 # 构建组件库
 pnpm build
@@ -220,10 +226,10 @@ npm link
 cd your-app-project
 
 # 链接本地组件库
-pnpm link --global fe-core-components
+pnpm link --global fe-cosx-ui
 
 # 或者使用 npm
-npm link fe-core-components
+npm link fe-cosx-ui
 ```
 
 ### 开发时的实时更新
@@ -240,10 +246,10 @@ pnpm build:watch
 
 ```bash
 # 在使用项目中取消链接
-pnpm unlink fe-core-components
+pnpm unlink fe-cosx-ui
 
 # 重新安装正式版本
-pnpm install fe-core-components
+pnpm install fe-cosx-ui
 ```
 
 ## 📦 GitHub 自动化打包发布
@@ -334,7 +340,7 @@ pnpm run release:major
 
 ```bash
 # 安装
-pnpm add fe-core-components antd @ant-design/v5-patch-for-react-19
+pnpm add fe-cosx-ui antd @ant-design/v5-patch-for-react-19
 
 # 配置 vite.config.ts
 import { defineConfig } from 'vite'
@@ -351,42 +357,38 @@ export default defineConfig({
 在 `main.tsx` 中：
 
 ```tsx
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import 'fe-core-components/dist/styles.css'
-import 'fe-core-components' // 应用 React 19 兼容补丁
-import App from './App.tsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import 'fe-cosx-ui/dist/styles.css';
+import 'fe-cosx-ui'; // 应用 React 19 兼容补丁
+import App from './App.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
 ```
 
 ### 2. Next.js 项目
 
 ```bash
 # 安装
-pnpm add fe-core-components antd @ant-design/v5-patch-for-react-19
+pnpm add fe-cosx-ui antd @ant-design/v5-patch-for-react-19
 ```
 
 在 `app/layout.tsx` 中：
 
 ```tsx
-import 'fe-core-components/dist/styles.css'
-import 'fe-core-components'
+import 'fe-cosx-ui/dist/styles.css';
+import 'fe-cosx-ui';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh">
+    <html lang='zh'>
       <body>{children}</body>
     </html>
-  )
+  );
 }
 ```
 
@@ -401,7 +403,7 @@ export default function RootLayout({
   --ant-color-success: #52c41a;
   --ant-color-warning: #faad14;
   --ant-color-error: #ff4d4f;
-  
+
   /* Tailwind 变量 */
   --color-primary-500: 24 144 255;
   --color-primary-600: 22 119 204;
@@ -416,8 +418,8 @@ export default function RootLayout({
 然后在项目中导入：
 
 ```tsx
-import 'fe-core-components/dist/styles.css'
-import './custom-theme.css'
+import 'fe-cosx-ui/dist/styles.css';
+import './custom-theme.css';
 ```
 
 ### 4. TypeScript 支持
@@ -425,12 +427,12 @@ import './custom-theme.css'
 组件库提供完整的 TypeScript 类型定义，支持智能提示：
 
 ```tsx
-import type { CXButtonProps, CXCardProps } from 'fe-core-components'
+import type { CXButtonProps, CXCardProps } from 'fe-cosx-ui';
 
 // 完整的类型支持和智能提示
-const MyButton: React.FC<CXButtonProps> = (props) => {
-  return <CXButton {...props} />
-}
+const MyButton: React.FC<CXButtonProps> = props => {
+  return <CXButton {...props} />;
+};
 ```
 
 ## 📊 包大小限制

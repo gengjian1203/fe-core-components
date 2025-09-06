@@ -37,7 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2024-01-01
 
 ### Added
-- Initial release of fe-core-components
+- Initial release of fe-cosx-ui
 - Base project structure with Ant Design integration
 - TypeScript support with complete type definitions
 - Development tooling and build pipeline

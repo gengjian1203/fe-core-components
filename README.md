@@ -4,6 +4,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 
+[展示目录](https://gengjian1203.github.io/fe-core-components/)
+
 ## 1. 项目简介特性
 
 现代化的 React 组件库，基于 **Ant Design 5.x** 和 **React 19** 构建，采用分层设计架构，提供高质量、可复用的企业级 UI 组件。

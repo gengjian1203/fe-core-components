@@ -8,29 +8,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial project setup with React 19, TypeScript, and Tailwind CSS
+- Initial project setup with React 19 and Ant Design 5.x
+- React 19 compatibility with @ant-design/v5-patch-for-react-19
 - Complete development environment with ESLint, Prettier, Husky
-- Storybook v7+ configuration with theme switching
-- Jest and React Testing Library setup
-- Rollup build configuration with Tree Shaking
-- Atomic Design component architecture
-- CSS Variables based theme system
-- Dark mode support
+- Storybook 9.x configuration with accessibility testing
+- Rollup build configuration with multiple output formats (ESM/CJS/UMD)
+- Component architecture: Base (Ant Design wrappers) + Case (complex components)
+- Tailwind CSS integration with Ant Design
+- Bundle size monitoring and constraints
 
 ### Components
-- Button component with multiple variants and states
-- Card component with cover image and action buttons
+- CXButton: Enhanced Ant Design Button with custom variants and icons
+- CXCard: Feature-rich card component with avatar, tags, metadata support
 
 ### Documentation  
-- Comprehensive development guide
-- Component development standards
-- API documentation
-- Storybook stories for all components
+- Comprehensive README with local development guides
+- GitHub Actions CI/CD pipeline setup
+- Local linking instructions for development
+- NPM publishing workflow
+- Usage examples for React/Vite and Next.js projects
 
-## [1.0.0] - 2024-03-15
+### Infrastructure
+- GitHub Actions for automated testing and publishing
+- Bundle size analysis and monitoring
+- TypeScript strict mode configuration
+- Comprehensive utility functions library
+
+## [1.0.0] - 2024-01-01
 
 ### Added
 - Initial release of fe-core-components
-- Basic project structure and configuration
-- First set of atomic and molecular components
-- Complete testing and documentation setup
+- Base project structure with Ant Design integration
+- TypeScript support with complete type definitions
+- Development tooling and build pipeline

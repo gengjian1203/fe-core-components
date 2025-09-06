@@ -33,9 +33,14 @@
     "typecheck": "tsc --noEmit",
     "prepare": "husky install",
     "commit": "cz",
-    "prepublishOnly": "npm run build",
-    "analyze": "npm run build && npx bundlesize",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
+    "prepublishOnly": "pnpm build",
+    "analyze": "pnpm build && npx bundlesize",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "release:patch": "node scripts/release-check.js && npm version patch && git push && git push --tags",
+    "release:minor": "node scripts/release-check.js && npm version minor && git push && git push --tags",
+    "release:major": "node scripts/release-check.js && npm version major && git push && git push --tags",
+    "prerelease": "pnpm lint:check && pnpm typecheck && pnpm build",
+    "release:check": "node scripts/release-check.js"
   },
   "keywords": [
     "react",

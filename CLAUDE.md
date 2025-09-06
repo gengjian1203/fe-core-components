@@ -27,11 +27,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Component Structure
 
-The project follows **Atomic Design** methodology:
+The project follows a **modified Atomic Design** methodology with two main categories:
 
-- `src/components/atoms/` - Basic building blocks (Button, Input)
-- `src/components/molecules/` - Simple combinations of atoms (Card)
-- `src/components/organisms/` - Complex UI sections (planned)
+- `src/components/Base/` - Foundation components that extend Ant Design (CXButton)
+- `src/components/Case/` - Complex composed components (CXCard)
 
 Each component follows this structure:
 
@@ -62,6 +61,14 @@ The project uses TypeScript path mapping:
 - **TypeScript declarations** generated in `dist/types/`
 - **CSS extraction** to `dist/styles.css`
 
+### Component Library Strategy
+
+This is an **Ant Design wrapper library**:
+- Uses Ant Design 5.x as the base UI framework
+- Components extend/wrap Ant Design components with custom props and styling
+- Requires `@ant-design/v5-patch-for-react-19` for React 19 compatibility
+- Custom utility function `cn()` for className merging (similar to clsx)
+
 ### Styling System
 
 - **Tailwind CSS** with custom design tokens
@@ -73,7 +80,7 @@ The project uses TypeScript path mapping:
 ### Type Safety
 
 - **Strict TypeScript** configuration with all strict flags enabled
-- **Explicit return types** required for functions
+- **Explicit return types** required for functions (`@typescript-eslint/explicit-function-return-type`)
 - **Consistent naming conventions** enforced via ESLint
 - **No implicit any** allowed
 
@@ -88,10 +95,11 @@ The project uses TypeScript path mapping:
 
 ### Adding New Components
 
-1. Create component folder in appropriate atomic level
-2. Implement component with TypeScript interfaces
+1. Create component folder in appropriate category (Base/Case)
+2. Implement component extending Ant Design base component
 3. Create Storybook stories with controls and documentation
 4. Export component in respective index files
+5. Update main exports in `src/components/index.ts`
 
 ### Theme Customization
 
@@ -116,3 +124,22 @@ Components use CSS variables for theming. Define custom themes by overriding CSS
 - ESM build must not exceed 50kb
 - CJS build must not exceed 55kb
 - Use bundlesize tool to monitor and enforce limits
+
+## Key Dependencies
+
+- **React 19** - Latest React features
+- **Ant Design 5.x** - Base component library
+- **@ant-design/icons** - Icon system
+- **Tailwind CSS** - Utility-first CSS framework
+- **Storybook 9.x** - Component development and documentation
+- **TypeScript 5.x** - Type system
+- **Rollup** - Module bundler
+- **ESLint 9.x** - Linting with flat config format
+
+## Storybook Configuration
+
+- Uses Vite as the build tool
+- Includes accessibility addon (`@storybook/addon-a11y`)
+- Includes interaction testing addon
+- Path aliases configured for proper imports
+- TypeScript docgen for automatic prop documentation

@@ -14,11 +14,11 @@ on:
           - fix
           - repeat
 
-  push:
-    branches: [main]
-    paths-ignore:
-      - '**.md'
-      - '.github/workflows/**'
+  # push:
+  #   branches: [main]
+  #   paths-ignore:
+  #     - '**.md'
+  #     - '.github/workflows/**'
 
 permissions:
   contents: write

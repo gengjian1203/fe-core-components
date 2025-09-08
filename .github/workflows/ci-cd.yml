@@ -75,6 +75,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy-storybook:
-    uses: ./.github/workflows/deploy-storybook.yml
-    needs: [increment-tag]
+      - name: Build Storybook
+        run: pnpm build-storybook
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./storybook-static
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

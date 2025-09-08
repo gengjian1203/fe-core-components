@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react';
 import React from 'react';
 import '../src/styles/globals.css';
+import packageJson from '../package.json';
 
 // 响应式断点配置
 const customViewports = {
@@ -102,11 +103,17 @@ const preview: Preview = {
 
   // 全局装饰器
   decorators: [
-    // 容器装饰器 - 为所有故事添加一致的容器样式
+    // 容器装饰器 - 为所有故事添加一致的容器样式和版本信息
     (Story, context) => {
       return (
-        <div className='p-4'>
-          <Story />
+        <div className='min-h-screen relative'>
+          <div className='p-4'>
+            <Story />
+          </div>
+          {/* 版本信息显示在右下角 */}
+          <div className='fixed bottom-2 right-2 text-xs text-gray-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-2 py-1 rounded shadow-sm border'>
+            v{packageJson.version}
+          </div>
         </div>
       );
     },

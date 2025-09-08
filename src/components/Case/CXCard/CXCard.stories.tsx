@@ -1,3 +1,5 @@
+import { CXButton } from '@/components/Base/CXButton';
+import { CXCard } from '@/components/Case/CXCard';
 import {
   CalendarOutlined,
   DeleteOutlined,
@@ -8,8 +10,6 @@ import {
 } from '@ant-design/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
-import { CXButton } from '../../Base/CXButton';
-import { CXCard } from './CXCard';
 
 const meta: Meta<typeof CXCard> = {
   title: 'Case/CXCard',
@@ -472,7 +472,7 @@ export const WithFooter: Story = {
         <div className='flex justify-between items-center'>
           <span className='text-gray-500'>最后更新：2小时前</span>
           <div className='flex gap-2'>
-            <CXButton size='small' variant='outline'>
+            <CXButton size='small' variant='dashed'>
               查看详情
             </CXButton>
             <CXButton size='small' variant='primary'>
@@ -618,7 +618,7 @@ export const Complex: Story = {
         <div className='flex justify-between items-center'>
           <span className='text-gray-500'>团队：前端开发组</span>
           <div className='flex gap-2'>
-            <CXButton size='small' variant='outline'>
+            <CXButton size='small' variant='dashed'>
               查看详情
             </CXButton>
             <CXButton size='small' variant='primary'>
@@ -628,7 +628,7 @@ export const Complex: Story = {
         </div>
       }
       headerActions={
-        <CXButton leftIcon={<SettingOutlined />} size='small' variant='ghost'>
+        <CXButton leftIcon={<SettingOutlined />} size='small' variant='link'>
           设置
         </CXButton>
       }

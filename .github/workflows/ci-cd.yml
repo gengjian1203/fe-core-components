@@ -73,3 +73,7 @@ jobs:
         run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy-storybook:
+    uses: ./.github/workflows/deploy-storybook.yml
+    needs: [increment-tag]

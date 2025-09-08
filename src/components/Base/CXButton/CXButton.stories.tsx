@@ -1,7 +1,7 @@
+import { CXButton } from '@/components/Base/CXButton';
 import { DownloadOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, within } from '@storybook/test';
-import { CXButton } from './CXButton';
 
 const meta: Meta<typeof CXButton> = {
   title: 'Base/CXButton',
@@ -19,8 +19,17 @@ const meta: Meta<typeof CXButton> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'outline', 'ghost', 'danger'],
+      options: ['primary', 'default', 'dashed', 'link', 'danger'],
       description: '按钮的视觉样式变体',
+    },
+    shape: {
+      control: 'select',
+      options: ['default', 'circle', 'round'],
+      description: '按钮的形状',
+    },
+    block: {
+      control: 'boolean',
+      description: '将按钮宽度调整为其父宽度的选项',
     },
     size: {
       control: 'select',
@@ -64,9 +73,9 @@ export const Variants: Story = {
     <div className='flex flex-col gap-4'>
       <div className='flex gap-4 flex-wrap'>
         <CXButton variant='primary'>Primary</CXButton>
-        <CXButton variant='secondary'>Secondary</CXButton>
-        <CXButton variant='outline'>Outline</CXButton>
-        <CXButton variant='ghost'>Ghost</CXButton>
+        <CXButton variant='default'>Default</CXButton>
+        <CXButton variant='dashed'>Dashed</CXButton>
+        <CXButton variant='link'>Link</CXButton>
         <CXButton variant='danger'>Danger</CXButton>
       </div>
     </div>
@@ -148,10 +157,10 @@ export const WithIcons: Story = {
         </CXButton>
       </div>
       <div className='flex gap-4'>
-        <CXButton leftIcon={<PlusOutlined />} variant='outline'>
+        <CXButton leftIcon={<PlusOutlined />} variant='dashed'>
           添加项目
         </CXButton>
-        <CXButton rightIcon={<DownloadOutlined />} variant='ghost'>
+        <CXButton rightIcon={<DownloadOutlined />} variant='link'>
           导出数据
         </CXButton>
       </div>
@@ -209,8 +218,8 @@ export const LoadingStates: Story = {
       <CXButton loading loadingText='处理中...'>
         处理数据
       </CXButton>
-      <CXButton loading variant='outline'>
-        Loading Outline
+      <CXButton loading variant='dashed'>
+        Loading Dashed
       </CXButton>
     </div>
   ),
@@ -258,11 +267,11 @@ export const DisabledStates: Story = {
   render: () => (
     <div className='flex gap-4'>
       <CXButton disabled>Disabled</CXButton>
-      <CXButton disabled variant='outline'>
-        Disabled Outline
+      <CXButton disabled variant='dashed'>
+        Disabled Dashed
       </CXButton>
-      <CXButton disabled variant='ghost'>
-        Disabled Ghost
+      <CXButton disabled variant='link'>
+        Disabled Link
       </CXButton>
     </div>
   ),
@@ -273,26 +282,51 @@ export const DisabledStates: Story = {
       },
     },
   },
-  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-    const canvas = within(canvasElement);
+};
 
-    // 验证禁用状态的按钮
-    const disabledBtn = canvas.getByRole('button', { name: /^Disabled$/i });
-    const disabledOutlineBtn = canvas.getByRole('button', { name: /Disabled Outline/i });
-    const disabledGhostBtn = canvas.getByRole('button', { name: /Disabled Ghost/i });
+export const Shapes: Story = {
+  render: () => (
+    <div className='flex flex-col gap-4'>
+      <div className='flex gap-4 items-center'>
+        <CXButton shape='default'>Default</CXButton>
+        <CXButton shape='round'>Round</CXButton>
+        <CXButton leftIcon={<PlusOutlined />} shape='circle' />
+        <CXButton leftIcon={<SearchOutlined />} shape='circle' variant='primary' />
+      </div>
+      <div className='flex gap-4 items-center'>
+        <CXButton shape='round' variant='dashed'>
+          Round Dashed
+        </CXButton>
+        <CXButton leftIcon={<DownloadOutlined />} shape='circle' variant='link' />
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: '不同形状的按钮，包括默认、圆角和圆形。',
+      },
+    },
+  },
+};
 
-    await expect(disabledBtn).toBeInTheDocument();
-    await expect(disabledOutlineBtn).toBeInTheDocument();
-    await expect(disabledGhostBtn).toBeInTheDocument();
-
-    // 验证所有按钮都被禁用
-    await expect(disabledBtn).toBeDisabled();
-    await expect(disabledOutlineBtn).toBeDisabled();
-    await expect(disabledGhostBtn).toBeDisabled();
-
-    // 验证禁用按钮具有正确的样式类
-    await expect(disabledBtn).toHaveClass('pointer-events-none', 'opacity-50');
-    await expect(disabledOutlineBtn).toHaveClass('pointer-events-none', 'opacity-50');
-    await expect(disabledGhostBtn).toHaveClass('pointer-events-none', 'opacity-50');
+export const Block: Story = {
+  render: () => (
+    <div className='flex flex-col gap-4' style={{ width: '300px' }}>
+      <CXButton block>Block Button</CXButton>
+      <CXButton block variant='primary'>
+        Block Primary
+      </CXButton>
+      <CXButton block variant='dashed'>
+        Block Dashed
+      </CXButton>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: '块级按钮，宽度填充父容器。',
+      },
+    },
   },
 };

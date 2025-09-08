@@ -26,6 +26,7 @@ permissions:
   id-token: write
   actions: read
   deployments: write
+  pages: write
 
 jobs:
   increment-tag:

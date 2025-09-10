@@ -23,13 +23,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - `pnpm analyze` - Analyze bundle size (max 50kb ESM, 55kb CJS)
 
+### Release Management
+
+- `pnpm run release:patch` - Release patch version (1.0.0 -> 1.0.1)
+- `pnpm run release:minor` - Release minor version (1.0.1 -> 1.1.0)  
+- `pnpm run release:major` - Release major version (1.1.0 -> 2.0.0)
+- `pnpm run release:check` - Run release checks before publishing
+
 ## Project Architecture
 
 ### Component Structure
 
 The project follows a **modified Atomic Design** methodology with two main categories:
 
-- `src/components/Base/` - Foundation components that extend Ant Design (CXButton)
+- `src/components/Base/` - Foundation components that extend Ant Design (CXButton, CXThemeProvider, CXThemeToggle)
 - `src/components/Case/` - Complex composed components (CXCard)
 
 Each component follows this structure:
@@ -66,8 +73,9 @@ The project uses TypeScript path mapping:
 This is an **Ant Design wrapper library**:
 - Uses Ant Design 5.x as the base UI framework
 - Components extend/wrap Ant Design components with custom props and styling
-- Requires `@ant-design/v5-patch-for-react-19` for React 19 compatibility
+- Includes React 19 compatibility patches built into the library
 - Custom utility function `cn()` for className merging (similar to clsx)
+- Published to GitHub Package Registry (`@gengjian1203/fe-core-components`)
 
 ### Styling System
 
@@ -143,3 +151,44 @@ Components use CSS variables for theming. Define custom themes by overriding CSS
 - Includes interaction testing addon
 - Path aliases configured for proper imports
 - TypeScript docgen for automatic prop documentation
+
+## Development & Deployment Workflow
+
+### Local Development with Link
+
+For local development and testing:
+
+1. **Build and link the library**:
+   ```bash
+   pnpm build && cd dist && pnpm link --global
+   ```
+
+2. **Link in host project**:
+   ```bash
+   pnpm link --global @gengjian1203/fe-core-components
+   ```
+
+3. **For real-time updates**:
+   ```bash
+   pnpm build:watch  # In component library project
+   ```
+
+4. **Style imports for local development**:
+   ```tsx
+   import '@gengjian1203/fe-core-components/styles.css';
+   ```
+
+### GitHub Actions & Publishing
+
+- **Manual Deployment**: Triggered via workflow_dispatch with version type selection (major/feat/fix/repeat)
+- **Auto-increment Tags**: Uses `./.github/workflows/auto-increment-tag.yml` to manage versioning
+- **Package Publishing**: Publishes to GitHub Package Registry
+- **Storybook Deployment**: Builds and deploys to GitHub Pages at https://gengjian1203.github.io/fe-core-components/
+
+### Release Process
+
+The project uses conventional commits and automated versioning:
+- `major` - Breaking changes (v1.0.0 -> v2.0.0)
+- `feat` - New features (v1.0.0 -> v1.1.0)  
+- `fix` - Bug fixes (v1.0.0 -> v1.0.1)
+- `repeat` - Re-run with same version

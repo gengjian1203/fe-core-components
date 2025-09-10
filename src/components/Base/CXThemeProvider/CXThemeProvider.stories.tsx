@@ -10,7 +10,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Avatar, Button, Card, Space, Tag, Typography } from 'antd';
+import { Avatar, Space, Tag, Typography } from 'antd';
 import React from 'react';
 
 const { Title, Paragraph } = Typography;
@@ -18,17 +18,17 @@ const { Title, Paragraph } = Typography;
 const ThemeDemo: React.FC = () => {
   return (
     <Space direction='vertical' size='large' style={{ width: '100%' }}>
-      <Card title='主题切换示例'>
+      <CXCard title='主题切换示例'>
         <Space direction='vertical' size='middle'>
           <Title level={4}>主题切换按钮</Title>
           <CXThemeToggle />
 
           <Title level={4}>Ant Design 组件</Title>
           <Space wrap>
-            <Button type='primary'>Primary Button</Button>
-            <Button>Default Button</Button>
-            <Button type='dashed'>Dashed Button</Button>
-            <Button type='link'>Link Button</Button>
+            <CXButton variant='primary'>Primary Button</CXButton>
+            <CXButton variant='default'>Default Button</CXButton>
+            <CXButton variant='dashed'>Dashed Button</CXButton>
+            <CXButton variant='link'>Link Button</CXButton>
           </Space>
 
           <Title level={4}>CX 组件</Title>
@@ -40,13 +40,11 @@ const ThemeDemo: React.FC = () => {
             <CXButton variant='danger'>Danger</CXButton>
           </Space>
 
-          <Card size='small' title='颜色示例'>
+          <CXCard size='small' title='颜色示例'>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
               <div
                 style={{
                   padding: '8px',
-                  backgroundColor: 'rgb(var(--color-primary-500))',
-                  color: 'white',
                   borderRadius: '4px',
                 }}
               >
@@ -55,8 +53,6 @@ const ThemeDemo: React.FC = () => {
               <div
                 style={{
                   padding: '8px',
-                  backgroundColor: 'rgb(var(--color-secondary-500))',
-                  color: 'white',
                   borderRadius: '4px',
                 }}
               >
@@ -65,8 +61,6 @@ const ThemeDemo: React.FC = () => {
               <div
                 style={{
                   padding: '8px',
-                  backgroundColor: 'rgb(var(--color-success-500))',
-                  color: 'white',
                   borderRadius: '4px',
                 }}
               >
@@ -75,15 +69,13 @@ const ThemeDemo: React.FC = () => {
               <div
                 style={{
                   padding: '8px',
-                  backgroundColor: 'rgb(var(--color-error-500))',
-                  color: 'white',
                   borderRadius: '4px',
                 }}
               >
                 Error
               </div>
             </div>
-          </Card>
+          </CXCard>
 
           <Title level={4}>CXCard 组件示例</Title>
           <Space direction='vertical' size='middle' style={{ width: '100%' }}>
@@ -126,7 +118,9 @@ const ThemeDemo: React.FC = () => {
                   <Title level={5} style={{ margin: 0 }}>
                     张三
                   </Title>
-                  <Paragraph style={{ margin: 0, color: 'gray' }}>前端开发工程师</Paragraph>
+                  <Paragraph style={{ margin: 0, color: 'rgb(var(--color-neutral-500))' }}>
+                    前端开发工程师
+                  </Paragraph>
                 </div>
               </Space>
               <div style={{ marginTop: 16 }}>
@@ -153,21 +147,27 @@ const ThemeDemo: React.FC = () => {
                 <Title level={2} style={{ margin: 0, color: '#1890ff' }}>
                   1,234
                 </Title>
-                <Paragraph style={{ margin: 0, color: 'gray' }}>+12.5% 较昨天</Paragraph>
+                <Paragraph style={{ margin: 0, color: 'rgb(var(--color-neutral-500))' }}>
+                  +12.5% 较昨天
+                </Paragraph>
               </CXCard>
 
               <CXCard size='small' title='总用户数'>
                 <Title level={2} style={{ margin: 0, color: '#52c41a' }}>
                   8,765
                 </Title>
-                <Paragraph style={{ margin: 0, color: 'gray' }}>+5.2% 较上周</Paragraph>
+                <Paragraph style={{ margin: 0, color: 'rgb(var(--color-neutral-500))' }}>
+                  +5.2% 较上周
+                </Paragraph>
               </CXCard>
 
               <CXCard size='small' title='转化率'>
                 <Title level={2} style={{ margin: 0, color: '#faad14' }}>
                   23.4%
                 </Title>
-                <Paragraph style={{ margin: 0, color: 'gray' }}>-2.1% 较上月</Paragraph>
+                <Paragraph style={{ margin: 0, color: 'rgb(var(--color-neutral-500))' }}>
+                  -2.1% 较上月
+                </Paragraph>
               </CXCard>
             </div>
           </Space>
@@ -178,7 +178,7 @@ const ThemeDemo: React.FC = () => {
             请尝试切换主题按钮来查看不同组件在亮色和暗色模式下的表现。
           </Paragraph>
         </Space>
-      </Card>
+      </CXCard>
     </Space>
   );
 };

@@ -547,7 +547,7 @@ export const ClickableCard: Story = {
       },
     },
   },
-  play: async ({ args, canvasElement }: { args: any; canvasElement: HTMLElement }) => {
+  play: async ({ args, canvasElement }: { args: typeof meta.args; canvasElement: HTMLElement }) => {
     // 使用 ant-card 类选择器来找到卡片元素
     const card = canvasElement.querySelector('.ant-card') as HTMLElement;
 
@@ -558,8 +558,8 @@ export const ClickableCard: Story = {
     await expect(card).toHaveClass('cursor-pointer');
 
     // 重置 mock 函数的调用计数
-    const mockFn = args.onCardClick as ReturnType<typeof fn>;
-    mockFn.mockClear();
+    const mockFn = args?.onCardClick as ReturnType<typeof fn>;
+    mockFn?.mockClear();
 
     // 点击卡片
     await userEvent.click(card as Element);

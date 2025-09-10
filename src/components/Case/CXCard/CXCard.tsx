@@ -137,7 +137,7 @@ export const CXCard: React.FC<CXCardProps> = ({
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-2'>
           {metadata.map((item, index) => (
             <div key={index} className='flex flex-col sm:flex-row sm:justify-between'>
-              <span className='text-gray-500 text-sm'>{item.label}:</span>
+              <span className='text-neutral-500 text-sm'>{item.label}:</span>
               <span className='font-medium'>{item.value}</span>
             </div>
           ))}
@@ -159,7 +159,7 @@ export const CXCard: React.FC<CXCardProps> = ({
   const renderFooter = (): React.ReactNode => {
     if (!footer) return null;
 
-    return <div className='pt-4 mt-4 border-t border-gray-200'>{footer}</div>;
+    return <div className='pt-4 mt-4 border-t border-neutral-200'>{footer}</div>;
   };
 
   const cardProps = {

@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
 import { ConfigProvider, theme as antdTheme } from 'antd';
 import type { AliasToken } from 'antd/es/theme/internal';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 export type ThemeMode = 'light' | 'dark';
 
@@ -177,9 +177,7 @@ export const CXThemeProvider: React.FC<CXThemeProviderProps> = ({
 
   return (
     <CXThemeContext.Provider value={contextValue}>
-      <ConfigProvider componentSize='middle' theme={antdThemeConfig}>
-        {children}
-      </ConfigProvider>
+      <ConfigProvider theme={antdThemeConfig}>{children}</ConfigProvider>
     </CXThemeContext.Provider>
   );
 };

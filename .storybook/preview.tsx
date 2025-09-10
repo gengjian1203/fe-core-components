@@ -1,7 +1,8 @@
 import type { Preview } from '@storybook/react';
-import React from 'react';
-import '../src/styles/globals.css';
+import React, { useEffect } from 'react';
 import packageJson from '../package.json';
+import { CXThemeProvider } from '../src/components/Base/CXThemeProvider';
+import '../src/styles/globals.css';
 
 // 响应式断点配置
 const customViewports = {
@@ -103,18 +104,32 @@ const preview: Preview = {
 
   // 全局装饰器
   decorators: [
-    // 容器装饰器 - 为所有故事添加一致的容器样式和版本信息
+    // 主题装饰器 - 同步 Storybook 工具栏主题与组件主题
     (Story, context) => {
+      const theme = context.globals.theme || 'light';
+
+      useEffect(() => {
+        // 同步 DOM class
+        const root = document.documentElement;
+        if (theme === 'dark') {
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
+        }
+      }, [theme]);
+
       return (
-        <div className='min-h-screen relative'>
-          <div className='p-4'>
-            <Story />
+        <CXThemeProvider forcedMode={theme} storageKey='storybook-theme'>
+          <div className='min-h-screen relative bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100'>
+            <div className='p-4'>
+              <Story />
+            </div>
+            {/* 版本信息显示在右下角 */}
+            <div className='fixed bottom-2 right-2 text-xs text-gray-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-2 py-1 rounded shadow-sm border'>
+              v{packageJson.version}
+            </div>
           </div>
-          {/* 版本信息显示在右下角 */}
-          <div className='fixed bottom-2 right-2 text-xs text-gray-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-2 py-1 rounded shadow-sm border'>
-            v{packageJson.version}
-          </div>
-        </div>
+        </CXThemeProvider>
       );
     },
   ],

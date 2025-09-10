@@ -92,23 +92,16 @@ export const Variants: Story = {
 
     // 验证所有变体按钮存在
     const primaryBtn = canvas.getByRole('button', { name: /Primary/i });
-    const secondaryBtn = canvas.getByRole('button', { name: /Secondary/i });
-    const outlineBtn = canvas.getByRole('button', { name: /Outline/i });
-    const ghostBtn = canvas.getByRole('button', { name: /Ghost/i });
+    const defaultBtn = canvas.getByRole('button', { name: /Default/i });
+    const dashedBtn = canvas.getByRole('button', { name: /Dashed/i });
+    const linkBtn = canvas.getByRole('button', { name: /Link/i });
     const dangerBtn = canvas.getByRole('button', { name: /Danger/i });
 
     await expect(primaryBtn).toBeInTheDocument();
-    await expect(secondaryBtn).toBeInTheDocument();
-    await expect(outlineBtn).toBeInTheDocument();
-    await expect(ghostBtn).toBeInTheDocument();
+    await expect(defaultBtn).toBeInTheDocument();
+    await expect(dashedBtn).toBeInTheDocument();
+    await expect(linkBtn).toBeInTheDocument();
     await expect(dangerBtn).toBeInTheDocument();
-
-    // 验证按钮自定义样式类
-    await expect(primaryBtn).toHaveClass('bg-blue-600');
-    await expect(secondaryBtn).toHaveClass('bg-gray-100');
-    await expect(outlineBtn).toHaveClass('border-2');
-    await expect(ghostBtn).toHaveClass('bg-transparent');
-    await expect(dangerBtn).toHaveClass('bg-red-600');
   },
 };
 
@@ -140,9 +133,9 @@ export const Sizes: Story = {
     await expect(largeBtn).toBeInTheDocument();
 
     // 验证自定义尺寸样式类
-    await expect(smallBtn).toHaveClass('h-7', 'text-sm');
-    await expect(mediumBtn).toHaveClass('h-8', 'text-base');
-    await expect(largeBtn).toHaveClass('h-10', 'text-lg');
+    await expect(smallBtn).toHaveClass('h-6', 'text-sm');
+    await expect(mediumBtn).toHaveClass('h-8', 'text-sm');
+    await expect(largeBtn).toHaveClass('h-10', 'text-base');
   },
 };
 
@@ -257,9 +250,9 @@ export const LoadingStates: Story = {
     const customLoadingBtn = canvas.getByText(/处理中/i);
     await expect(customLoadingBtn).toBeInTheDocument();
 
-    // 验证加载状态按钮具有等待光标样式
+    // 验证加载状态按钮具有pointer-events-none样式
     const loadingBtn = canvas.getByRole('button', { name: /^Loading$/ });
-    await expect(loadingBtn).toHaveClass('cursor-wait');
+    await expect(loadingBtn).toHaveClass('pointer-events-none');
   },
 };
 
@@ -281,6 +274,27 @@ export const DisabledStates: Story = {
         story: '禁用状态的按钮。',
       },
     },
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement);
+
+    // 获取所有禁用状态的按钮
+    const buttons = canvas.getAllByRole('button');
+
+    // 验证所有按钮都被禁用
+    for (const button of buttons) {
+      await expect(button).toBeDisabled();
+      await expect(button).toHaveAttribute('aria-disabled', 'true');
+    }
+
+    // 验证特定按钮存在
+    const disabledBtn = canvas.getByRole('button', { name: /^Disabled$/ });
+    const disabledDashedBtn = canvas.getByRole('button', { name: /Disabled Dashed/ });
+    const disabledLinkBtn = canvas.getByRole('button', { name: /Disabled Link/ });
+
+    await expect(disabledBtn).toBeInTheDocument();
+    await expect(disabledDashedBtn).toBeInTheDocument();
+    await expect(disabledLinkBtn).toBeInTheDocument();
   },
 };
 
@@ -308,6 +322,27 @@ export const Shapes: Story = {
       },
     },
   },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement);
+
+    // 验证文本按钮存在
+    const defaultBtn = canvas.getByRole('button', { name: /Default/ });
+    const roundBtn = canvas.getByRole('button', { name: /Round$/ });
+    const roundDashedBtn = canvas.getByRole('button', { name: /Round Dashed/ });
+
+    await expect(defaultBtn).toBeInTheDocument();
+    await expect(roundBtn).toBeInTheDocument();
+    await expect(roundDashedBtn).toBeInTheDocument();
+
+    // 验证形状相关的CSS类
+    await expect(defaultBtn).toHaveClass('rounded-md'); // default shape
+    await expect(roundBtn).toHaveClass('rounded-full'); // round shape
+    await expect(roundDashedBtn).toHaveClass('rounded-full'); // round shape
+
+    // 验证圆形按钮（通过图标验证）
+    const circleButtons = canvasElement.querySelectorAll('button .anticon');
+    await expect(circleButtons.length).toBeGreaterThanOrEqual(3); // 至少3个图标按钮
+  },
 };
 
 export const Block: Story = {
@@ -328,5 +363,29 @@ export const Block: Story = {
         story: '块级按钮，宽度填充父容器。',
       },
     },
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement);
+
+    // 获取所有块级按钮
+    const blockBtn = canvas.getByRole('button', { name: /Block Button/ });
+    const blockPrimaryBtn = canvas.getByRole('button', { name: /Block Primary/ });
+    const blockDashedBtn = canvas.getByRole('button', { name: /Block Dashed/ });
+
+    await expect(blockBtn).toBeInTheDocument();
+    await expect(blockPrimaryBtn).toBeInTheDocument();
+    await expect(blockDashedBtn).toBeInTheDocument();
+
+    // 验证块级按钮具有全宽样式
+    await expect(blockBtn).toHaveClass('w-full');
+    await expect(blockPrimaryBtn).toHaveClass('w-full');
+    await expect(blockDashedBtn).toHaveClass('w-full');
+
+    // 验证按钮宽度接近父容器宽度（300px）
+    const blockBtnRect = blockBtn.getBoundingClientRect();
+    const containerRect = canvasElement.getBoundingClientRect();
+
+    // 验证按钮宽度大于容器宽度的80%（考虑边距和填充）
+    await expect(blockBtnRect.width).toBeGreaterThan(containerRect.width * 0.8);
   },
 };

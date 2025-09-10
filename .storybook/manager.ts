@@ -2,20 +2,38 @@ import { addons } from 'storybook/manager-api';
 import { create } from 'storybook/theming';
 import packageJson from '../package.json';
 
-const theme = create({
-  base: 'light',
+const baseTheme = {
   brandTitle: `FE CosX UI v${packageJson.version}`,
   brandUrl: './',
   brandImage: './logo.svg',
   brandTarget: '_self',
 
-  // 确保标题显示的额外配置
-  colorPrimary: '#1976d2',
-  colorSecondary: '#1976d2',
+  colorPrimary: '#3b82f6',
+  colorSecondary: '#3b82f6',
+};
+
+const lightTheme = create({
+  ...baseTheme,
+  base: 'light',
 });
 
+const darkTheme = create({
+  ...baseTheme,
+  base: 'dark',
+});
+
+// 监听主题变化
 addons.setConfig({
-  theme,
+  theme: lightTheme,
+});
+
+// 动态切换主题
+const channel = addons.getChannel();
+channel.on('GLOBAL_CHANGED', data => {
+  if (data?.globals?.theme) {
+    const newTheme = data.globals.theme === 'dark' ? darkTheme : lightTheme;
+    addons.setConfig({ theme: newTheme });
+  }
 });
 
 // 确保favicon始终是我们的logo

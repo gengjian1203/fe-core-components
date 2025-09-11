@@ -30,7 +30,7 @@ permissions:
 
 jobs:
   increment-tag:
-    uses: ./auto-increment-tag.yml
+    uses: ./.github/workflows/auto-increment-tag.yml@main
     with:
       version_type: ${{ github.event.inputs.version_type || 'fix' }}
 

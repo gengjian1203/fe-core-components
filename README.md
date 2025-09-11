@@ -1,10 +1,10 @@
-# @cosx/fe-core-components
+# @cosxai/fe-core-components
 
-[![npm version](https://badge.fury.io/js/@cosx/fe-core-components.svg)](https://badge.fury.io/js/@cosx/fe-core-components)
+[![npm version](https://badge.fury.io/js/@cosxai/fe-core-components.svg)](https://badge.fury.io/js/@cosxai/fe-core-components)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 
-[展示目录](https://gengjian1203.github.io/fe-core-components/)
+[展示目录](https://cosxaiai.github.io/fe-core-components/)
 
 ## 1. 项目简介特性
 
@@ -52,7 +52,7 @@
 vim ~/.npmrc
 
 # 将以下行添加到你的 .npmrc 文件中
-@cosx:registry=https://npm.pkg.github.com
+@cosxai:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 
 vim ~/.bashrc
@@ -69,13 +69,13 @@ source ~/.bashrc  #（或其他对应的配置文件）
 
 ```bash
 # 使用 pnpm（推荐）
-pnpm add @cosx/fe-core-components
+pnpm add @cosxai/fe-core-components
 
 # 或使用 npm
-npm install @cosx/fe-core-components
+npm install @cosxai/fe-core-components
 
 # 或使用 yarn
-yarn add @cosx/fe-core-components
+yarn add @cosxai/fe-core-components
 ```
 
 ### 2.3 安装对等依赖
@@ -93,14 +93,14 @@ pnpm add react react-dom antd tailwindcss
 
 ```tsx
 // main.tsx 或 App.tsx
-import '@cosx/fe-core-components/styles'; // 导入样式文件（必须）
+import '@cosxai/fe-core-components/styles'; // 导入样式文件（必须）
 ```
 
 或者使用完整路径：
 
 ```tsx
 // main.tsx 或 App.tsx
-import '@cosx/fe-core-components/dist/styles.css'; // 完整路径导入样式
+import '@cosxai/fe-core-components/dist/styles.css'; // 完整路径导入样式
 ```
 
 如果忘记导入样式文件，组件会正常渲染但没有任何样式效果。
@@ -108,7 +108,7 @@ import '@cosx/fe-core-components/dist/styles.css'; // 完整路径导入样式
 ### 2.5 基础使用示例
 
 ```tsx
-import { CXButton, CXCard } from '@cosx/fe-core-components';
+import { CXButton, CXCard } from '@cosxai/fe-core-components';
 import { UserOutlined, SettingOutlined } from '@ant-design/icons';
 
 function App() {
@@ -170,7 +170,7 @@ function App() {
 组件库提供完整的 TypeScript 类型定义：
 
 ```tsx
-import type { CXButtonProps, CXCardProps } from '@cosx/fe-core-components';
+import type { CXButtonProps, CXCardProps } from '@cosxai/fe-core-components';
 
 // 完整的类型支持和智能提示
 const MyButton: React.FC<CXButtonProps> = props => {
@@ -184,7 +184,7 @@ const MyButton: React.FC<CXButtonProps> = props => {
 
 ```bash
 # 安装依赖
-pnpm add @cosx/fe-core-components antd tailwindcss @ant-design/v5-patch-for-react-19
+pnpm add @cosxai/fe-core-components antd tailwindcss @ant-design/v5-patch-for-react-19
 
 # 配置 vite.config.ts
 import { defineConfig } from 'vite';
@@ -203,8 +203,8 @@ export default defineConfig({
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import '@cosx/fe-core-components/styles'; // 导入样式文件（必须）
-import '@cosx/fe-core-components'; // 应用 React 19 兼容补丁
+import '@cosxai/fe-core-components/styles'; // 导入样式文件（必须）
+import '@cosxai/fe-core-components'; // 应用 React 19 兼容补丁
 import App from './App.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -218,14 +218,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 ```bash
 # 安装依赖
-pnpm add @cosx/fe-core-components antd tailwindcss @ant-design/v5-patch-for-react-19
+pnpm add @cosxai/fe-core-components antd tailwindcss @ant-design/v5-patch-for-react-19
 ```
 
 在 `app/layout.tsx` 中：
 
 ```tsx
-import '@cosx/fe-core-components/styles'; // 导入样式文件（必须）
-import '@cosx/fe-core-components';
+import '@cosxai/fe-core-components/styles'; // 导入样式文件（必须）
+import '@cosxai/fe-core-components';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

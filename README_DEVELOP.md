@@ -1,6 +1,6 @@
-# 开发者指南 - @cosx/fe-core-components
+# 开发者指南 - @cosxai/fe-core-components
 
-本文档为 `@cosx/fe-core-components` 的开发者指南，包含本地开发、构建、测试和部署的详细说明。
+本文档为 `@cosxai/fe-core-components` 的开发者指南，包含本地开发、构建、测试和部署的详细说明。
 
 > 📖 **用户使用指南**：如果您是用户，请查看 [README.md](./README.md) 了解安装和使用方法。
 
@@ -97,10 +97,10 @@ npm link
 cd your-host-project
 
 # 链接本地组件库
-pnpm link --global @cosx/fe-core-components
+pnpm link --global @cosxai/fe-core-components
 
 # 或者使用 npm
-npm link @cosx/fe-core-components
+npm link @cosxai/fe-core-components
 ```
 
 **⚠️ 本地 Link 开发时的样式导入**：
@@ -109,11 +109,11 @@ npm link @cosx/fe-core-components
 
 ```tsx
 // 方式一：导入 ESM 版本样式（推荐）
-import '@cosx/fe-core-components/styles.css';
+import '@cosxai/fe-core-components/styles.css';
 
 // 方式二：如果方式一无法解析，使用相对路径
-import '@cosx/fe-core-components/dist/esm/styles.css';
-import '../node_modules/@cosx/fe-core-components/dist/esm/styles.css';
+import '@cosxai/fe-core-components/dist/esm/styles.css';
+import '../node_modules/@cosxai/fe-core-components/dist/esm/styles.css';
 ```
 
 #### 1.5.3 开发时实时更新
@@ -132,10 +132,10 @@ pnpm build:watch
 
 ```bash
 # 在宿主项目中解除链接
-pnpm unlink @cosx/fe-core-components
+pnpm unlink @cosxai/fe-core-components
 
 # 重新安装正式版本
-pnpm install @cosx/fe-core-components
+pnpm install @cosxai/fe-core-components
 ```
 
 ##### 1.5.4.2 组件库项目解除链接
@@ -155,10 +155,10 @@ npm unlink --global
 
 ```tsx
 // 宿主项目的入口文件（main.tsx 或 App.tsx）
-import '@cosx/fe-core-components/styles.css'; // 本地 link 开发时使用 ESM 版本样式
+import '@cosxai/fe-core-components/styles.css'; // 本地 link 开发时使用 ESM 版本样式
 
 // 导入组件
-import { CXButton, CXCard } from '@cosx/fe-core-components';
+import { CXButton, CXCard } from '@cosxai/fe-core-components';
 
 // 在组件中使用
 function MyComponent() {
@@ -197,7 +197,7 @@ function MyComponent() {
 然后在项目中导入：
 
 ```tsx
-import '@cosx/fe-core-components/styles.css'; // 必须先导入组件库样式
+import '@cosxai/fe-core-components/styles.css'; // 必须先导入组件库样式
 import './custom-theme.css'; // 再导入自定义主题
 ```
 
@@ -253,7 +253,7 @@ import './custom-theme.css'; // 再导入自定义主题
 
 ```json
 {
-  "name": "@cosx/fe-core-components",
+  "name": "@cosxai/fe-core-components",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
@@ -317,10 +317,10 @@ git push origin main --tags
 
 ```bash
 # 验证包是否发布成功
-npm view @cosx/fe-core-components
+npm view @cosxai/fe-core-components
 
 # 在测试项目中验证安装
-npm install @cosx/fe-core-components@latest
+npm install @cosxai/fe-core-components@latest
 ```
 
 ### 2.5 部署最佳实践

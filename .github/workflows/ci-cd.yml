@@ -1,0 +1,87 @@
+name: CI/CD
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version increment type (major, feat, fix, repeat)'
+        required: true
+        type: choice
+        default: 'fix'
+        options:
+          - major
+          - feat
+          - fix
+          - repeat
+
+  # push:
+  #   branches: [main]
+  #   paths-ignore:
+  #     - '**.md'
+  #     - '.github/workflows/**'
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+  actions: read
+  deployments: write
+  pages: write
+
+jobs:
+  increment-tag:
+    uses: ./auto-increment-tag.yml
+    with:
+      version_type: ${{ github.event.inputs.version_type || 'fix' }}
+
+  publish:
+    needs: [increment-tag]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Pull latest code
+        run: |
+          git fetch origin ${{ github.ref_name }}
+          git reset --hard origin/${{ github.ref_name }}
+
+      - name: Update package.json version
+        run: |
+          VERSION_WITHOUT_V=$(echo "${{ needs.increment-tag.outputs.new_version }}" | sed 's/^v//')
+          sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"$VERSION_WITHOUT_V\"/" ./package.json
+          echo "Updated package.json version to: $VERSION_WITHOUT_V"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com/'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build for publishing
+        run: pnpm build
+
+      - name: Publish to GitHub Packages
+        run: pnpm publish --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Storybook
+        run: pnpm build-storybook
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./storybook-static
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

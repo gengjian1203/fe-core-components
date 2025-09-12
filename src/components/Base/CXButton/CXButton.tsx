@@ -4,7 +4,16 @@ import { cn } from '../../../utils';
 export interface CXButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   loadingText?: string;
-  variant?: 'primary' | 'default' | 'dashed' | 'link' | 'danger';
+  variant?:
+    | 'primary'
+    | 'default'
+    | 'dashed'
+    | 'link'
+    | 'danger'
+    | 'destructive'
+    | 'outline'
+    | 'secondary'
+    | 'ghost';
   size?: 'small' | 'medium' | 'large';
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
@@ -38,7 +47,16 @@ const getSizeClasses = (
 };
 
 const getVariantClasses = (
-  variant: 'primary' | 'default' | 'dashed' | 'link' | 'danger'
+  variant:
+    | 'primary'
+    | 'default'
+    | 'dashed'
+    | 'link'
+    | 'danger'
+    | 'destructive'
+    | 'outline'
+    | 'secondary'
+    | 'ghost'
 ): string => {
   const variants = {
     primary: [
@@ -96,6 +114,48 @@ const getVariantClasses = (
       'focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500',
       'disabled:bg-gray-100 disabled:border-gray-200 disabled:text-gray-400 disabled:shadow-none',
       'disabled:cursor-not-allowed disabled:hover:bg-gray-100 disabled:hover:border-gray-200',
+    ].join(' '),
+    destructive: [
+      'bg-red-500 text-white border-red-500 shadow-sm',
+      'hover:bg-red-400 hover:border-red-400',
+      'active:bg-red-600 active:border-red-600',
+      'focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500',
+      'disabled:bg-gray-100 disabled:border-gray-200 disabled:text-gray-400 disabled:shadow-none',
+      'disabled:cursor-not-allowed disabled:hover:bg-gray-100 disabled:hover:border-gray-200',
+    ].join(' '),
+    outline: [
+      'bg-transparent text-gray-900 border-gray-300 shadow-sm',
+      'hover:bg-gray-50 hover:text-gray-900',
+      'active:bg-gray-100',
+      'focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600',
+      'disabled:bg-transparent disabled:border-gray-200 disabled:text-gray-400 disabled:shadow-none',
+      'disabled:cursor-not-allowed disabled:hover:bg-transparent',
+      'dark:text-white dark:border-gray-600',
+      'dark:hover:bg-gray-800 dark:hover:text-white',
+      'dark:active:bg-gray-700',
+      'dark:disabled:border-gray-700 dark:disabled:text-gray-500',
+    ].join(' '),
+    secondary: [
+      'bg-gray-100 text-gray-900 border-gray-200 shadow-sm',
+      'hover:bg-gray-200 hover:border-gray-300',
+      'active:bg-gray-300 active:border-gray-400',
+      'focus:outline-none focus:ring-2 focus:ring-gray-500/20 focus:border-gray-400',
+      'disabled:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 disabled:shadow-none',
+      'disabled:cursor-not-allowed disabled:hover:bg-gray-50 disabled:hover:border-gray-200',
+      'dark:bg-gray-700 dark:text-white dark:border-gray-600',
+      'dark:hover:bg-gray-600 dark:hover:border-gray-500',
+      'dark:active:bg-gray-800',
+      'dark:disabled:bg-gray-800 dark:disabled:border-gray-700 dark:disabled:text-gray-500',
+    ].join(' '),
+    ghost: [
+      'bg-transparent text-gray-900 border-transparent shadow-none',
+      'hover:bg-gray-100 hover:text-gray-900',
+      'active:bg-gray-200',
+      'focus:outline-none focus:ring-2 focus:ring-gray-500/20',
+      'disabled:bg-transparent disabled:text-gray-400',
+      'disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-gray-400',
+      'dark:text-white dark:hover:bg-gray-800 dark:hover:text-white',
+      'dark:active:bg-gray-700 dark:disabled:text-gray-500',
     ].join(' '),
   };
   return variants[variant];

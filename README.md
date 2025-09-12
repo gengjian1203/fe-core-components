@@ -57,6 +57,7 @@ vim ~/.npmrc
 
 vim ~/.bashrc
 
+# 创建 GITHUB_TOKEN ： Setting => Developer Settings => Tokens (classic) 需要包含 read:packages
 # 将以下行添加到你的 ~/.bashrc, ~/.zshrc 或 ~/.bash_profile 文件中
 export GITHUB_TOKEN='ghp_yourActualTokenHere'
 

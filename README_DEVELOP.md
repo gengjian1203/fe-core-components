@@ -80,11 +80,8 @@ cd fe-core-components
 # 构建组件库
 pnpm build
 
-# 进入构建输出目录
-cd dist
-
-# 创建全局链接
-pnpm link --global
+# 创建全局链接 pnpm // 参考本文档 3.5 pnpm 全局链接配置问题解决
+# pnpm link --global
 
 # 或者使用 npm
 npm link
@@ -97,7 +94,7 @@ npm link
 cd your-host-project
 
 # 链接本地组件库
-pnpm link --global @cosxai/fe-core-components
+# pnpm link --global @cosxai/fe-core-components
 
 # 或者使用 npm
 npm link @cosxai/fe-core-components
@@ -342,6 +339,212 @@ npm install @cosxai/fe-core-components@latest
 - **主要版本**：包含破坏性更改时发布
 - **次要版本**：添加新功能但保持向后兼容时发布
 - **补丁版本**：修复 bug 或进行小幅改进时发布
+
+## 3. Q&A
+
+### 3.1 清理npm缓存
+
+npm cache clean --force
+
+### 3.2 检查当前链接状态
+
+npm list --link
+
+npm list -g --link --depth=0
+
+pnpm list --global --depth 0
+
+### 3.3 如果包确实被链接了，先强制删除链接目录
+
+rm -rf node_modules/@cosx/fe-core-components
+
+### 3.4 重新安装依赖
+
+pnpm install
+
+### 3.5 pnpm 全局链接配置问题解决
+
+#### 问题描述
+
+在使用 `pnpm link --global` 时遇到错误：
+
+```bash
+ERR_PNPM_NO_GLOBAL_BIN_DIR  Unable to find the global bin directory
+```
+
+#### 解决方案
+
+##### 步骤1：配置 pnpm 全局目录
+
+```bash
+# 设置用户可写的全局目录和 bin 目录
+pnpm config set global-dir ~/.pnpm-global
+pnpm config set global-bin-dir ~/.pnpm-global/bin
+pnpm config set store-dir ~/.pnpm-store
+
+# 创建必要的目录
+mkdir -p ~/.pnpm-global/bin
+```
+
+##### 步骤2：更新 PATH 环境变量
+
+```bash
+# 将全局 bin 目录添加到 PATH
+echo 'export PATH="$HOME/.pnpm-global/bin:$PATH"' >> ~/.zshrc
+
+# 重新加载 shell 配置（或重启终端）
+source ~/.zshrc
+```
+
+##### 步骤3：验证配置
+
+```bash
+# 检查配置是否正确
+pnpm config get global-bin-dir
+# 应该输出: /Users/username/.pnpm-global/bin
+
+echo $PATH | grep pnpm-global
+# 应该包含你的 pnpm-global/bin 目录
+```
+
+##### 步骤4：使用 pnpm link
+
+```bash
+# 在组件库项目中
+pnpm build
+pnpm link --global
+
+# 在使用组件库的项目中
+pnpm link --global @cosxai/fe-core-components
+```
+
+#### pnpm 完整工作流程
+
+##### 开发组件库时的链接流程：
+
+1. **构建并链接组件库**：
+
+   ```bash
+   cd fe-core-components
+   pnpm build
+   pnpm link --global
+   ```
+
+2. **在宿主项目中链接**：
+
+   ```bash
+   cd your-host-project
+   pnpm link --global @cosxai/fe-core-components
+   ```
+
+3. **实时开发模式**：
+
+   ```bash
+   cd fe-core-components
+   pnpm build:watch  # 监听文件变化并自动构建
+   ```
+
+4. **样式导入（在宿主项目中）**：
+   ```tsx
+   import '@cosxai/fe-core-components/styles.css';
+   ```
+
+##### 取消链接：
+
+```bash
+# 在宿主项目中取消链接
+pnpm unlink --global @cosxai/fe-core-components
+
+# 在组件库项目中取消全局链接
+pnpm unlink --global
+```
+
+#### .npmrc 配置说明
+
+项目的 `.npmrc` 文件包含以下关键配置：
+
+```ini
+# 全局 bin 目录 - 保持二进制文件在项目本地
+global-bin-dir = ./node_modules/.bin
+
+# GitHub Package Registry 配置
+@cosxai:registry = https://npm.pkg.github.com/
+
+# 性能优化
+prefer-offline = true
+fetch-retries = 3
+save-exact = true
+```
+
+**注意**：项目级别的 `global-bin-dir` 设置不会影响 `pnpm link --global`，后者需要全局配置。
+
+#### pnpm 链接常见问题
+
+##### Q: 为什么需要设置用户目录而不是系统目录？
+
+A: 避免权限问题。系统目录（如 `/Users/username/Library/pnpm`）可能由 root 拥有，导致权限错误。
+
+##### Q: 如何验证链接是否成功？
+
+```bash
+# 检查全局链接的包
+pnpm list -g --depth=0
+
+# 检查链接目标
+ls -la ~/.pnpm-global/5/node_modules/
+```
+
+##### Q: 遇到 peer dependencies 警告怎么办？
+
+这是正常的，因为链接的包不会从目标项目解析 peer dependencies。在实际使用中确保宿主项目安装了相应的依赖。
+
+#### 自动化配置脚本
+
+可以创建一个脚本来自动化 pnpm 全局环境配置：
+
+```bash
+#!/bin/bash
+# setup-pnpm-global.sh
+
+echo "配置 pnpm 全局环境..."
+
+# 设置全局目录
+pnpm config set global-dir ~/.pnpm-global
+pnpm config set global-bin-dir ~/.pnpm-global/bin
+pnpm config set store-dir ~/.pnpm-store
+
+# 创建目录
+mkdir -p ~/.pnpm-global/bin
+
+# 添加到 PATH（如果尚未添加）
+if ! grep -q "pnpm-global/bin" ~/.zshrc; then
+  echo 'export PATH="$HOME/.pnpm-global/bin:$PATH"' >> ~/.zshrc
+  echo "已将 pnpm 全局 bin 目录添加到 ~/.zshrc"
+fi
+
+echo "配置完成！请运行 'source ~/.zshrc' 或重启终端。"
+```
+
+#### 验证最终结果
+
+运行以下命令验证 pnpm 全局环境配置是否成功：
+
+```bash
+# 1. 检查全局配置
+pnpm config get global-bin-dir
+
+# 2. 检查 PATH
+echo $PATH | grep pnpm-global
+
+# 3. 测试链接
+cd fe-core-components
+pnpm link --global
+
+# 4. 检查链接结果
+pnpm list -g --depth=0 | grep @cosxai
+```
+
+如果所有步骤都成功，你就可以正常使用 `pnpm link --global` 了！
 
 ---
 

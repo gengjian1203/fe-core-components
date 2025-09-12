@@ -23,7 +23,17 @@ const meta: Meta<typeof CXButton> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'default', 'dashed', 'link', 'danger'],
+      options: [
+        'primary',
+        'default',
+        'dashed',
+        'link',
+        'danger',
+        'destructive',
+        'outline',
+        'secondary',
+        'ghost',
+      ],
       description: '按钮的视觉样式变体',
     },
     shape: {
@@ -82,6 +92,12 @@ export const Variants: Story = {
         <CXButton variant='link'>Link</CXButton>
         <CXButton variant='danger'>Danger</CXButton>
       </div>
+      <div className='flex gap-4 flex-wrap'>
+        <CXButton variant='destructive'>Destructive</CXButton>
+        <CXButton variant='outline'>Outline</CXButton>
+        <CXButton variant='secondary'>Secondary</CXButton>
+        <CXButton variant='ghost'>Ghost</CXButton>
+      </div>
     </div>
   ),
   parameters: {
@@ -100,12 +116,20 @@ export const Variants: Story = {
     const dashedBtn = canvas.getByRole('button', { name: /Dashed/i });
     const linkBtn = canvas.getByRole('button', { name: /Link/i });
     const dangerBtn = canvas.getByRole('button', { name: /Danger/i });
+    const destructiveBtn = canvas.getByRole('button', { name: /Destructive/i });
+    const outlineBtn = canvas.getByRole('button', { name: /Outline/i });
+    const secondaryBtn = canvas.getByRole('button', { name: /Secondary/i });
+    const ghostBtn = canvas.getByRole('button', { name: /Ghost/i });
 
     await expect(primaryBtn).toBeInTheDocument();
     await expect(defaultBtn).toBeInTheDocument();
     await expect(dashedBtn).toBeInTheDocument();
     await expect(linkBtn).toBeInTheDocument();
     await expect(dangerBtn).toBeInTheDocument();
+    await expect(destructiveBtn).toBeInTheDocument();
+    await expect(outlineBtn).toBeInTheDocument();
+    await expect(secondaryBtn).toBeInTheDocument();
+    await expect(ghostBtn).toBeInTheDocument();
   },
 };
 

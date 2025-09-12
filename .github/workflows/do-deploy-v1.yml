@@ -75,13 +75,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Storybook
-        run: pnpm build-storybook
+      # 迁移至 cloudflare page
+      # - name: Build Storybook
+      #   run: pnpm build-storybook
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./storybook-static
+      # - name: Upload Pages artifact
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: ./storybook-static
 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      # - name: Deploy to GitHub Pages
+      #   uses: actions/deploy-pages@v4

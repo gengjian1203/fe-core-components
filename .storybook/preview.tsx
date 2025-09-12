@@ -110,20 +110,31 @@ const preview: Preview = {
       useEffect(() => {
         // 同步 DOM class
         const root = document.documentElement;
+        const body = document.body;
+
+        // 添加到多个元素确保兼容性
         if (theme === 'dark') {
           root.classList.add('dark');
+          body.classList.add('dark');
         } else {
           root.classList.remove('dark');
+          body.classList.remove('dark');
         }
       }, [theme]);
 
       return (
-        <div className='min-h-screen relative bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100'>
+        <div className={`relative`}>
           <div className='p-4'>
             <Story />
           </div>
           {/* 版本信息显示在右下角 */}
-          <div className='fixed bottom-2 right-2 text-xs text-gray-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-2 py-1 rounded shadow-sm border'>
+          <div
+            className={`fixed bottom-2 right-2 text-xs px-2 py-1 rounded shadow-sm border backdrop-blur-sm ${
+              theme === 'dark'
+                ? 'text-gray-300 bg-gray-800/80 border-gray-700'
+                : 'text-gray-500 bg-white/80 border-gray-200'
+            }`}
+          >
             v{packageJson.version}
           </div>
         </div>

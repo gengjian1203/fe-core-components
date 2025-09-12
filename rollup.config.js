@@ -12,12 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 外部依赖配置 - 这些库不会被打包进最终产物
-const external = [
-  'react',
-  'react-dom',
-  'react/jsx-runtime',
-  'react/jsx-dev-runtime',
-];
+const external = ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime'];
 
 // 全局变量映射 - 用于UMD构建
 const globals = {
@@ -51,7 +46,7 @@ const getPlugins = format => [
       rootDir: 'src',
       declarationDir: format === 'esm' ? 'dist/types' : undefined,
       outDir: format === 'esm' ? undefined : `dist/${format}`,
-    }
+    },
   }),
 
   // Babel转译 - 确保浏览器兼容性
@@ -138,7 +133,7 @@ const getPlugins = format => [
 
 // 构建配置
 export default [
-  // CSS构建 - 单独提取CSS到dist根目录
+  // CSS构建 - 使用前缀防止样式污染
   {
     input: 'src/styles/globals.css',
     output: {
@@ -176,10 +171,9 @@ export default [
     treeshake: {
       moduleSideEffects: id => {
         // 保留CSS文件、样式模块和patch文件的副作用
-        return /\.css$/.test(id) || 
-               /\.scss$/.test(id) || 
-               /\.less$/.test(id) ||
-               /patch\.ts$/.test(id);
+        return (
+          /\.css$/.test(id) || /\.scss$/.test(id) || /\.less$/.test(id) || /patch\.ts$/.test(id)
+        );
       },
       propertyReadSideEffects: false,
       tryCatchDeoptimization: false,
@@ -201,10 +195,9 @@ export default [
     treeshake: {
       moduleSideEffects: id => {
         // 保留CSS文件、样式模块和patch文件的副作用
-        return /\.css$/.test(id) || 
-               /\.scss$/.test(id) || 
-               /\.less$/.test(id) ||
-               /patch\.ts$/.test(id)
+        return (
+          /\.css$/.test(id) || /\.scss$/.test(id) || /\.less$/.test(id) || /patch\.ts$/.test(id)
+        );
       },
     },
   },

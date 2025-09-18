@@ -1,4 +1,4 @@
-import { CXIcon } from '@/components/Base/CXIcon';
+import { CXIcon } from '@/components';
 import { cn } from '@/utils';
 import React from 'react';
 
@@ -14,11 +14,16 @@ export interface CXButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElem
     | 'destructive'
     | 'outline'
     | 'secondary'
-    | 'ghost';
+    | 'ghost'
+    | 'text';
   size?: 'small' | 'medium' | 'large';
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
+  type?: 'button' | 'submit' | 'reset';
+  width?: number | string;
+  height?: number | string;
+  renderLeftContent?: () => React.ReactNode;
+  renderRightContent?: () => React.ReactNode;
   className?: string;
+  classNameChildren?: string;
   block?: boolean;
   shape?: 'default' | 'circle' | 'round';
 }
@@ -58,23 +63,22 @@ const getVariantClasses = (
     | 'outline'
     | 'secondary'
     | 'ghost'
+    | 'text'
 ): string => {
   const variants = {
     primary: [
       // Use bg-primary with no border
       'bg-primary text-white border-transparent',
-      'hover:bg-primary hover:opacity-90 hover:scale-[1.02]',
-      'active:bg-primary active:opacity-80 active:scale-[0.98] active:duration-75',
-      'focus:outline-none focus:ring-2 focus:ring-primary ring-opacity-20',
+      'hover:bg-primary hover:opacity-90',
+      'active:bg-primary active:opacity-80 active:duration-75',
       'disabled:bg-gray-200 disabled:text-gray-400',
-      'disabled:hover:bg-gray-100 disabled:hover:scale-100',
+      'disabled:hover:bg-gray-100',
     ].join(' '),
     default: [
       // Use theme colors
       'bg-white text-gray-900 border-gray-300',
       'hover:text-primary hover:border-primary',
       'active:text-primary text-opacity-80 active:border-primary border-opacity-80',
-      'focus:outline-none focus:ring-2 focus:ring-primary ring-opacity-20 focus:border-primary',
       'disabled:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400',
       'disabled:hover:bg-gray-50 disabled:hover:border-gray-200 disabled:hover:text-gray-400',
       // Dark mode
@@ -88,7 +92,6 @@ const getVariantClasses = (
       'bg-white text-gray-900 border-gray-300 border-dashed',
       'hover:text-primary hover:border-primary',
       'active:text-primary text-opacity-80 active:border-primary border-opacity-80',
-      'focus:outline-none focus:ring-2 focus:ring-primary ring-opacity-20 focus:border-primary',
       'disabled:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400',
       'disabled:hover:bg-gray-50 disabled:hover:border-gray-200 disabled:hover:text-gray-400',
       // Dark mode
@@ -102,7 +105,6 @@ const getVariantClasses = (
       'bg-transparent text-primary border-transparent',
       'hover:text-primary text-opacity-80',
       'active:text-primary text-opacity-60',
-      'focus:outline-none focus:ring-2 focus:ring-primary ring-opacity-20',
       'disabled:text-gray-400',
       'disabled:hover:text-gray-400',
       'dark:text-primary dark:hover:text-primary text-opacity-80 dark:disabled:text-gray-500',
@@ -112,7 +114,6 @@ const getVariantClasses = (
       'bg-red-500 text-white border-transparent',
       'hover:bg-red-400',
       'active:bg-red-600',
-      'focus:outline-none focus:ring-2 focus:ring-red-500/20',
       'disabled:bg-gray-200 disabled:text-gray-400',
       'disabled:hover:bg-gray-100',
     ].join(' '),
@@ -120,7 +121,6 @@ const getVariantClasses = (
       'bg-red-500 text-white border-transparent',
       'hover:bg-red-400',
       'active:bg-red-600',
-      'focus:outline-none focus:ring-2 focus:ring-red-500/20',
       'disabled:bg-gray-200 disabled:text-gray-400',
       'disabled:hover:bg-gray-100',
     ].join(' '),
@@ -128,7 +128,6 @@ const getVariantClasses = (
       'bg-transparent text-gray-900 border-gray-300',
       'hover:bg-gray-50 hover:text-gray-900',
       'active:bg-gray-100',
-      'focus:outline-none focus:ring-2 focus:ring-primary ring-opacity-20 focus:border-primary',
       'disabled:bg-transparent disabled:border-gray-200 disabled:text-gray-400',
       'disabled:hover:bg-transparent',
       // Dark mode - follow default pattern
@@ -141,7 +140,6 @@ const getVariantClasses = (
       'bg-gray-100 text-gray-900 border-transparent',
       'hover:bg-gray-200',
       'active:bg-gray-300',
-      'focus:outline-none focus:ring-2 focus:ring-gray-500/20',
       'disabled:bg-gray-50 disabled:text-gray-400',
       'disabled:hover:bg-gray-50',
       'dark:bg-gray-700 dark:text-white',
@@ -153,13 +151,20 @@ const getVariantClasses = (
       'bg-transparent text-gray-900 border-transparent',
       'hover:bg-gray-100 hover:text-gray-900',
       'active:bg-gray-200',
-      'focus:outline-none focus:ring-2 focus:ring-gray-500/20',
       'disabled:bg-transparent disabled:text-gray-400',
       'disabled:hover:bg-transparent disabled:hover:text-gray-400',
       // Dark mode - follow default pattern
       'dark:bg-transparent dark:text-white',
       'dark:hover:bg-gray-700 dark:hover:text-white',
       'dark:active:bg-gray-900',
+      'dark:disabled:bg-transparent dark:disabled:text-gray-500',
+    ].join(' '),
+    text: [
+      'bg-transparent text-gray-900 border-transparent',
+      'disabled:bg-transparent disabled:text-gray-400',
+      'disabled:hover:text-gray-400',
+      // Dark mode
+      'dark:bg-transparent dark:text-white',
       'dark:disabled:bg-transparent dark:disabled:text-gray-500',
     ].join(' '),
   };
@@ -184,7 +189,9 @@ const LoadingSpinner: React.FC<{ size: 'small' | 'medium' | 'large' }> = ({ size
     large: 20,
   }[size];
 
-  return <CXIcon className='animate-spin' name='IconLoading' size={spinnerSize} />;
+  return (
+    <CXIcon className='animate-spin' height={spinnerSize} name='IconLoading' width={spinnerSize} />
+  );
 };
 
 export const CXButton: React.FC<CXButtonProps> = ({
@@ -193,9 +200,12 @@ export const CXButton: React.FC<CXButtonProps> = ({
   loadingText,
   variant = 'default',
   size = 'medium',
-  leftIcon,
-  rightIcon,
+  width,
+  height,
+  renderLeftContent,
+  renderRightContent,
   className,
+  classNameChildren = '',
   disabled,
   type = 'button',
   block = false,
@@ -204,14 +214,23 @@ export const CXButton: React.FC<CXButtonProps> = ({
 }) => {
   const isDisabled = disabled ?? loading;
 
+  // Custom size styles when width or height are specified
+  const customSizeStyles: React.CSSProperties = {};
+  if (width !== undefined) {
+    customSizeStyles.width = typeof width === 'number' ? `${width}px` : width;
+  }
+  if (height !== undefined) {
+    customSizeStyles.height = typeof height === 'number' ? `${height}px` : height;
+  }
+
   const buttonClasses = cn(
     // Base classes
     'inline-flex items-center justify-center font-medium border transition-all duration-200',
     'relative select-none touch-manipulation whitespace-nowrap',
     // Cursor classes
     isDisabled ? 'cursor-not-allowed' : 'cursor-pointer',
-    // Size and shape classes
-    getSizeClasses(size, shape),
+    // Size and shape classes (only if no custom width/height)
+    !(width ?? height) && getSizeClasses(size, shape),
     getShapeClasses(shape),
     // Variant classes
     getVariantClasses(variant),
@@ -220,7 +239,9 @@ export const CXButton: React.FC<CXButtonProps> = ({
     // Loading classes
     loading && loadingClasses,
     // Gap classes (only when not circle)
-    shape !== 'circle' && (leftIcon || rightIcon || loading) && children ? 'gap-1' : '',
+    shape !== 'circle' && (renderLeftContent || renderRightContent || loading) && children
+      ? 'gap-1'
+      : '',
     className
   );
 
@@ -237,9 +258,15 @@ export const CXButton: React.FC<CXButtonProps> = ({
     return (
       <>
         {loading && <LoadingSpinner size={size} />}
-        {!loading && leftIcon && <span className='flex-shrink-0'>{leftIcon}</span>}
-        {children && <span>{children}</span>}
-        {!loading && rightIcon && <span className='flex-shrink-0'>{rightIcon}</span>}
+        {!loading && renderLeftContent && (
+          <div className='flex-shrink-0'>{renderLeftContent?.()}</div>
+        )}
+        {children && (
+          <div className={cn('flex-1 flex flex-row', classNameChildren)}>{children}</div>
+        )}
+        {!loading && renderRightContent && (
+          <div className='flex-shrink-0'>{renderRightContent?.()}</div>
+        )}
       </>
     );
   };
@@ -250,6 +277,7 @@ export const CXButton: React.FC<CXButtonProps> = ({
       aria-disabled={isDisabled}
       className={buttonClasses}
       disabled={isDisabled}
+      style={{ ...customSizeStyles, ...props.style }}
       type={type}
     >
       {renderContent()}

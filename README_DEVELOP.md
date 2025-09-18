@@ -162,14 +162,14 @@ import { CXButton, CXCard, CXIcon } from '@cosxai/fe-core-components';
 function MyComponent() {
   return (
     <div>
-      <CXIcon name='IconUser' size={20} />
-      <CXButton variant='primary' leftIcon={<CXIcon name='IconCompleted' size={16} />}>
+      <CXIcon name='IconUser' width={20} height={20} />
+      <CXButton
+        variant='primary'
+        renderLeftContent={() => <CXIcon name='IconCompleted' width={16} height={16} />}
+      >
         点击我
       </CXButton>
-      <CXCard
-        title='测试卡片'
-        headerIcon={<CXIcon name='IconDashboard' size={16} />}
-      >
+      <CXCard title='测试卡片' headerIcon={<CXIcon name='IconDashboard' width={16} height={16} />}>
         卡片内容
       </CXCard>
     </div>

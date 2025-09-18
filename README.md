@@ -113,10 +113,10 @@ function App() {
   return (
     {/* 基础图标组件 */}
     <div className="flex items-center space-x-4 mb-4">
-      <CXIcon name="IconGoogle" size={26} />
-      <CXIcon name="IconLoading" size={20} className="text-blue-500" />
-      <CXIcon name="IconCompleted" size={16} />
-      <CXIcon name="IconFailed" size={16} />
+      <CXIcon name="IconGoogle" width={26} height={26} />
+      <CXIcon name="IconLoading" width={20} height={20} className="text-blue-500" />
+      <CXIcon name="IconCompleted" width={16} height={16} />
+      <CXIcon name="IconFailed" width={16} height={16} />
     </div>
 
     {/* 基础按钮组件 */}
@@ -155,7 +155,7 @@ const MyButton: React.FC<CXButtonProps> = props => {
 
 // 图标名称有完整的类型约束
 const iconName: IconName = 'IconFormItemVisaType'; // TypeScript 智能提示可用图标
-const MyIcon = () => <CXIcon name={iconName} size={20} />;
+const MyIcon = () => <CXIcon name={iconName} width={20} height={20} />;
 ```
 
 ### 2.7 不同框架集成

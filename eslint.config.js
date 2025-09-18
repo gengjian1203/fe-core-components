@@ -90,14 +90,7 @@ export default [
           disallowTypeAnnotations: false,
         },
       ],
-      '@typescript-eslint/explicit-function-return-type': [
-        'error',
-        {
-          allowExpressions: true,
-          allowTypedFunctionExpressions: true,
-          allowHigherOrderFunctions: true,
-        },
-      ],
+      '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/naming-convention': [
         'error',
         {

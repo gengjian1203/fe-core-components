@@ -1,1 +1,1 @@
-export { CXCard, type CXCardProps } from './CXCard';
+export * from './CXCard';

@@ -1,5 +1,4 @@
-import { CXButton } from '@/components/Base/CXButton';
-import { CXCard } from '@/components/Case/CXCard';
+import { CXButton, CXCard } from '@/components';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
 
@@ -15,7 +14,7 @@ const meta: Meta<typeof CXCard> = {
   title: 'Case/CXCard',
   component: CXCard,
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
         component:
@@ -28,24 +27,102 @@ const meta: Meta<typeof CXCard> = {
     variant: {
       control: 'select',
       options: ['default', 'bordered', 'shadow', 'minimal'],
-      description: '卡片的视觉样式变体',
+      description: '卡片的视觉样式变体，影响边框、阴影等效果',
+      table: {
+        defaultValue: { summary: 'default' },
+      },
     },
     status: {
       control: 'select',
       options: ['default', 'success', 'warning', 'error', 'info'],
-      description: '卡片的状态，会显示对应的左侧边框颜色',
+      description: '卡片的状态，显示对应颜色的左侧边框来区分不同业务状态',
+      table: {
+        defaultValue: { summary: 'default' },
+      },
+    },
+    title: {
+      control: 'text',
+      description: '卡片标题，显示在卡片头部位置',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    headerIcon: {
+      control: 'object',
+      description: '卡片标题左侧显示的图标，用于增强视觉识别',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    headerActions: {
+      control: 'object',
+      description: '卡片标题右侧显示的操作按钮或其他组件',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    footer: {
+      control: 'object',
+      description: '卡片底部区域，通常放置操作按钮或额外信息',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    cover: {
+      control: 'text',
+      description: '卡片封面图片，支持图片URL或React组件',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    avatar: {
+      control: 'object',
+      description: '头像设置，支持图片、图标或文字头像',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    tags: {
+      control: 'object',
+      description: '标签列表，用于标记卡片的分类或状态',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    metadata: {
+      control: 'object',
+      description: '元数据信息列表，用于展示结构化数据',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
     },
     loading: {
       control: 'boolean',
-      description: '显示加载状态',
+      description: '加载状态，显示动画骨架屏效果',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
     },
     clickable: {
       control: 'boolean',
-      description: '是否可点击',
+      description: '是否可点击，开启后会显示手型光标和悬停效果',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
+    onCardClick: {
+      control: false,
+      description: '卡片点击事件回调函数',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
     },
     children: {
       control: 'text',
-      description: '卡片内容',
+      description: '卡片主体内容区域',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
     },
   },
   args: {
@@ -181,10 +258,10 @@ export const WithHeaderElements: Story = {
       <CXCard
         headerActions={
           <div className='flex gap-2'>
-            <CXButton leftIcon={<EditIcon />} size='small'>
+            <CXButton renderLeftContent={() => <EditIcon />} size='small'>
               编辑
             </CXButton>
-            <CXButton leftIcon={<DeleteIcon />} size='small'>
+            <CXButton renderLeftContent={() => <DeleteIcon />} size='small'>
               删除
             </CXButton>
           </div>
@@ -722,7 +799,7 @@ export const Complex: Story = {
         </div>
       }
       headerActions={
-        <CXButton leftIcon={<SettingIcon />} size='small' variant='link'>
+        <CXButton renderLeftContent={() => <SettingIcon />} size='small' variant='link'>
           设置
         </CXButton>
       }

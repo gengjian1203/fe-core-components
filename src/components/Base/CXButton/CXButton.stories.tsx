@@ -1,4 +1,4 @@
-import { CXButton } from '@/components/Base/CXButton';
+import { CXButton } from '@/components';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, within } from '@storybook/test';
 
@@ -11,7 +11,7 @@ const meta: Meta<typeof CXButton> = {
   title: 'Base/CXButton',
   component: CXButton,
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
         component:
@@ -33,43 +33,119 @@ const meta: Meta<typeof CXButton> = {
         'outline',
         'secondary',
         'ghost',
+        'text',
       ],
       description: '按钮的视觉样式变体',
+      table: {
+        defaultValue: { summary: 'default' },
+      },
     },
     shape: {
       control: 'select',
       options: ['default', 'circle', 'round'],
       description: '按钮的形状',
+      table: {
+        defaultValue: { summary: 'default' },
+      },
     },
     block: {
       control: 'boolean',
       description: '将按钮宽度调整为其父宽度的选项',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
     },
     size: {
       control: 'select',
       options: ['small', 'medium', 'large'],
       description: '按钮的尺寸',
+      table: {
+        defaultValue: { summary: 'medium' },
+      },
     },
     loading: {
       control: 'boolean',
       description: '显示加载状态',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
     },
     loadingText: {
       control: 'text',
       description: '加载时显示的文本',
+      table: {
+        defaultValue: { summary: '' },
+      },
     },
     disabled: {
       control: 'boolean',
       description: '禁用按钮',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
+    type: {
+      control: 'select',
+      options: ['button', 'submit', 'reset'],
+      description: '按钮的 HTML type 属性',
+      table: {
+        defaultValue: { summary: 'button' },
+      },
     },
     children: {
       control: 'text',
       description: '按钮内容',
+      table: {
+        defaultValue: { summary: 'Button' },
+      },
+    },
+    classNameChildren: {
+      control: 'text',
+      description: '应用到按钮内容容器的自定义样式类名',
+      table: {
+        defaultValue: { summary: '' },
+      },
+    },
+    renderLeftContent: {
+      control: 'object',
+      description: '按钮左侧显示的图标组件，通常用于增强按钮的语义表达',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    renderRightContent: {
+      control: 'object',
+      description: '按钮右侧显示的图标组件，常用于下拉箭头、外链图标等场景',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    width: {
+      control: { type: 'number' },
+      description: '自定义按钮宽度，支持数字（转换为px）或字符串（如 "100px", "10rem"）',
+      table: {
+        defaultValue: { summary: 'auto' },
+      },
+    },
+    height: {
+      control: { type: 'number' },
+      description: '自定义按钮高度，支持数字（转换为px）或字符串（如 "40px", "3rem"）',
+      table: {
+        defaultValue: { summary: 'auto' },
+      },
     },
   },
   args: {
     onClick: fn(),
     children: 'Button',
+    variant: 'default',
+    shape: 'default',
+    size: 'medium',
+    block: false,
+    loading: false,
+    loadingText: '',
+    disabled: false,
+    className: '',
   },
 };
 
@@ -95,17 +171,14 @@ export const Variants: Story = {
         <CXButton {...args} variant='dashed'>
           Dashed
         </CXButton>
-        <CXButton {...args} variant='link'>
-          Link
-        </CXButton>
         <CXButton {...args} variant='danger'>
           Danger
         </CXButton>
-      </div>
-      <div className='flex gap-4 flex-wrap'>
         <CXButton {...args} variant='destructive'>
           Destructive
         </CXButton>
+      </div>
+      <div className='flex gap-4 flex-wrap'>
         <CXButton {...args} variant='outline'>
           Outline
         </CXButton>
@@ -114,6 +187,12 @@ export const Variants: Story = {
         </CXButton>
         <CXButton {...args} variant='ghost'>
           Ghost
+        </CXButton>
+        <CXButton {...args} variant='link'>
+          Link
+        </CXButton>
+        <CXButton {...args} variant='text'>
+          Text
         </CXButton>
       </div>
     </div>
@@ -138,6 +217,7 @@ export const Variants: Story = {
     const outlineBtn = canvas.getByRole('button', { name: /Outline/i });
     const secondaryBtn = canvas.getByRole('button', { name: /Secondary/i });
     const ghostBtn = canvas.getByRole('button', { name: /Ghost/i });
+    const textBtn = canvas.getByRole('button', { name: /Text/i });
 
     await expect(primaryBtn).toBeInTheDocument();
     await expect(defaultBtn).toBeInTheDocument();
@@ -148,6 +228,7 @@ export const Variants: Story = {
     await expect(outlineBtn).toBeInTheDocument();
     await expect(secondaryBtn).toBeInTheDocument();
     await expect(ghostBtn).toBeInTheDocument();
+    await expect(textBtn).toBeInTheDocument();
   },
 };
 
@@ -195,21 +276,25 @@ export const WithIcons: Story = {
   render: args => (
     <div className='flex flex-col gap-4'>
       <div className='flex gap-4'>
-        <CXButton {...args} leftIcon={<PlusIcon />}>
+        <CXButton {...args} renderLeftContent={() => <PlusIcon />}>
           添加
         </CXButton>
-        <CXButton {...args} rightIcon={<DownloadIcon />}>
+        <CXButton {...args} renderRightContent={() => <DownloadIcon />}>
           下载
         </CXButton>
-        <CXButton {...args} leftIcon={<SearchIcon />} rightIcon={<DownloadIcon />}>
+        <CXButton
+          {...args}
+          renderLeftContent={() => <SearchIcon />}
+          renderRightContent={() => <DownloadIcon />}
+        >
           搜索并下载
         </CXButton>
       </div>
       <div className='flex gap-4'>
-        <CXButton {...args} leftIcon={<PlusIcon />} variant='dashed'>
+        <CXButton {...args} renderLeftContent={() => <PlusIcon />} variant='dashed'>
           添加项目
         </CXButton>
-        <CXButton {...args} rightIcon={<DownloadIcon />} variant='link'>
+        <CXButton {...args} renderRightContent={() => <DownloadIcon />} variant='link'>
           导出数据
         </CXButton>
       </div>
@@ -252,11 +337,11 @@ export const WithIcons: Story = {
     await expect(downloadIcon).toBe(true);
 
     // 验证按钮包含图标容器
-    const leftIconSpan = addBtn?.querySelector('.flex-shrink-0');
-    const rightIconSpan = downloadBtn?.querySelector('.flex-shrink-0');
+    const renderLeftContentSpan = addBtn?.querySelector('.flex-shrink-0');
+    const renderRightContentSpan = downloadBtn?.querySelector('.flex-shrink-0');
 
-    await expect(leftIconSpan).toBeInTheDocument();
-    await expect(rightIconSpan).toBeInTheDocument();
+    await expect(renderLeftContentSpan).toBeInTheDocument();
+    await expect(renderRightContentSpan).toBeInTheDocument();
   },
 };
 
@@ -368,14 +453,24 @@ export const Shapes: Story = {
         <CXButton {...args} shape='round'>
           Round
         </CXButton>
-        <CXButton {...args} leftIcon={<PlusIcon />} shape='circle' />
-        <CXButton {...args} leftIcon={<SearchIcon />} shape='circle' variant='primary' />
+        <CXButton {...args} renderLeftContent={() => <PlusIcon />} shape='circle' />
+        <CXButton
+          {...args}
+          renderLeftContent={() => <SearchIcon />}
+          shape='circle'
+          variant='primary'
+        />
       </div>
       <div className='flex gap-4 items-center'>
         <CXButton {...args} shape='round' variant='dashed'>
           Round Dashed
         </CXButton>
-        <CXButton {...args} leftIcon={<DownloadIcon />} shape='circle' variant='link' />
+        <CXButton
+          {...args}
+          renderLeftContent={() => <DownloadIcon />}
+          shape='circle'
+          variant='link'
+        />
       </div>
     </div>
   ),
@@ -459,5 +554,65 @@ export const Block: Story = {
 
     // 验证按钮宽度大于容器宽度的80%（考虑边距和填充）
     await expect(blockBtnRect.width).toBeGreaterThan(containerRect.width * 0.8);
+  },
+};
+
+export const CustomSize: Story = {
+  render: args => (
+    <div className='flex flex-col gap-4'>
+      <div className='flex gap-4 items-center'>
+        <CXButton {...args} height={40} width={120}>
+          120×40
+        </CXButton>
+        <CXButton {...args} height={60} variant='primary' width={80}>
+          80×60
+        </CXButton>
+        <CXButton {...args} height={30} variant='dashed' width={200}>
+          200×30
+        </CXButton>
+      </div>
+      <div className='flex gap-4 items-center'>
+        <CXButton {...args} height='50px' variant='outline' width='150px'>
+          150px×50px
+        </CXButton>
+        <CXButton {...args} height='3rem' variant='secondary' width='10rem'>
+          10rem×3rem
+        </CXButton>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: '自定义宽度和高度的按钮。支持数字（转换为px）和字符串值。',
+      },
+    },
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement);
+
+    // 验证自定义尺寸按钮存在
+    const btn120x40 = canvas.getByRole('button', { name: /120×40/ });
+    const btn80x60 = canvas.getByRole('button', { name: /80×60/ });
+    const btn200x30 = canvas.getByRole('button', { name: /200×30/ });
+
+    await expect(btn120x40).toBeInTheDocument();
+    await expect(btn80x60).toBeInTheDocument();
+    await expect(btn200x30).toBeInTheDocument();
+
+    // 验证自定义尺寸的style属性
+    await expect(btn120x40).toHaveStyle('width: 120px; height: 40px');
+    await expect(btn80x60).toHaveStyle('width: 80px; height: 60px');
+    await expect(btn200x30).toHaveStyle('width: 200px; height: 30px');
+
+    // 验证字符串尺寸按钮
+    const btnPx = canvas.getByRole('button', { name: /150px×50px/ });
+    const btnRem = canvas.getByRole('button', { name: /10rem×3rem/ });
+
+    await expect(btnPx).toBeInTheDocument();
+    await expect(btnRem).toBeInTheDocument();
+
+    await expect(btnPx).toHaveStyle('width: 150px; height: 50px');
+    await expect(btnRem).toHaveStyle('width: 10rem; height: 3rem');
   },
 };

@@ -1,16 +1,22 @@
 import { cn } from '@/utils';
 import type { JSX } from 'react';
 
-export type IconProps = Partial<{ size: number; className?: string; color?: string }>;
+export type IconProps = Partial<{
+  width: number;
+  height: number;
+  size?: number;
+  className?: string;
+  color?: string;
+}>;
 
-export const IconGoogle = ({ size = 16, className = '' }: IconProps): JSX.Element => {
+export const IconGoogle = ({ width = 20, height = 21, className = '' }: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 21'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -33,14 +39,18 @@ export const IconGoogle = ({ size = 16, className = '' }: IconProps): JSX.Elemen
   );
 };
 
-export const IconCardEdit = ({ size = 16, className = '' }: IconProps): JSX.Element => {
+export const IconCardEdit = ({
+  width = 28,
+  height = 28,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 28 28'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <rect fill='#EEF4FF' height='28' rx='8' width='28' />
@@ -56,14 +66,18 @@ export const IconCardEdit = ({ size = 16, className = '' }: IconProps): JSX.Elem
   );
 };
 
-export const IconLoading = ({ size = 16, className = '' }: IconProps): JSX.Element => {
+export const IconLoading = ({
+  width = 16,
+  height = 17,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 16 17'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -110,14 +124,18 @@ export const IconLoading = ({ size = 16, className = '' }: IconProps): JSX.Eleme
   );
 };
 
-export const IconStepDot = ({ size = 16, className = '' }: IconProps): JSX.Element => {
+export const IconStepDot = ({
+  width = 16,
+  height = 17,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 16 17'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <circle cx='8' cy='8.5' fill='#D8DFF5' r='5' />
@@ -126,7 +144,8 @@ export const IconStepDot = ({ size = 16, className = '' }: IconProps): JSX.Eleme
 };
 
 export const IconStepDown = ({
-  size = 16,
+  width = 10,
+  height = 10,
   color = '#98A1B7',
   className = '',
 }: IconProps): JSX.Element => {
@@ -134,9 +153,9 @@ export const IconStepDown = ({
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 10 10'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -147,14 +166,18 @@ export const IconStepDown = ({
   );
 };
 
-export const IconStepDeclaration = ({ size = 16, className = '' }: IconProps): JSX.Element => {
+export const IconStepDeclaration = ({
+  width = 16,
+  height = 16,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 16 16'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <g clipPath='url(#clip0_322_2671)'>
@@ -189,22 +212,22 @@ export const IconStepDeclaration = ({ size = 16, className = '' }: IconProps): J
   );
 };
 
-export const IconStop = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconStop = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
-    <svg height={size} style={{ color: 'currentcolor' }} viewBox='0 0 16 16' width={size}>
+    <svg height={height} style={{ color: 'currentcolor' }} viewBox='0 0 16 16' width={width}>
       <path clipRule='evenodd' d='M3 3H13V13H3V3Z' fill='currentColor' fillRule='evenodd' />
     </svg>
   );
 };
 
-export const IconLoader = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconLoader = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
-      height={size}
+      height={height}
       strokeLinejoin='round'
       style={{ color: 'currentcolor' }}
       viewBox='0 0 16 16'
-      width={size}
+      width={width}
     >
       <g clipPath='url(#clip0_2393_1490)'>
         <path d='M8 0V4' stroke='currentColor' strokeWidth='1.5' />
@@ -267,14 +290,14 @@ export const IconLoader = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconFile = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconFile = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
-      height={size}
+      height={height}
       strokeLinejoin='round'
       style={{ color: 'currentcolor' }}
       viewBox='0 0 16 16'
-      width={size}
+      width={width}
     >
       <path
         clipRule='evenodd'
@@ -286,14 +309,14 @@ export const IconFile = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconFullscreen = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconFullscreen = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
-      height={size}
+      height={height}
       strokeLinejoin='round'
       style={{ color: 'currentcolor' }}
       viewBox='0 0 16 16'
-      width={size}
+      width={width}
     >
       <path
         clipRule='evenodd'
@@ -305,14 +328,14 @@ export const IconFullscreen = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconImage = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconImage = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
-      height={size}
+      height={height}
       strokeLinejoin='round'
       style={{ color: 'currentcolor' }}
       viewBox='0 0 16 16'
-      width={size}
+      width={width}
     >
       <path
         clipRule='evenodd'
@@ -324,14 +347,18 @@ export const IconImage = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconFormItemClientName = ({ size = 16, className = '' }: IconProps): JSX.Element => {
+export const IconFormItemClientName = ({
+  width = 20,
+  height = 20,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -344,14 +371,18 @@ export const IconFormItemClientName = ({ size = 16, className = '' }: IconProps)
   );
 };
 
-export const IconFormItemVisaType = ({ size = 16, className = '' }: IconProps): JSX.Element => {
+export const IconFormItemVisaType = ({
+  width = 20,
+  height = 20,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -362,14 +393,18 @@ export const IconFormItemVisaType = ({ size = 16, className = '' }: IconProps): 
   );
 };
 
-export const IconFormItemLawyer = ({ size = 16, className = '' }: IconProps): JSX.Element => {
+export const IconFormItemLawyer = ({
+  width = 20,
+  height = 20,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -380,14 +415,18 @@ export const IconFormItemLawyer = ({ size = 16, className = '' }: IconProps): JS
   );
 };
 
-export const IconFormItemEmail = ({ size = 16, className = '' }: IconProps): JSX.Element => {
+export const IconFormItemEmail = ({
+  width = 20,
+  height = 20,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -400,14 +439,18 @@ export const IconFormItemEmail = ({ size = 16, className = '' }: IconProps): JSX
   );
 };
 
-export const IconFormItemPassword = ({ size = 16, className = '' }: IconProps): JSX.Element => {
+export const IconFormItemPassword = ({
+  width = 21,
+  height = 20,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 21 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -418,14 +461,18 @@ export const IconFormItemPassword = ({ size = 16, className = '' }: IconProps): 
   );
 };
 
-export const IconFormItemLink = ({ size = 16, className = '' }: IconProps): JSX.Element => {
+export const IconFormItemLink = ({
+  width = 20,
+  height = 20,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -444,13 +491,13 @@ export const IconFormItemLink = ({ size = 16, className = '' }: IconProps): JSX.
   );
 };
 
-export const IconFileStatusError = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconFileStatusError = ({ width = 24, height = 24 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -469,14 +516,14 @@ export const IconFileStatusError = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconFileStatusLoading = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconFileStatusLoading = ({ width = 24, height = 24 }: IconProps): JSX.Element => {
   return (
     <svg
       className='animate-spin'
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -491,13 +538,13 @@ export const IconFileStatusLoading = ({ size = 16 }: IconProps): JSX.Element => 
   );
 };
 
-export const IconFileStatusSuccess = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconFileStatusSuccess = ({ width = 24, height = 24 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -508,13 +555,13 @@ export const IconFileStatusSuccess = ({ size = 16 }: IconProps): JSX.Element => 
   );
 };
 
-export const IconFileTypeDoc = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconFileTypeDoc = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 40 40'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -533,13 +580,13 @@ export const IconFileTypeDoc = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconFileTypeExcel = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconFileTypeExcel = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 40 40'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -558,13 +605,13 @@ export const IconFileTypeExcel = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconFileTypeImage = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconFileTypeImage = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 40 40'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -587,13 +634,13 @@ export const IconFileTypeImage = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconFileTypePDF = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconFileTypePDF = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 40 40'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -612,13 +659,13 @@ export const IconFileTypePDF = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconFileTypePPT = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconFileTypePPT = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 40 40'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <g clipPath='url(#clip0_75_921)'>
@@ -644,13 +691,13 @@ export const IconFileTypePPT = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconFileTypeTXT = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconFileTypeTXT = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 40 40'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -666,13 +713,13 @@ export const IconFileTypeTXT = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconFileUpload = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconFileUpload = ({ width = 24, height = 24 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path className='fill-current/30' d='M7.55859 11.1891H16.4414V17.025H7.55859V11.1891Z' />
@@ -696,42 +743,9 @@ export const IconFileUpload = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconFoldLeft = ({ size = 16 }: IconProps): JSX.Element => {
-  return (
-    <svg
-      fill='none'
-      height={size}
-      viewBox='0 0 24 24'
-      width={size}
-      xmlns='http://www.w3.org/2000/svg'
-    >
-      <path
-        d='M12 5V19H5V5H12ZM20 3H4C3.73478 3 3.48043 3.10536 3.29289 3.29289C3.10536 3.48043 3 3.73478 3 4V20C3 20.2652 3.10536 20.5196 3.29289 20.7071C3.48043 20.8946 3.73478 21 4 21H20C20.2652 21 20.5196 20.8946 20.7071 20.7071C20.8946 20.5196 21 20.2652 21 20V4C21 3.73478 20.8946 3.48043 20.7071 3.29289C20.5196 3.10536 20.2652 3 20 3Z'
-        fill='currentColor'
-      />
-    </svg>
-  );
-};
-
-export const IconFoldRight = ({ size = 16 }: IconProps): JSX.Element => {
-  return (
-    <svg
-      fill='none'
-      height={size}
-      viewBox='0 0 24 24'
-      width={size}
-      xmlns='http://www.w3.org/2000/svg'
-    >
-      <path
-        d='M12 5V19H19V5H12ZM4 3H20C20.2652 3 20.5196 3.10536 20.7071 3.29289C20.8946 3.48043 21 3.73478 21 4V20C21 20.2652 20.8946 20.5196 20.7071 20.7071C20.5196 20.8946 20.2652 21 20 21H4C3.73478 21 3.48043 20.8946 3.29289 20.7071C3.10536 20.5196 3 20.2652 3 20V4C3 3.73478 3.10536 3.48043 3.29289 3.29289C3.48043 3.10536 3.73478 3 4 3Z'
-        fill='#52525B'
-      />
-    </svg>
-  );
-};
-
 export const IconInfo = ({
-  size = 16,
+  width = 16,
+  height = 16,
   className = '',
   color = 'currentColor',
 }: IconProps): JSX.Element => {
@@ -739,9 +753,9 @@ export const IconInfo = ({
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 16 16'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -754,13 +768,13 @@ export const IconInfo = ({
   );
 };
 
-export const IconExtension = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconExtension = ({ width = 25, height = 24 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 25 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -783,13 +797,13 @@ export const IconExtension = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconMagic = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconMagic = ({ width = 25, height = 24 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 25 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -813,7 +827,8 @@ export const IconMagic = ({ size = 16 }: IconProps): JSX.Element => {
 };
 
 export const IconAutoFill = ({
-  size = 16,
+  width = 40,
+  height = 40,
   isSpin = false,
 }: IconProps & {
   isSpin?: boolean;
@@ -824,9 +839,9 @@ export const IconAutoFill = ({
         'animate-spin': isSpin,
       })}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 40 40'
-      width={size}
+      width={width}
       xlinkHref='http://www.w3.org/1999/xlink'
       xmlns='http://www.w3.org/2000/svg'
     >
@@ -852,13 +867,13 @@ export const IconAutoFill = ({
   );
 };
 
-export const IconCompleted = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconCompleted = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 40 40'
-      width={size}
+      width={width}
       xlinkHref='http://www.w3.org/1999/xlink'
       xmlns='http://www.w3.org/2000/svg'
     >
@@ -884,13 +899,13 @@ export const IconCompleted = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconIncompleted = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconIncompleted = ({ width = 32, height = 32 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 32 32'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -912,13 +927,13 @@ export const IconIncompleted = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconPause = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconPause = ({ width = 20, height = 20 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -937,13 +952,13 @@ export const IconPause = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconView = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconView = ({ width = 20, height = 20 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -967,14 +982,14 @@ export const IconView = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconFace = ({ size = 16, className }: IconProps): JSX.Element => {
+export const IconFace = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn('text-[#98A1B7]', className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1001,14 +1016,14 @@ export const IconFace = ({ size = 16, className }: IconProps): JSX.Element => {
   );
 };
 
-export const IconRefresh = ({ size = 16, className }: IconProps): JSX.Element => {
+export const IconRefresh = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn('text-[#98A1B7]', className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1023,14 +1038,14 @@ export const IconRefresh = ({ size = 16, className }: IconProps): JSX.Element =>
   );
 };
 
-export const IconUpload = ({ size = 16, className }: IconProps): JSX.Element => {
+export const IconUpload = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn('text-[#98A1B7]', className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1045,14 +1060,14 @@ export const IconUpload = ({ size = 16, className }: IconProps): JSX.Element => 
   );
 };
 
-export const IconUpload2 = ({ size = 16, className }: IconProps): JSX.Element => {
+export const IconUpload2 = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path d='M8.05859 11.1891H16.9414V17.025H8.05859V11.1891Z' fill='#BAD4FF' />
@@ -1076,14 +1091,14 @@ export const IconUpload2 = ({ size = 16, className }: IconProps): JSX.Element =>
   );
 };
 
-export const IconTrash = ({ size = 24, className }: IconProps): JSX.Element => {
+export const IconTrash = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn('text-[#98A1B7]', className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1102,14 +1117,14 @@ export const IconTrash = ({ size = 24, className }: IconProps): JSX.Element => {
   );
 };
 
-export const IconDashboard = ({ size = 24, className }: IconProps): JSX.Element => {
+export const IconDashboard = ({ width = 48, height = 48, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 48 48'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <rect
@@ -1140,14 +1155,14 @@ export const IconDashboard = ({ size = 24, className }: IconProps): JSX.Element 
   );
 };
 
-export const IconList = ({ size = 16, className }: IconProps): JSX.Element => {
+export const IconList = ({ width = 48, height = 48, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 48 48'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <rect
@@ -1175,14 +1190,14 @@ export const IconList = ({ size = 16, className }: IconProps): JSX.Element => {
   );
 };
 
-export const IconMagicWand = ({ size = 16, className }: IconProps): JSX.Element => {
+export const IconMagicWand = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <g clipPath='url(#clip0_533_2897)'>
@@ -1212,14 +1227,14 @@ export const IconMagicWand = ({ size = 16, className }: IconProps): JSX.Element 
   );
 };
 
-export const IconEmailDraft = ({ size = 16, className }: IconProps): JSX.Element => {
+export const IconEmailDraft = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <g clipPath='url(#clip0_533_2907)'>
@@ -1242,14 +1257,14 @@ export const IconEmailDraft = ({ size = 16, className }: IconProps): JSX.Element
   );
 };
 
-export const IconEdit = ({ size = 16, className }: IconProps): JSX.Element => {
+export const IconEdit = ({ width = 18, height = 18, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn('text-[#98A1B7]', className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 18 18'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1268,14 +1283,14 @@ export const IconEdit = ({ size = 16, className }: IconProps): JSX.Element => {
   );
 };
 
-export const IconAvatar = ({ size = 16, className }: IconProps): JSX.Element => {
+export const IconAvatar = ({ width = 16, height = 16, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 16 16'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1292,7 +1307,8 @@ export const IconAvatar = ({ size = 16, className }: IconProps): JSX.Element => 
 };
 
 export const IconExtensionInstall = ({
-  size = 24,
+  width = 16,
+  height = 18,
   className = '',
   color = 'currentColor',
 }: IconProps): JSX.Element => {
@@ -1300,9 +1316,9 @@ export const IconExtensionInstall = ({
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 16 18'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1314,7 +1330,8 @@ export const IconExtensionInstall = ({
 };
 
 export const IconExtensionStart = ({
-  size = 24,
+  width = 12,
+  height = 16,
   className = '',
   color = 'currentColor',
 }: IconProps): JSX.Element => {
@@ -1322,13 +1339,13 @@ export const IconExtensionStart = ({
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
-      viewBox='0 0 11 14'
-      width={size}
+      height={height}
+      viewBox='0 0 12 16'
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
-        d='M7.66199 7.0001L2.33366 3.4476V10.5526L7.66199 7.0001ZM10.147 7.34676L1.31449 13.2351C1.25175 13.2769 1.17885 13.3008 1.10357 13.3044C1.02829 13.308 0.953436 13.2911 0.886991 13.2555C0.820547 13.22 0.764995 13.167 0.726254 13.1024C0.687512 13.0377 0.667031 12.9638 0.666992 12.8884V1.11176C0.667031 1.0364 0.687512 0.962449 0.726254 0.8978C0.764995 0.833151 0.820547 0.780221 0.886991 0.744647C0.953436 0.709073 1.02829 0.692187 1.10357 0.695789C1.17885 0.69939 1.25175 0.723343 1.31449 0.765098L10.147 6.65343C10.2041 6.69148 10.2508 6.74303 10.2832 6.80351C10.3156 6.86398 10.3325 6.93151 10.3325 7.0001C10.3325 7.06869 10.3156 7.13621 10.2832 7.19669C10.2508 7.25716 10.2041 7.30871 10.147 7.34676Z'
+        d='M0 1.54063C0 0.834486 0.833054 0.464779 1.374 0.887381C1.42642 0.928332 1.4775 0.971621 1.53332 1.00779L11.334 7.35854C11.3899 7.39471 11.4435 7.43516 11.4853 7.48696C11.7271 7.78725 11.7271 8.21308 11.4853 8.51336C11.4435 8.56516 11.3899 8.60561 11.334 8.64179L1.53332 14.9925C1.4775 15.0287 1.42642 15.072 1.374 15.1129C0.833054 15.5355 0 15.1658 0 14.4597V1.54063Z'
         fill={color}
       />
     </svg>
@@ -1336,7 +1353,8 @@ export const IconExtensionStart = ({
 };
 
 export const IconExtensionStop = ({
-  size = 24,
+  width = 21,
+  height = 20,
   className = '',
   color = 'currentColor',
 }: IconProps): JSX.Element => {
@@ -1344,9 +1362,9 @@ export const IconExtensionStop = ({
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 21 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1365,13 +1383,13 @@ export const IconExtensionStop = ({
   );
 };
 
-export const IconCheckGreen = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconCheckGreen = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 16 16'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1382,14 +1400,14 @@ export const IconCheckGreen = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconIssueCheck = ({ size = 16, className }: IconProps): JSX.Element => {
+export const IconIssueCheck = ({ width = 16, height = 16, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 16 16'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1405,13 +1423,13 @@ export const IconIssueCheck = ({ size = 16, className }: IconProps): JSX.Element
   );
 };
 
-export const IconIssueCircle = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconIssueCircle = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 16 16'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <circle cx='8' cy='8' r='3.85' stroke='#F8295A' strokeWidth='2.3' />
@@ -1419,13 +1437,13 @@ export const IconIssueCircle = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconArrowRightTop = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconArrowRightTop = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 16 16'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1438,13 +1456,13 @@ export const IconArrowRightTop = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconPlus = ({ size = 16 }: IconProps): JSX.Element => {
+export const IconPlus = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 16 16'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <rect className='fill-current/30' height='3' rx='1.5' width='16' y='6.5' />
@@ -1461,13 +1479,13 @@ export const IconPlus = ({ size = 16 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconIndividualInfo = ({ size = 28 }: IconProps): JSX.Element => {
+export const IconIndividualInfo = ({ width = 28, height = 28 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 28 28'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1482,39 +1500,13 @@ export const IconIndividualInfo = ({ size = 28 }: IconProps): JSX.Element => {
   );
 };
 
-export const IconGinkgooLogo = ({ className, size }: IconProps): JSX.Element => {
-  return (
-    <svg
-      className={cn(className)}
-      fill='none'
-      height={size}
-      viewBox='0 0 145 137'
-      width={size}
-      xmlns='http://www.w3.org/2000/svg'
-    >
-      <path
-        d='M122.396 104.24C126.033 106.306 127.312 110.915 124.806 114.231C119.486 121.271 112.746 127.191 104.979 131.605C101.612 133.519 98.0906 135.126 94.4606 136.416C90.8324 137.705 86.9659 135.672 85.6073 132.119L74.2817 102.5C73.6637 100.884 71.3417 100.884 70.7237 102.5L59.3225 132.314C57.9731 135.843 54.1479 137.877 50.5317 136.633C46.6865 135.309 42.9599 133.632 39.404 131.612C31.6369 127.2 24.8957 121.281 19.5737 114.242C17.0667 110.926 18.3455 106.317 21.9818 104.25L68.3836 77.8704C70.7363 76.5328 73.6355 76.5325 75.9885 77.8696L122.396 104.24Z'
-        fill='currentColor'
-      />
-      <path
-        d='M15.3711 92.6867C11.7343 94.7532 7.03899 93.5396 5.37413 89.7453C1.83985 81.6904 0.00048416 72.9854 8.98909e-08 64.1592C-0.000203671 60.3316 0.346002 56.5268 1.02616 52.7879C1.70596 49.0509 5.42834 46.772 9.23408 47.3905L40.9587 52.5463C42.6895 52.8276 43.8506 50.8482 42.7377 49.5136L22.2044 24.8896C19.7741 21.9751 19.8967 17.6975 22.7997 15.2374C25.8867 12.6213 29.2264 10.2837 32.7819 8.2627C40.5475 3.84846 49.1263 1.06202 57.9809 0.0451925C62.152 -0.433797 65.5683 2.96079 65.5691 7.09384L65.5802 59.8341C65.5807 62.5082 64.1314 64.9794 61.7784 66.3165L15.3711 92.6867Z'
-        fill='currentColor'
-      />
-      <path
-        d='M79.4192 7.48281C79.4192 3.34978 82.8347 -0.0455018 87.0059 0.432629C95.8607 1.44764 104.44 4.23235 112.207 8.64505C115.575 10.5586 118.749 12.7559 121.699 15.2049C124.647 17.6528 124.792 21.965 122.345 24.8996L101.946 49.3626C100.833 50.6972 101.994 52.6765 103.725 52.3952L135.659 47.2057C139.438 46.5915 143.141 48.8348 143.854 52.5393C144.612 56.4783 144.999 60.4935 145 64.5343C145.001 73.3605 143.164 82.0659 139.631 90.1215C137.967 93.9162 133.272 95.1307 129.635 93.065L83.2224 66.7048C80.8691 65.3682 79.4192 62.8972 79.4192 60.2231L79.4192 7.48281Z'
-        fill='currentColor'
-      />
-    </svg>
-  );
-};
-
-export const IconLogo = ({ className, size }: IconProps): JSX.Element => {
+export const IconLogo = ({ className, width = 41, height = 33 }: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
-      height={size}
+      height={height}
       viewBox='0 0 40.62 33.29'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1529,13 +1521,13 @@ export const IconLogo = ({ className, size }: IconProps): JSX.Element => {
   );
 };
 
-export const IconLogoDark = ({ className, size }: IconProps): JSX.Element => {
+export const IconLogoDark = ({ className, width = 41, height = 33 }: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
-      height={size}
+      height={height}
       viewBox='0 0 40.62 33.29'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1550,14 +1542,18 @@ export const IconLogoDark = ({ className, size }: IconProps): JSX.Element => {
   );
 };
 
-export const IconBreadcrumbPilot = ({ size = 20, className = '' }: IconProps): JSX.Element => {
+export const IconBreadcrumbPilot = ({
+  width = 20,
+  height = 20,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1569,16 +1565,17 @@ export const IconBreadcrumbPilot = ({ size = 20, className = '' }: IconProps): J
 };
 
 export const IconBreadcrumbPilotProfileVault = ({
-  size = 20,
+  width = 20,
+  height = 20,
   className = '',
 }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1589,14 +1586,18 @@ export const IconBreadcrumbPilotProfileVault = ({
   );
 };
 
-export const IconBreadcrumbReference = ({ size = 20, className = '' }: IconProps): JSX.Element => {
+export const IconBreadcrumbReference = ({
+  width = 20,
+  height = 20,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1607,14 +1608,18 @@ export const IconBreadcrumbReference = ({ size = 20, className = '' }: IconProps
   );
 };
 
-export const IconActionBarDraftEmail = ({ size = 24, className = '' }: IconProps): JSX.Element => {
+export const IconActionBarDraftEmail = ({
+  width = 24,
+  height = 24,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1626,16 +1631,17 @@ export const IconActionBarDraftEmail = ({ size = 24, className = '' }: IconProps
 };
 
 export const IconActionBarDraftEmailMissInfo = ({
-  size = 24,
+  width = 24,
+  height = 24,
   className = '',
 }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1647,16 +1653,17 @@ export const IconActionBarDraftEmailMissInfo = ({
 };
 
 export const IconActionBarDraftEmailPDF = ({
-  size = 24,
+  width = 24,
+  height = 24,
   className = '',
 }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1667,14 +1674,18 @@ export const IconActionBarDraftEmailPDF = ({
   );
 };
 
-export const IconActionBarSummarize = ({ size = 24, className = '' }: IconProps): JSX.Element => {
+export const IconActionBarSummarize = ({
+  width = 20,
+  height = 20,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1686,16 +1697,17 @@ export const IconActionBarSummarize = ({ size = 24, className = '' }: IconProps)
 };
 
 export const IconActionBarStartExtensions = ({
-  size = 24,
+  width = 24,
+  height = 24,
   className = '',
 }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1706,14 +1718,18 @@ export const IconActionBarStartExtensions = ({
   );
 };
 
-export const IconActionBarUpload = ({ size = 24, className = '' }: IconProps): JSX.Element => {
+export const IconActionBarUpload = ({
+  width = 24,
+  height = 24,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 24 24'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1724,14 +1740,18 @@ export const IconActionBarUpload = ({ size = 24, className = '' }: IconProps): J
   );
 };
 
-export const IconActionBarSend = ({ size = 24, className = '' }: IconProps): JSX.Element => {
+export const IconActionBarSend = ({
+  width = 21,
+  height = 20,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 21 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1744,14 +1764,18 @@ export const IconActionBarSend = ({ size = 24, className = '' }: IconProps): JSX
   );
 };
 
-export const IconSuccess = ({ size = 24, className = '' }: IconProps): JSX.Element => {
+export const IconSuccess = ({
+  width = 14,
+  height = 14,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 14 14'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1764,14 +1788,14 @@ export const IconSuccess = ({ size = 24, className = '' }: IconProps): JSX.Eleme
   );
 };
 
-export const IconFailed = ({ size = 24, className = '' }: IconProps): JSX.Element => {
+export const IconFailed = ({ width = 15, height = 14, className = '' }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 15 14'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1784,14 +1808,18 @@ export const IconFailed = ({ size = 24, className = '' }: IconProps): JSX.Elemen
   );
 };
 
-export const IconReupload = ({ size = 24, className = '' }: IconProps): JSX.Element => {
+export const IconReupload = ({
+  width = 21,
+  height = 20,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 21 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1802,14 +1830,18 @@ export const IconReupload = ({ size = 24, className = '' }: IconProps): JSX.Elem
   );
 };
 
-export const IconQuestionCircle = ({ size = 20, className }: IconProps): JSX.Element => {
+export const IconQuestionCircle = ({
+  width = 20,
+  height = 20,
+  className,
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1822,14 +1854,14 @@ export const IconQuestionCircle = ({ size = 20, className }: IconProps): JSX.Ele
   );
 };
 
-export const IconMarkCircle = ({ size = 20, className }: IconProps): JSX.Element => {
+export const IconMarkCircle = ({ width = 20, height = 20, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1840,14 +1872,14 @@ export const IconMarkCircle = ({ size = 20, className }: IconProps): JSX.Element
   );
 };
 
-export const IconCopy = ({ size = 20, className }: IconProps): JSX.Element => {
+export const IconCopy = ({ width = 20, height = 20, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1858,14 +1890,14 @@ export const IconCopy = ({ size = 20, className }: IconProps): JSX.Element => {
   );
 };
 
-export const IconBroadcast = ({ size = 20, className }: IconProps): JSX.Element => {
+export const IconBroadcast = ({ width = 20, height = 20, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 20 20'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1876,14 +1908,14 @@ export const IconBroadcast = ({ size = 20, className }: IconProps): JSX.Element 
   );
 };
 
-export const IconLoader2 = ({ size = 20, className }: IconProps): JSX.Element => {
+export const IconLoader2 = ({ width = 37, height = 37, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 37 37'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <g clipPath='url(#paint0_angular_2605_27958_clip_path)' data-figma-skip-parse='true'>
@@ -1921,14 +1953,14 @@ export const IconLoader2 = ({ size = 20, className }: IconProps): JSX.Element =>
   );
 };
 
-export const IconTrash2 = ({ size = 20, className }: IconProps): JSX.Element => {
+export const IconTrash2 = ({ width = 19, height = 18, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
       fill='none'
-      height={size}
+      height={height}
       viewBox='0 0 19 18'
-      width={size}
+      width={width}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
@@ -1941,6 +1973,52 @@ export const IconTrash2 = ({ size = 20, className }: IconProps): JSX.Element => 
         fill='#3699FF'
         fillRule='evenodd'
         opacity='0.3'
+      />
+    </svg>
+  );
+};
+
+export const IconPilotPDFDownload = ({
+  width = 16,
+  height = 18,
+  className,
+  color = 'currentcolor',
+}: IconProps): JSX.Element => {
+  return (
+    <svg
+      className={cn(className)}
+      fill='none'
+      height={height}
+      viewBox='0 0 16 18'
+      width={width}
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        d='M8.83333 8.99984H11.3333L8 12.3332L4.66667 8.99984H7.16667V5.6665H8.83333V8.99984ZM10.5 2.33317H2.16667V15.6665H13.8333V5.6665H10.5V2.33317ZM0.5 1.49317C0.5 1.0365 0.8725 0.666504 1.3325 0.666504H11.3333L15.5 4.83317V16.494C15.5008 16.6034 15.48 16.712 15.4388 16.8134C15.3976 16.9148 15.3369 17.007 15.2601 17.085C15.1832 17.1629 15.0918 17.2249 14.991 17.2675C14.8902 17.3101 14.7819 17.3324 14.6725 17.3332H1.3275C1.10865 17.3316 0.899181 17.2441 0.744348 17.0894C0.589515 16.9347 0.501746 16.7254 0.5 16.5065V1.49317Z'
+        fill={color}
+      />
+    </svg>
+  );
+};
+
+export const IconArrowRight = ({
+  width = 8,
+  height = 14,
+  className,
+  color = 'currentcolor',
+}: IconProps): JSX.Element => {
+  return (
+    <svg
+      className={cn(className)}
+      fill='none'
+      height={height}
+      viewBox='0 0 8 14'
+      width={width}
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        d='M5.53585 7L0.292849 1.72124C-0.0976157 1.32748 -0.0976166 0.689075 0.292849 0.295319C0.683314 -0.0984383 1.31638 -0.0984382 1.70685 0.295319L7.65674 6.28693C8.04727 6.68075 8.04727 7.31925 7.65674 7.71307L1.70685 13.7047C1.31638 14.0984 0.683314 14.0984 0.292848 13.7047C-0.0976168 13.3109 -0.0976165 12.6725 0.292849 12.2788L5.53585 7Z'
+        fill={color}
       />
     </svg>
   );

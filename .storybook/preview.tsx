@@ -139,8 +139,8 @@ const preview: Preview = {
       }, [theme]);
 
       return (
-        <div className={`relative`}>
-          <div className='p-4'>
+        <div className='relative p-0 box-border w-full'>
+          <div className='relative min-w-[50vw] w-full'>
             <Story />
           </div>
           {/* 版本信息显示在右下角 */}

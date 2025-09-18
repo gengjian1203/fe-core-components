@@ -277,7 +277,7 @@ export const CXCard: React.FC<CXCardProps> = ({
       tabIndex={clickable ? 0 : undefined}
       onClick={clickable ? handleCardClick : undefined}
       onKeyDown={
-        clickable ? e => (e.key === 'Enter' || e.key === ' ') && handleCardClick() : undefined
+        clickable ? e => (e.key === 'Enter' || e.key === ' ') && handleCardClick() : void 0
       }
     >
       {renderCover()}

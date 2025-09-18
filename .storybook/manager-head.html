@@ -1,6 +1,12 @@
 <title>FE CosX UI - Storybook</title>
-<link rel="icon" type="image/svg+xml" href="./logo.svg" />
-<link rel="alternate icon" href="./favicon.ico" />
+<link
+  rel="icon"
+  type="image/svg+xml"
+  media="(prefers-color-scheme: dark)"
+  href="/favicon_dark.ico"
+/>
+<link rel="icon" type="image/svg+xml" media="(prefers-color-scheme: light)" href="/favicon.ico" />
+
 <meta
   name="description"
   content="Professional React component library with React 19, Tailwind CSS, and Storybook"
@@ -10,10 +16,8 @@
   /* 自定义logo尺寸 */
   .sidebar-header img {
     position: absolute;
-    /* max-height: 16px !important;
-    max-width: 120px !important; */
     object-fit: contain !important;
-    width: 300px !important;
+    width: auto;
     top: 50% !important;
     left: 0 !important;
     transform: translate(-20px, -50%) !important;

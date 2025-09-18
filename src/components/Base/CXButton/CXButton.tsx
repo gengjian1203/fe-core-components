@@ -131,10 +131,11 @@ const getVariantClasses = (
       'focus:outline-none focus:ring-2 focus:ring-primary ring-opacity-20 focus:border-primary',
       'disabled:bg-transparent disabled:border-gray-200 disabled:text-gray-400',
       'disabled:hover:bg-transparent',
-      'dark:text-white dark:border-gray-600',
-      'dark:hover:bg-gray-800 dark:hover:text-white',
-      'dark:active:bg-gray-700',
-      'dark:disabled:border-gray-700 dark:disabled:text-gray-500',
+      // Dark mode - follow default pattern
+      'dark:bg-transparent dark:text-white dark:border-gray-600',
+      'dark:hover:bg-gray-700 dark:hover:text-white dark:hover:border-gray-600',
+      'dark:active:bg-gray-900 dark:active:border-gray-600',
+      'dark:disabled:bg-transparent dark:disabled:border-gray-700 dark:disabled:text-gray-500',
     ].join(' '),
     secondary: [
       'bg-gray-100 text-gray-900 border-transparent',
@@ -155,8 +156,11 @@ const getVariantClasses = (
       'focus:outline-none focus:ring-2 focus:ring-gray-500/20',
       'disabled:bg-transparent disabled:text-gray-400',
       'disabled:hover:bg-transparent disabled:hover:text-gray-400',
-      'dark:text-white dark:hover:bg-gray-800 dark:hover:text-white',
-      'dark:active:bg-gray-700 dark:disabled:text-gray-500',
+      // Dark mode - follow default pattern
+      'dark:bg-transparent dark:text-white',
+      'dark:hover:bg-gray-700 dark:hover:text-white',
+      'dark:active:bg-gray-900',
+      'dark:disabled:bg-transparent dark:disabled:text-gray-500',
     ].join(' '),
   };
   return variants[variant];

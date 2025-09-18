@@ -72,7 +72,7 @@ const getVariantClasses = (
       'hover:bg-primary hover:opacity-90',
       'active:bg-primary active:opacity-80 active:duration-75',
       'disabled:bg-gray-200 disabled:text-gray-400',
-      'disabled:hover:bg-gray-100',
+      'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     default: [
       // Use theme colors
@@ -86,6 +86,7 @@ const getVariantClasses = (
       'dark:hover:text-primary dark:hover:border-primary dark:hover:bg-gray-700',
       'dark:active:bg-gray-900 dark:active:border-primary border-opacity-80',
       'dark:disabled:bg-gray-800 dark:disabled:border-gray-700 dark:disabled:text-gray-500',
+      'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     dashed: [
       // Use theme colors
@@ -99,6 +100,7 @@ const getVariantClasses = (
       'dark:hover:text-primary dark:hover:border-primary dark:hover:bg-gray-700',
       'dark:active:bg-gray-900 dark:active:border-primary border-opacity-80',
       'dark:disabled:bg-gray-800 dark:disabled:border-gray-700 dark:disabled:text-gray-500',
+      'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     link: [
       // Use theme colors
@@ -108,6 +110,7 @@ const getVariantClasses = (
       'disabled:text-gray-400',
       'disabled:hover:text-gray-400',
       'dark:text-primary dark:hover:text-primary text-opacity-80 dark:disabled:text-gray-500',
+      'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     danger: [
       // No border for background color variant
@@ -115,14 +118,14 @@ const getVariantClasses = (
       'hover:bg-red-400',
       'active:bg-red-600',
       'disabled:bg-gray-200 disabled:text-gray-400',
-      'disabled:hover:bg-gray-100',
+      'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     destructive: [
       'bg-red-500 text-white border-transparent',
       'hover:bg-red-400',
       'active:bg-red-600',
       'disabled:bg-gray-200 disabled:text-gray-400',
-      'disabled:hover:bg-gray-100',
+      'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     outline: [
       'bg-transparent text-gray-900 border-gray-300',
@@ -135,6 +138,7 @@ const getVariantClasses = (
       'dark:hover:bg-gray-700 dark:hover:text-white dark:hover:border-gray-600',
       'dark:active:bg-gray-900 dark:active:border-gray-600',
       'dark:disabled:bg-transparent dark:disabled:border-gray-700 dark:disabled:text-gray-500',
+      'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     secondary: [
       'bg-gray-100 text-gray-900 border-transparent',
@@ -146,6 +150,7 @@ const getVariantClasses = (
       'dark:hover:bg-gray-600',
       'dark:active:bg-gray-800',
       'dark:disabled:bg-gray-800 dark:disabled:text-gray-500',
+      'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     ghost: [
       'bg-transparent text-gray-900 border-transparent',
@@ -158,14 +163,21 @@ const getVariantClasses = (
       'dark:hover:bg-gray-700 dark:hover:text-white',
       'dark:active:bg-gray-900',
       'dark:disabled:bg-transparent dark:disabled:text-gray-500',
+      'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     text: [
       'bg-transparent text-gray-900 border-transparent',
+      'hover:text-gray-700',
+      'active:text-gray-800',
       'disabled:bg-transparent disabled:text-gray-400',
       'disabled:hover:text-gray-400',
       // Dark mode
       'dark:bg-transparent dark:text-white',
+      'dark:hover:text-gray-300',
+      'dark:active:text-gray-400',
       'dark:disabled:bg-transparent dark:disabled:text-gray-500',
+      'dark:disabled:hover:text-gray-500',
+      'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
   };
   return variants[variant];
@@ -228,7 +240,7 @@ export const CXButton: React.FC<CXButtonProps> = ({
     'inline-flex items-center justify-center font-medium border transition-all duration-200',
     'relative select-none touch-manipulation whitespace-nowrap',
     // Cursor classes
-    isDisabled ? 'cursor-not-allowed' : 'cursor-pointer',
+    isDisabled ? '!cursor-not-allowed' : '!cursor-pointer',
     // Size and shape classes (only if no custom width/height)
     !(width ?? height) && getSizeClasses(size, shape),
     getShapeClasses(shape),

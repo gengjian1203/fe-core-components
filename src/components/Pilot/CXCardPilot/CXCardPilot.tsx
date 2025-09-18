@@ -1,12 +1,16 @@
 import { CXButton, CXIcon } from '@/components';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export interface CXCardPilotProps {
-  clientName: string;
-  clientEmail: string;
-  clientNationality: string;
-  clientVisaType: string;
+  clientName?: string;
+  clientEmail?: string;
+  clientNationality?: string;
+  clientVisaType?: string;
+  isDisabledBtnDownload?: boolean;
+  isDisabledBtnStart?: boolean;
   renderSummaryContent?: () => React.ReactNode;
+  onBtnDownloadClick?: () => void;
+  onBtnStartClick?: () => void;
 }
 
 export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps) => {
@@ -15,18 +19,30 @@ export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps)
     clientEmail = '--',
     clientNationality = '--',
     clientVisaType = '--',
+    isDisabledBtnDownload = false,
+    isDisabledBtnStart = false,
     renderSummaryContent,
+    onBtnDownloadClick,
+    onBtnStartClick,
   } = props;
 
   const [isFoldSummary, setFoldSummary] = useState<boolean>(false);
+  const [contentHeight, setContentHeight] = useState<number>(0);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const handleBtnDownloadClick = () => {
-    console.debug('handleBtnDownloadClick');
+    onBtnDownloadClick?.();
   };
 
   const handleBtnStartClick = () => {
-    console.debug('handleBtnStartClick');
+    onBtnStartClick?.();
   };
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setContentHeight(contentRef.current.scrollHeight);
+    }
+  }, [renderSummaryContent, isFoldSummary]);
 
   const handleBtnSummaryClick = () => {
     setFoldSummary(prev => {
@@ -44,6 +60,7 @@ export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps)
         </div>
         <CXButton
           className='rounded-xl flex-1 w-0'
+          disabled={isDisabledBtnDownload}
           renderLeftContent={() => <CXIcon name='IconPilotPDFDownload' />}
           variant='default'
           onClick={handleBtnDownloadClick}
@@ -52,6 +69,7 @@ export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps)
         </CXButton>
         <CXButton
           className='rounded-xl flex-1 w-0'
+          disabled={isDisabledBtnStart}
           renderLeftContent={() => <CXIcon name='IconExtensionStart' />}
           variant='primary'
           onClick={handleBtnStartClick}
@@ -86,7 +104,15 @@ export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps)
         />
       </CXButton>
       {/* Summary Content */}
-      {isFoldSummary && renderSummaryContent?.()}
+      <div
+        className='overflow-hidden transition-all duration-300 ease-in-out'
+        style={{
+          maxHeight: isFoldSummary ? `${contentHeight}px` : '0',
+          opacity: isFoldSummary ? 1 : 0,
+        }}
+      >
+        <div ref={contentRef}>{renderSummaryContent?.()}</div>
+      </div>
     </div>
   );
 };

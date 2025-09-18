@@ -30,6 +30,8 @@
   - `CXIcon` - 内置图标组件，包含丰富的 SVG 图标集
 - **Case Components** (`src/components/Case/`) - 复合组件，适用于复杂业务场景
   - `CXCard` - 功能丰富的卡片组件，支持头像、标签、元数据、状态指示
+- **Pilot Components** (`src/components/Pilot/`) - 专业试点组件，适用于特定业务场景
+  - `CXCardPilot` - 客户信息卡片组件，支持摘要展开、操作按钮和客户信息展示
 
 ### 1.3 技术栈
 
@@ -107,50 +109,174 @@ import '@cosxai/fe-core-components/dist/styles.css'; // 完整路径导入样式
 ### 2.5 基础使用示例
 
 ```tsx
-import { CXButton, CXCard, CXIcon } from '@cosxai/fe-core-components';
+import { CXButton, CXCard, CXIcon, CXCardPilot } from '@cosxai/fe-core-components';
 
 function App() {
   return (
-    {/* 基础图标组件 */}
-    <div className="flex items-center space-x-4 mb-4">
-      <CXIcon name="IconGoogle" width={26} height={26} />
-      <CXIcon name="IconLoading" width={20} height={20} className="text-blue-500" />
-      <CXIcon name="IconCompleted" width={16} height={16} />
-      <CXIcon name="IconFailed" width={16} height={16} />
+    <div className='p-6 space-y-4'>
+      {/* 基础图标组件 */}
+      <div className='flex items-center space-x-4 mb-4'>
+        <CXIcon name='IconGoogle' size={26} />
+        <CXIcon name='IconLoading' size={20} className='text-blue-500' />
+        <CXIcon name='IconCompleted' size={16} />
+        <CXIcon name='IconFailed' size={16} />
+      </div>
+
+      {/* 基础按钮组件 */}
+      <div className='space-y-2'>
+        <div className='flex gap-4 flex-wrap'>
+          <CXButton variant='primary'>Primary</CXButton>
+          <CXButton variant='default'>Default</CXButton>
+          <CXButton variant='dashed'>Dashed</CXButton>
+          <CXButton variant='link'>Link</CXButton>
+          <CXButton variant='danger' loading>
+            Danger
+          </CXButton>
+        </div>
+        <div className='flex gap-4 flex-wrap'>
+          <CXButton variant='destructive'>Destructive</CXButton>
+          <CXButton variant='outline'>Outline</CXButton>
+          <CXButton variant='secondary'>Secondary</CXButton>
+          <CXButton variant='ghost'>Ghost</CXButton>
+        </div>
+      </div>
+
+      {/* 复合卡片组件 */}
+      <CXCard
+        title='项目概览'
+        variant='shadow'
+        status='success'
+        headerIcon={<CXIcon name='IconDashboard' size={16} />}
+        avatar={{
+          icon: <CXIcon name='IconFormItemVisaType' size={16} />,
+          size: 'default',
+        }}
+        tags={[
+          { text: '进行中', color: 'blue' },
+          { text: '优先级高', color: 'red', variant: 'outlined' },
+        ]}
+        metadata={[
+          { label: '创建时间', value: '2024-01-01' },
+          { label: '负责人', value: '张三' },
+        ]}
+        footer={
+          <div className='flex justify-end space-x-2'>
+            <CXButton
+              size='small'
+              variant='ghost'
+              renderLeftContent={() => <CXIcon name='IconEdit' size={14} />}
+            >
+              编辑
+            </CXButton>
+            <CXButton
+              size='small'
+              variant='primary'
+              renderRightContent={() => <CXIcon name='IconCompleted' size={14} />}
+            >
+              确认
+            </CXButton>
+          </div>
+        }
+        clickable
+        onCardClick={() => console.log('Card clicked!')}
+      >
+        这是一个功能丰富的卡片组件，支持头像、标签、元数据等多种内容展示。
+      </CXCard>
     </div>
 
-    {/* 基础按钮组件 */}
-    <div className="space-y-2">
-      <div className="flex gap-4 flex-wrap">
-        <CXButton variant="primary">Primary</CXButton>
-        <CXButton variant="default">Default</CXButton>
-        <CXButton variant="dashed">Dashed</CXButton>
-        <CXButton variant="link">Link</CXButton>
-        <CXButton variant="danger" loading>
-          Danger
-        </CXButton>
-      </div>
-      <div className="flex gap-4 flex-wrap">
-        <CXButton variant="destructive">Destructive</CXButton>
-        <CXButton variant="outline">Outline</CXButton>
-        <CXButton variant="secondary">Secondary</CXButton>
-        <CXButton variant="ghost">Ghost</CXButton>
-      </div>
-    </div>
+      {/* 专业客户信息卡片组件 */}
+      <CXCardPilot
+        clientName="Ahmed Hassan"
+        clientEmail="ahmed.hassan@email.com"
+        clientNationality="Iraq"
+        clientVisaType="Skilled Worker Visa"
+        isDisabledBtnDownload={false}
+        isDisabledBtnStart={false}
+        renderSummaryContent={() => (
+          <div className="p-4 space-y-2">
+            <h4 className="font-semibold text-gray-800">Application Summary</h4>
+            <p className="text-gray-600 text-sm">
+              Skilled Worker Visa application under the points-based immigration system.
+            </p>
+            <ul className="text-gray-600 text-sm space-y-1">
+              <li>• Educational qualification: Master's degree</li>
+              <li>• Work experience: 5+ years in software development</li>
+              <li>• English proficiency: IELTS 8.0</li>
+              <li>• Job offer: Senior Developer position</li>
+            </ul>
+          </div>
+        )}
+        onBtnDownloadClick={() => console.log('Download form clicked')}
+        onBtnStartClick={() => console.log('Start auto-fill clicked')}
+      />
   );
 }
 ```
 
-### 2.6 TypeScript 类型支持
+### 2.6 CXCardPilot 专业组件特性
+
+`CXCardPilot` 是专为客户信息管理设计的专业卡片组件，特别适合移民、法务等专业领域：
+
+#### 2.6.1 核心功能
+- **客户信息展示** - 显示客户姓名、邮箱、国籍、签证类型等关键信息
+- **可展开摘要** - 支持自定义摘要内容，点击可展开/收起
+- **操作按钮** - 内置下载表单和开始自动填表功能按钮
+- **响应式设计** - 自适应不同屏幕宽度，文本自动截断
+- **按钮状态控制** - 支持禁用特定操作按钮
+
+#### 2.6.2 使用场景
+```tsx
+// 基础使用
+<CXCardPilot
+  clientName="John Smith"
+  clientEmail="john.smith@email.com"
+  clientNationality="United States"
+  clientVisaType="Tourist Visa"
+/>
+
+// 完整功能演示
+<CXCardPilot
+  clientName="Ahmed Hassan"
+  clientEmail="ahmed.hassan@email.com"
+  clientNationality="Iraq"
+  clientVisaType="Skilled Worker Visa"
+  isDisabledBtnDownload={false}
+  isDisabledBtnStart={false}
+  renderSummaryContent={() => (
+    <div className="p-4">
+      <h4 className="font-semibold mb-2">Application Details</h4>
+      <ul className="text-sm space-y-1">
+        <li>• Education: Master's degree</li>
+        <li>• Experience: 5+ years</li>
+        <li>• Language: IELTS 8.0</li>
+      </ul>
+    </div>
+  )}
+  onBtnDownloadClick={() => handleDownload()}
+  onBtnStartClick={() => handleAutoFill()}
+/>
+```
+
+### 2.7 TypeScript 类型支持
 
 组件库提供完整的 TypeScript 类型定义：
 
 ```tsx
-import type { CXButtonProps, CXCardProps, IconName } from '@cosxai/fe-core-components';
+import type {
+  CXButtonProps,
+  CXCardProps,
+  CXCardPilotProps,
+  IconName
+} from '@cosxai/fe-core-components';
 
 // 完整的类型支持和智能提示
 const MyButton: React.FC<CXButtonProps> = props => {
   return <CXButton {...props} />;
+};
+
+// CXCardPilot 类型支持
+const MyPilotCard: React.FC<CXCardPilotProps> = props => {
+  return <CXCardPilot {...props} />;
 };
 
 // 图标名称有完整的类型约束
@@ -158,9 +284,9 @@ const iconName: IconName = 'IconFormItemVisaType'; // TypeScript 智能提示可
 const MyIcon = () => <CXIcon name={iconName} width={20} height={20} />;
 ```
 
-### 2.7 不同框架集成
+### 2.8 不同框架集成
 
-#### 2.7.1 React + Vite 项目
+#### 2.8.1 React + Vite 项目
 
 ```bash
 # 安装依赖
@@ -190,7 +316,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 );
 ```
 
-#### 2.7.2 Next.js 项目
+#### 2.8.2 Next.js 项目
 
 ```bash
 # 安装依赖

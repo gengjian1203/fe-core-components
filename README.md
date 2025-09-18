@@ -6,12 +6,12 @@
 
 ## 1. 项目简介特性
 
-现代化的 React 组件库，基于 **Ant Design 5.x** 和 **React 19** 构建，采用分层设计架构，提供高质量、可复用的企业级 UI 组件。
+现代化的 React 组件库，基于 **React 19** 和 **Tailwind CSS** 构建，采用分层设计架构，提供高质量、可复用的企业级 UI 组件。
 
 ### 1.1 核心特性
 
 - 🚀 **React 19 支持** - 支持最新 React 特性，包括 Server Components
-- 🎨 **基于 Ant Design 5.x** - 扩展和包装 Ant Design 组件，提供定制化体验
+- 🎨 **纯 React 组件** - 从零构建的高质量组件，无外部 UI 库依赖
 - 💪 **严格 TypeScript** - 完整的类型支持，严格模式开发，零 any 类型
 - 🎨 **Tailwind CSS** - 原子化 CSS，支持自定义主题和暗黑模式
 - 📚 **Storybook 9.x** - 完整的组件文档和交互式开发环境
@@ -25,8 +25,9 @@
 
 采用**修改版原子化设计**理念，将组件分为两个主要层级：
 
-- **Base Components** (`src/components/Base/`) - 基础组件，扩展 Ant Design 组件功能
+- **Base Components** (`src/components/Base/`) - 基础组件，提供核心功能
   - `CXButton` - 增强版按钮，支持 5 种变体、图标配置、加载状态
+  - `CXIcon` - 内置图标组件，包含丰富的 SVG 图标集
 - **Case Components** (`src/components/Case/`) - 复合组件，适用于复杂业务场景
   - `CXCard` - 功能丰富的卡片组件，支持头像、标签、元数据、状态指示
 
@@ -34,7 +35,6 @@
 
 - **React** 19.x - 最新 React 特性支持
 - **TypeScript** 5.x - 严格类型检查
-- **Ant Design** 5.x - 基础组件库
 - **Tailwind CSS** 3.x - 原子化 CSS 框架
 - **Storybook** 9.x - 组件开发与文档
 - **Rollup** - 模块打包工具
@@ -81,7 +81,7 @@ yarn add @cosxai/fe-core-components
 
 ```bash
 # 安装必需的对等依赖（项目中如果已经存在则不用安装）
-pnpm add react react-dom antd tailwindcss
+pnpm add react react-dom tailwindcss
 ```
 
 ### 2.4 快速集成
@@ -107,58 +107,35 @@ import '@cosxai/fe-core-components/dist/styles.css'; // 完整路径导入样式
 ### 2.5 基础使用示例
 
 ```tsx
-import { CXButton, CXCard } from '@cosxai/fe-core-components';
-import { UserOutlined, SettingOutlined } from '@ant-design/icons';
+import { CXButton, CXCard, CXIcon } from '@cosxai/fe-core-components';
 
 function App() {
   return (
-    <div className='p-6 space-y-4'>
-      {/* 基础按钮组件 */}
-      <div className='space-x-2'>
-        <CXButton variant='primary' size='medium' leftIcon={<UserOutlined />}>
-          主要按钮
-        </CXButton>
-        <CXButton variant='outline' size='medium'>
-          次要按钮
-        </CXButton>
-        <CXButton variant='danger' loading>
-          危险按钮
+    {/* 基础图标组件 */}
+    <div className="flex items-center space-x-4 mb-4">
+      <CXIcon name="IconGoogle" size={26} />
+      <CXIcon name="IconLoading" size={20} className="text-blue-500" />
+      <CXIcon name="IconCompleted" size={16} />
+      <CXIcon name="IconFailed" size={16} />
+    </div>
+
+    {/* 基础按钮组件 */}
+    <div className="space-y-2">
+      <div className="flex gap-4 flex-wrap">
+        <CXButton variant="primary">Primary</CXButton>
+        <CXButton variant="default">Default</CXButton>
+        <CXButton variant="dashed">Dashed</CXButton>
+        <CXButton variant="link">Link</CXButton>
+        <CXButton variant="danger" loading>
+          Danger
         </CXButton>
       </div>
-
-      {/* 复合卡片组件 */}
-      <CXCard
-        title='项目概览'
-        variant='shadow'
-        status='success'
-        headerIcon={<SettingOutlined />}
-        avatar={{
-          icon: <UserOutlined />,
-          size: 'default',
-        }}
-        tags={[
-          { text: '进行中', color: 'blue' },
-          { text: '优先级高', color: 'red', variant: 'outlined' },
-        ]}
-        metadata={[
-          { label: '创建时间', value: '2024-01-01' },
-          { label: '负责人', value: '张三' },
-        ]}
-        footer={
-          <div className='flex justify-end space-x-2'>
-            <CXButton size='small' variant='ghost'>
-              取消
-            </CXButton>
-            <CXButton size='small' variant='primary'>
-              确认
-            </CXButton>
-          </div>
-        }
-        clickable
-        onCardClick={() => console.log('Card clicked!')}
-      >
-        这是一个功能丰富的卡片组件，支持头像、标签、元数据等多种内容展示。
-      </CXCard>
+      <div className="flex gap-4 flex-wrap">
+        <CXButton variant="destructive">Destructive</CXButton>
+        <CXButton variant="outline">Outline</CXButton>
+        <CXButton variant="secondary">Secondary</CXButton>
+        <CXButton variant="ghost">Ghost</CXButton>
+      </div>
     </div>
   );
 }
@@ -169,12 +146,16 @@ function App() {
 组件库提供完整的 TypeScript 类型定义：
 
 ```tsx
-import type { CXButtonProps, CXCardProps } from '@cosxai/fe-core-components';
+import type { CXButtonProps, CXCardProps, IconName } from '@cosxai/fe-core-components';
 
 // 完整的类型支持和智能提示
 const MyButton: React.FC<CXButtonProps> = props => {
   return <CXButton {...props} />;
 };
+
+// 图标名称有完整的类型约束
+const iconName: IconName = 'IconFormItemVisaType'; // TypeScript 智能提示可用图标
+const MyIcon = () => <CXIcon name={iconName} size={20} />;
 ```
 
 ### 2.7 不同框架集成
@@ -183,17 +164,14 @@ const MyButton: React.FC<CXButtonProps> = props => {
 
 ```bash
 # 安装依赖
-pnpm add @cosxai/fe-core-components antd tailwindcss @ant-design/v5-patch-for-react-19
+pnpm add @cosxai/fe-core-components tailwindcss
 
 # 配置 vite.config.ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  plugins: [react()],
-  optimizeDeps: {
-    include: ['antd', '@ant-design/icons']
-  }
+  plugins: [react()]
 });
 ```
 
@@ -203,7 +181,6 @@ export default defineConfig({
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '@cosxai/fe-core-components/styles'; // 导入样式文件（必须）
-import '@cosxai/fe-core-components'; // 应用 React 19 兼容补丁
 import App from './App.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -217,14 +194,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 ```bash
 # 安装依赖
-pnpm add @cosxai/fe-core-components antd tailwindcss @ant-design/v5-patch-for-react-19
+pnpm add @cosxai/fe-core-components tailwindcss
 ```
 
 在 `app/layout.tsx` 中：
 
 ```tsx
 import '@cosxai/fe-core-components/styles'; // 导入样式文件（必须）
-import '@cosxai/fe-core-components';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -267,7 +243,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ## 🙏 致谢
 
 - [React](https://reactjs.org/) - UI 库
-- [Ant Design](https://ant.design/) - 基础组件库
+- [CXIcon](./src/components/Base/CXIcon/) - 内置图标组件，基于 Lucide 图标
 - [TypeScript](https://www.typescriptlang.org/) - 类型系统
 - [Tailwind CSS](https://tailwindcss.com/) - CSS 框架
 - [Storybook](https://storybook.js.org/) - 组件开发工具

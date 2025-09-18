@@ -5,7 +5,7 @@ import packageJson from '../package.json';
 const baseTheme = {
   brandTitle: `FE CosX UI v${packageJson.version}`,
   brandUrl: './',
-  brandImage: './logo.svg',
+  brandImage: './logo.png',
   brandTarget: '_self',
 
   colorPrimary: '#3b82f6',

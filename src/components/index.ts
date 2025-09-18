@@ -1,5 +1,5 @@
 // Base Components
-export { CXButton, type CXButtonProps } from './Base/CXButton';
+export * from './Base';
 
 // Case Components
-export { CXCard, type CXCardProps } from './Case/CXCard';
+export * from './Case';

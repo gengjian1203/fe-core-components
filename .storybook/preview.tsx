@@ -2,6 +2,7 @@ import type { Preview } from '@storybook/react';
 import React, { useEffect } from 'react';
 import packageJson from '../package.json';
 import '../src/styles/globals.css';
+import './preview.css';
 
 // 响应式断点配置
 const customViewports = {
@@ -160,31 +161,31 @@ const preview: Preview = {
   // 全局类型定义
   argTypes: {
     // 通用属性类型
-    size: {
-      control: { type: 'select' },
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      description: '组件尺寸',
-    },
-    variant: {
-      control: { type: 'select' },
-      description: '组件变体',
-    },
-    disabled: {
-      control: { type: 'boolean' },
-      description: '是否禁用',
-    },
-    loading: {
-      control: { type: 'boolean' },
-      description: '是否加载中',
-    },
-    className: {
-      control: { type: 'text' },
-      description: '额外的CSS类名',
-    },
-    children: {
-      control: { type: 'text' },
-      description: '子组件或内容',
-    },
+    // size: {
+    //   control: { type: 'select' },
+    //   options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    //   description: '组件尺寸',
+    // },
+    // variant: {
+    //   control: { type: 'select' },
+    //   description: '组件变体',
+    // },
+    // disabled: {
+    //   control: { type: 'boolean' },
+    //   description: '是否禁用',
+    // },
+    // loading: {
+    //   control: { type: 'boolean' },
+    //   description: '是否加载中',
+    // },
+    // className: {
+    //   control: { type: 'text' },
+    //   description: '额外的CSS类名',
+    // },
+    // children: {
+    //   control: { type: 'text' },
+    //   description: '子组件或内容',
+    // },
   },
 
   // 全局变量

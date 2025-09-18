@@ -54,8 +54,9 @@ fe-core-components/
 ├── .github/workflows/     # GitHub Actions 工作流
 ├── src/
 │   ├── components/
-│   │   ├── Base/          # 基础组件（扩展 Ant Design）
-│   │   │   └── CXButton/  # 按钮组件
+│   │   ├── Base/          # 基础组件（核心功能）
+│   │   │   ├── CXButton/  # 按钮组件
+│   │   │   └── CXIcon/    # 图标组件
 │   │   └── Case/          # 复合组件（业务场景）
 │   │       └── CXCard/    # 卡片组件
 │   ├── styles/
@@ -155,14 +156,22 @@ npm unlink --global
 import '@cosxai/fe-core-components/styles.css'; // 本地 link 开发时使用 ESM 版本样式
 
 // 导入组件
-import { CXButton, CXCard } from '@cosxai/fe-core-components';
+import { CXButton, CXCard, CXIcon } from '@cosxai/fe-core-components';
 
 // 在组件中使用
 function MyComponent() {
   return (
     <div>
-      <CXButton variant='primary'>点击我</CXButton>
-      <CXCard title='测试卡片'>卡片内容</CXCard>
+      <CXIcon name='IconUser' size={20} />
+      <CXButton variant='primary' leftIcon={<CXIcon name='IconCompleted' size={16} />}>
+        点击我
+      </CXButton>
+      <CXCard
+        title='测试卡片'
+        headerIcon={<CXIcon name='IconDashboard' size={16} />}
+      >
+        卡片内容
+      </CXCard>
     </div>
   );
 }
@@ -563,7 +572,7 @@ pnpm list -g --depth=0 | grep @cosxai
 ## 🙏 致谢
 
 - [React](https://reactjs.org/) - UI 库
-- [Ant Design](https://ant.design/) - 基础组件库
+- [CXIcon](./src/components/Base/CXIcon/) - 内置图标组件，基于 Lucide 图标
 - [TypeScript](https://www.typescriptlang.org/) - 类型系统
 - [Tailwind CSS](https://tailwindcss.com/) - CSS 框架
 - [Storybook](https://storybook.js.org/) - 组件开发工具

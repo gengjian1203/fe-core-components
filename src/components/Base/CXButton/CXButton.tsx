@@ -1,4 +1,4 @@
-import { IconLoading } from '@/components/Base/CXIcon';
+import { CXIcon } from '@/components/Base/CXIcon';
 import { cn } from '@/utils';
 import React from 'react';
 
@@ -66,7 +66,7 @@ const getVariantClasses = (
       'hover:bg-primary hover:opacity-90 hover:scale-[1.02]',
       'active:bg-primary active:opacity-80 active:scale-[0.98] active:duration-75',
       'focus:outline-none focus:ring-2 focus:ring-primary ring-opacity-20',
-      'disabled:bg-gray-100 disabled:text-gray-400',
+      'disabled:bg-gray-200 disabled:text-gray-400',
       'disabled:hover:bg-gray-100 disabled:hover:scale-100',
     ].join(' '),
     default: [
@@ -113,7 +113,7 @@ const getVariantClasses = (
       'hover:bg-red-400',
       'active:bg-red-600',
       'focus:outline-none focus:ring-2 focus:ring-red-500/20',
-      'disabled:bg-gray-100 disabled:text-gray-400',
+      'disabled:bg-gray-200 disabled:text-gray-400',
       'disabled:hover:bg-gray-100',
     ].join(' '),
     destructive: [
@@ -121,7 +121,7 @@ const getVariantClasses = (
       'hover:bg-red-400',
       'active:bg-red-600',
       'focus:outline-none focus:ring-2 focus:ring-red-500/20',
-      'disabled:bg-gray-100 disabled:text-gray-400',
+      'disabled:bg-gray-200 disabled:text-gray-400',
       'disabled:hover:bg-gray-100',
     ].join(' '),
     outline: [
@@ -180,7 +180,7 @@ const LoadingSpinner: React.FC<{ size: 'small' | 'medium' | 'large' }> = ({ size
     large: 20,
   }[size];
 
-  return <IconLoading className='animate-spin' size={spinnerSize} />;
+  return <CXIcon className='animate-spin' name='IconLoading' size={spinnerSize} />;
 };
 
 export const CXButton: React.FC<CXButtonProps> = ({

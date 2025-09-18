@@ -9,9 +9,14 @@
 <style>
   /* 自定义logo尺寸 */
   .sidebar-header img {
-    max-height: 16px !important;
-    max-width: 120px !important;
+    position: absolute;
+    /* max-height: 16px !important;
+    max-width: 120px !important; */
     object-fit: contain !important;
+    width: 300px !important;
+    top: 50% !important;
+    left: 0 !important;
+    transform: translate(-20px, -50%) !important;
   }
 
   /* 确保品牌标题和logo布局 */
@@ -27,5 +32,6 @@
     align-items: center !important;
     gap: 8px !important;
     text-decoration: none !important;
+    position: relative !important;
   }
 </style>

@@ -1,10 +1,8 @@
 # @cosxai/fe-core-components
 
-[![npm version](https://badge.fury.io/js/@cosxai/fe-core-components.svg)](https://badge.fury.io/js/@cosxai/fe-core-components)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+## 展示文档
 
-[展示目录](https://cosxaiai.github.io/fe-core-components/)
+[https://fe-component.cosx.dev/](https://fe-component.cosx.dev/)
 
 ## 1. 项目简介特性
 

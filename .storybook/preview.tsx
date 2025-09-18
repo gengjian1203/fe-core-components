@@ -120,6 +120,21 @@ const preview: Preview = {
           root.classList.remove('dark');
           body.classList.remove('dark');
         }
+
+        // 配置主题色变量
+        const themeColors = {
+          '--primary': 'oklch(0.5524 0.2441 261.35)',
+          '--primary-dark': 'oklch(0.4359 0.1786 260.09)',
+          '--primary-light': 'oklch(0.6429 0.2441 261.35)',
+          '--primary-label': 'oklch(0.2723 0.1155 272.57)',
+          '--primary-gray': 'oklch(0.7091 0.0337 267.85)',
+          '--primary-foreground': '#f2f3f7',
+        };
+
+        // 将主题色变量应用到根元素
+        Object.entries(themeColors).forEach(([key, value]) => {
+          root.style.setProperty(key, value);
+        });
       }, [theme]);
 
       return (

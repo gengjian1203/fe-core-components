@@ -1,5 +1,6 @@
+import { IconLoading } from '@/components/Base/CXIcon';
+import { cn } from '@/utils';
 import React from 'react';
-import { cn } from '../../../utils';
 
 export interface CXButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
@@ -60,100 +61,100 @@ const getVariantClasses = (
 ): string => {
   const variants = {
     primary: [
-      // Fallback colors (without theme provider)
-      'bg-blue-600 text-white border-blue-600 shadow-sm',
-      'hover:bg-blue-500 hover:border-blue-500',
-      'active:bg-blue-700 active:border-blue-700',
-      'focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600',
-      'disabled:bg-gray-100 disabled:border-gray-200 disabled:text-gray-400 disabled:shadow-none',
-      'disabled:cursor-not-allowed disabled:hover:bg-gray-100 disabled:hover:border-gray-200',
+      // Use bg-primary with no border
+      'bg-primary text-white border-transparent',
+      'hover:bg-primary hover:opacity-90 hover:scale-[1.02]',
+      'active:bg-primary active:opacity-80 active:scale-[0.98] active:duration-75',
+      'focus:outline-none focus:ring-2 focus:ring-primary ring-opacity-20',
+      'disabled:bg-gray-100 disabled:text-gray-400',
+      'disabled:hover:bg-gray-100 disabled:hover:scale-100',
     ].join(' '),
     default: [
-      // Fallback colors (without theme provider)
-      'bg-white text-gray-900 border-gray-300 shadow-sm',
-      'hover:text-blue-600 hover:border-blue-600',
-      'active:text-blue-700 active:border-blue-700',
-      'focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600',
-      'disabled:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 disabled:shadow-none',
-      'disabled:cursor-not-allowed disabled:hover:bg-gray-50 disabled:hover:border-gray-200 disabled:hover:text-gray-400',
-      // Dark mode (without theme provider)
+      // Use theme colors
+      'bg-white text-gray-900 border-gray-300',
+      'hover:text-primary hover:border-primary',
+      'active:text-primary text-opacity-80 active:border-primary border-opacity-80',
+      'focus:outline-none focus:ring-2 focus:ring-primary ring-opacity-20 focus:border-primary',
+      'disabled:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400',
+      'disabled:hover:bg-gray-50 disabled:hover:border-gray-200 disabled:hover:text-gray-400',
+      // Dark mode
       'dark:bg-gray-800 dark:text-white dark:border-gray-600',
-      'dark:hover:text-blue-400 dark:hover:border-blue-400 dark:hover:bg-gray-700',
-      'dark:active:bg-gray-900 dark:active:border-blue-500',
+      'dark:hover:text-primary dark:hover:border-primary dark:hover:bg-gray-700',
+      'dark:active:bg-gray-900 dark:active:border-primary border-opacity-80',
       'dark:disabled:bg-gray-800 dark:disabled:border-gray-700 dark:disabled:text-gray-500',
     ].join(' '),
     dashed: [
-      // Fallback colors (without theme provider)
-      'bg-white text-gray-900 border-gray-300 border-dashed shadow-sm',
-      'hover:text-blue-600 hover:border-blue-600',
-      'active:text-blue-700 active:border-blue-700',
-      'focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600',
-      'disabled:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 disabled:shadow-none',
-      'disabled:cursor-not-allowed disabled:hover:bg-gray-50 disabled:hover:border-gray-200 disabled:hover:text-gray-400',
-      // Dark mode (without theme provider)
+      // Use theme colors
+      'bg-white text-gray-900 border-gray-300 border-dashed',
+      'hover:text-primary hover:border-primary',
+      'active:text-primary text-opacity-80 active:border-primary border-opacity-80',
+      'focus:outline-none focus:ring-2 focus:ring-primary ring-opacity-20 focus:border-primary',
+      'disabled:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400',
+      'disabled:hover:bg-gray-50 disabled:hover:border-gray-200 disabled:hover:text-gray-400',
+      // Dark mode
       'dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:border-dashed',
-      'dark:hover:text-blue-400 dark:hover:border-blue-400 dark:hover:bg-gray-700',
-      'dark:active:bg-gray-900 dark:active:border-blue-500',
+      'dark:hover:text-primary dark:hover:border-primary dark:hover:bg-gray-700',
+      'dark:active:bg-gray-900 dark:active:border-primary border-opacity-80',
       'dark:disabled:bg-gray-800 dark:disabled:border-gray-700 dark:disabled:text-gray-500',
     ].join(' '),
     link: [
-      // Fallback colors (without theme provider)
-      'bg-transparent text-blue-600 border-transparent shadow-none',
-      'hover:text-blue-500',
-      'active:text-blue-700',
-      'focus:outline-none focus:ring-2 focus:ring-blue-600/20',
+      // Use theme colors
+      'bg-transparent text-primary border-transparent',
+      'hover:text-primary text-opacity-80',
+      'active:text-primary text-opacity-60',
+      'focus:outline-none focus:ring-2 focus:ring-primary ring-opacity-20',
       'disabled:text-gray-400',
-      'disabled:cursor-not-allowed disabled:hover:text-gray-400',
-      'dark:text-blue-400 dark:hover:text-blue-300 dark:disabled:text-gray-500',
+      'disabled:hover:text-gray-400',
+      'dark:text-primary dark:hover:text-primary text-opacity-80 dark:disabled:text-gray-500',
     ].join(' '),
     danger: [
-      // Fallback colors (without theme provider)
-      'bg-red-500 text-white border-red-500 shadow-sm',
-      'hover:bg-red-400 hover:border-red-400',
-      'active:bg-red-600 active:border-red-600',
-      'focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500',
-      'disabled:bg-gray-100 disabled:border-gray-200 disabled:text-gray-400 disabled:shadow-none',
-      'disabled:cursor-not-allowed disabled:hover:bg-gray-100 disabled:hover:border-gray-200',
+      // No border for background color variant
+      'bg-red-500 text-white border-transparent',
+      'hover:bg-red-400',
+      'active:bg-red-600',
+      'focus:outline-none focus:ring-2 focus:ring-red-500/20',
+      'disabled:bg-gray-100 disabled:text-gray-400',
+      'disabled:hover:bg-gray-100',
     ].join(' '),
     destructive: [
-      'bg-red-500 text-white border-red-500 shadow-sm',
-      'hover:bg-red-400 hover:border-red-400',
-      'active:bg-red-600 active:border-red-600',
-      'focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500',
-      'disabled:bg-gray-100 disabled:border-gray-200 disabled:text-gray-400 disabled:shadow-none',
-      'disabled:cursor-not-allowed disabled:hover:bg-gray-100 disabled:hover:border-gray-200',
+      'bg-red-500 text-white border-transparent',
+      'hover:bg-red-400',
+      'active:bg-red-600',
+      'focus:outline-none focus:ring-2 focus:ring-red-500/20',
+      'disabled:bg-gray-100 disabled:text-gray-400',
+      'disabled:hover:bg-gray-100',
     ].join(' '),
     outline: [
-      'bg-transparent text-gray-900 border-gray-300 shadow-sm',
+      'bg-transparent text-gray-900 border-gray-300',
       'hover:bg-gray-50 hover:text-gray-900',
       'active:bg-gray-100',
-      'focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600',
-      'disabled:bg-transparent disabled:border-gray-200 disabled:text-gray-400 disabled:shadow-none',
-      'disabled:cursor-not-allowed disabled:hover:bg-transparent',
+      'focus:outline-none focus:ring-2 focus:ring-primary ring-opacity-20 focus:border-primary',
+      'disabled:bg-transparent disabled:border-gray-200 disabled:text-gray-400',
+      'disabled:hover:bg-transparent',
       'dark:text-white dark:border-gray-600',
       'dark:hover:bg-gray-800 dark:hover:text-white',
       'dark:active:bg-gray-700',
       'dark:disabled:border-gray-700 dark:disabled:text-gray-500',
     ].join(' '),
     secondary: [
-      'bg-gray-100 text-gray-900 border-gray-200 shadow-sm',
-      'hover:bg-gray-200 hover:border-gray-300',
-      'active:bg-gray-300 active:border-gray-400',
-      'focus:outline-none focus:ring-2 focus:ring-gray-500/20 focus:border-gray-400',
-      'disabled:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 disabled:shadow-none',
-      'disabled:cursor-not-allowed disabled:hover:bg-gray-50 disabled:hover:border-gray-200',
-      'dark:bg-gray-700 dark:text-white dark:border-gray-600',
-      'dark:hover:bg-gray-600 dark:hover:border-gray-500',
+      'bg-gray-100 text-gray-900 border-transparent',
+      'hover:bg-gray-200',
+      'active:bg-gray-300',
+      'focus:outline-none focus:ring-2 focus:ring-gray-500/20',
+      'disabled:bg-gray-50 disabled:text-gray-400',
+      'disabled:hover:bg-gray-50',
+      'dark:bg-gray-700 dark:text-white',
+      'dark:hover:bg-gray-600',
       'dark:active:bg-gray-800',
-      'dark:disabled:bg-gray-800 dark:disabled:border-gray-700 dark:disabled:text-gray-500',
+      'dark:disabled:bg-gray-800 dark:disabled:text-gray-500',
     ].join(' '),
     ghost: [
-      'bg-transparent text-gray-900 border-transparent shadow-none',
+      'bg-transparent text-gray-900 border-transparent',
       'hover:bg-gray-100 hover:text-gray-900',
       'active:bg-gray-200',
       'focus:outline-none focus:ring-2 focus:ring-gray-500/20',
       'disabled:bg-transparent disabled:text-gray-400',
-      'disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-gray-400',
+      'disabled:hover:bg-transparent disabled:hover:text-gray-400',
       'dark:text-white dark:hover:bg-gray-800 dark:hover:text-white',
       'dark:active:bg-gray-700 dark:disabled:text-gray-500',
     ].join(' '),
@@ -174,19 +175,12 @@ const loadingClasses = 'pointer-events-none';
 
 const LoadingSpinner: React.FC<{ size: 'small' | 'medium' | 'large' }> = ({ size }) => {
   const spinnerSize = {
-    small: 'w-3 h-3',
-    medium: 'w-4 h-4',
-    large: 'w-5 h-5',
+    small: 12,
+    medium: 16,
+    large: 20,
   }[size];
 
-  return (
-    <div
-      className={cn(
-        'animate-spin rounded-full border-2 border-current border-t-transparent',
-        spinnerSize
-      )}
-    />
-  );
+  return <IconLoading className='animate-spin' size={spinnerSize} />;
 };
 
 export const CXButton: React.FC<CXButtonProps> = ({
@@ -210,6 +204,8 @@ export const CXButton: React.FC<CXButtonProps> = ({
     // Base classes
     'inline-flex items-center justify-center font-medium border transition-all duration-200',
     'relative select-none touch-manipulation whitespace-nowrap',
+    // Cursor classes
+    isDisabled ? 'cursor-not-allowed' : 'cursor-pointer',
     // Size and shape classes
     getSizeClasses(size, shape),
     getShapeClasses(shape),

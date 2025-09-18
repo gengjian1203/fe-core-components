@@ -81,7 +81,7 @@ cd fe-core-components
 pnpm build
 
 # 创建全局链接 pnpm // 参考本文档 3.5 pnpm 全局链接配置问题解决
-# pnpm link --global
+pnpm link
 
 # 或者使用 npm
 npm link
@@ -94,7 +94,7 @@ npm link
 cd your-host-project
 
 # 链接本地组件库
-# pnpm link --global @cosxai/fe-core-components
+pnpm link @cosxai/fe-core-components
 
 # 或者使用 npm
 npm link @cosxai/fe-core-components

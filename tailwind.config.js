@@ -13,8 +13,19 @@ export default {
   darkMode: 'class', // 使用class策略，通过添加'dark'类来切换
 
   theme: {
-    // 完全使用Tailwind默认配置，不添加任何自定义扩展
-    // 避免生成额外的CSS和潜在的全局污染
+    extend: {
+      // 扩展颜色配置，添加主题色变量映射
+      colors: {
+        primary: {
+          DEFAULT: 'var(--primary)',
+          dark: 'var(--primary-dark)',
+          light: 'var(--primary-light)',
+          label: 'var(--primary-label)',
+          gray: 'var(--primary-gray)',
+          foreground: 'var(--primary-foreground)',
+        },
+      },
+    },
   },
 
   plugins: [],

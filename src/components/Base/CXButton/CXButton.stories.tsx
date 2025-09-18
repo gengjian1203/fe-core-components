@@ -83,20 +83,38 @@ export const Default: Story = {
 };
 
 export const Variants: Story = {
-  render: () => (
+  render: args => (
     <div className='flex flex-col gap-4'>
       <div className='flex gap-4 flex-wrap'>
-        <CXButton variant='primary'>Primary</CXButton>
-        <CXButton variant='default'>Default</CXButton>
-        <CXButton variant='dashed'>Dashed</CXButton>
-        <CXButton variant='link'>Link</CXButton>
-        <CXButton variant='danger'>Danger</CXButton>
+        <CXButton {...args} variant='primary'>
+          Primary
+        </CXButton>
+        <CXButton {...args} variant='default'>
+          Default
+        </CXButton>
+        <CXButton {...args} variant='dashed'>
+          Dashed
+        </CXButton>
+        <CXButton {...args} variant='link'>
+          Link
+        </CXButton>
+        <CXButton {...args} variant='danger'>
+          Danger
+        </CXButton>
       </div>
       <div className='flex gap-4 flex-wrap'>
-        <CXButton variant='destructive'>Destructive</CXButton>
-        <CXButton variant='outline'>Outline</CXButton>
-        <CXButton variant='secondary'>Secondary</CXButton>
-        <CXButton variant='ghost'>Ghost</CXButton>
+        <CXButton {...args} variant='destructive'>
+          Destructive
+        </CXButton>
+        <CXButton {...args} variant='outline'>
+          Outline
+        </CXButton>
+        <CXButton {...args} variant='secondary'>
+          Secondary
+        </CXButton>
+        <CXButton {...args} variant='ghost'>
+          Ghost
+        </CXButton>
       </div>
     </div>
   ),
@@ -134,11 +152,17 @@ export const Variants: Story = {
 };
 
 export const Sizes: Story = {
-  render: () => (
+  render: args => (
     <div className='flex gap-4 items-center'>
-      <CXButton size='small'>Small</CXButton>
-      <CXButton size='medium'>Medium</CXButton>
-      <CXButton size='large'>Large</CXButton>
+      <CXButton {...args} size='small'>
+        Small
+      </CXButton>
+      <CXButton {...args} size='medium'>
+        Medium
+      </CXButton>
+      <CXButton {...args} size='large'>
+        Large
+      </CXButton>
     </div>
   ),
   parameters: {
@@ -168,20 +192,24 @@ export const Sizes: Story = {
 };
 
 export const WithIcons: Story = {
-  render: () => (
+  render: args => (
     <div className='flex flex-col gap-4'>
       <div className='flex gap-4'>
-        <CXButton leftIcon={<PlusIcon />}>添加</CXButton>
-        <CXButton rightIcon={<DownloadIcon />}>下载</CXButton>
-        <CXButton leftIcon={<SearchIcon />} rightIcon={<DownloadIcon />}>
+        <CXButton {...args} leftIcon={<PlusIcon />}>
+          添加
+        </CXButton>
+        <CXButton {...args} rightIcon={<DownloadIcon />}>
+          下载
+        </CXButton>
+        <CXButton {...args} leftIcon={<SearchIcon />} rightIcon={<DownloadIcon />}>
           搜索并下载
         </CXButton>
       </div>
       <div className='flex gap-4'>
-        <CXButton leftIcon={<PlusIcon />} variant='dashed'>
+        <CXButton {...args} leftIcon={<PlusIcon />} variant='dashed'>
           添加项目
         </CXButton>
-        <CXButton rightIcon={<DownloadIcon />} variant='link'>
+        <CXButton {...args} rightIcon={<DownloadIcon />} variant='link'>
           导出数据
         </CXButton>
       </div>
@@ -233,13 +261,15 @@ export const WithIcons: Story = {
 };
 
 export const LoadingStates: Story = {
-  render: () => (
+  render: args => (
     <div className='flex gap-4'>
-      <CXButton loading>Loading</CXButton>
-      <CXButton loading loadingText='处理中...'>
+      <CXButton {...args} loading>
+        Loading
+      </CXButton>
+      <CXButton {...args} loading loadingText='处理中...'>
         处理数据
       </CXButton>
-      <CXButton loading variant='dashed'>
+      <CXButton {...args} loading variant='dashed'>
         Loading Dashed
       </CXButton>
     </div>
@@ -285,13 +315,15 @@ export const LoadingStates: Story = {
 };
 
 export const DisabledStates: Story = {
-  render: () => (
+  render: args => (
     <div className='flex gap-4'>
-      <CXButton disabled>Disabled</CXButton>
-      <CXButton disabled variant='dashed'>
+      <CXButton {...args} disabled>
+        Disabled
+      </CXButton>
+      <CXButton {...args} disabled variant='dashed'>
         Disabled Dashed
       </CXButton>
-      <CXButton disabled variant='link'>
+      <CXButton {...args} disabled variant='link'>
         Disabled Link
       </CXButton>
     </div>
@@ -327,19 +359,23 @@ export const DisabledStates: Story = {
 };
 
 export const Shapes: Story = {
-  render: () => (
+  render: args => (
     <div className='flex flex-col gap-4'>
       <div className='flex gap-4 items-center'>
-        <CXButton shape='default'>Default</CXButton>
-        <CXButton shape='round'>Round</CXButton>
-        <CXButton leftIcon={<PlusIcon />} shape='circle' />
-        <CXButton leftIcon={<SearchIcon />} shape='circle' variant='primary' />
+        <CXButton {...args} shape='default'>
+          Default
+        </CXButton>
+        <CXButton {...args} shape='round'>
+          Round
+        </CXButton>
+        <CXButton {...args} leftIcon={<PlusIcon />} shape='circle' />
+        <CXButton {...args} leftIcon={<SearchIcon />} shape='circle' variant='primary' />
       </div>
       <div className='flex gap-4 items-center'>
-        <CXButton shape='round' variant='dashed'>
+        <CXButton {...args} shape='round' variant='dashed'>
           Round Dashed
         </CXButton>
-        <CXButton leftIcon={<DownloadIcon />} shape='circle' variant='link' />
+        <CXButton {...args} leftIcon={<DownloadIcon />} shape='circle' variant='link' />
       </div>
     </div>
   ),
@@ -380,13 +416,15 @@ export const Shapes: Story = {
 };
 
 export const Block: Story = {
-  render: () => (
+  render: args => (
     <div className='flex flex-col gap-4' style={{ width: '300px' }}>
-      <CXButton block>Block Button</CXButton>
-      <CXButton block variant='primary'>
+      <CXButton {...args} block>
+        Block Button
+      </CXButton>
+      <CXButton {...args} block variant='primary'>
         Block Primary
       </CXButton>
-      <CXButton block variant='dashed'>
+      <CXButton {...args} block variant='dashed'>
         Block Dashed
       </CXButton>
     </div>

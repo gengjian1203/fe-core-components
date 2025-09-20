@@ -102,6 +102,7 @@ export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps)
           <div className='text-[#1A1A1AB2] text-left'>Summary</div>
           <CXIcon
             className={`transition-transform duration-300 ${isFoldSummary ? 'rotate-90' : ''}`}
+            color='#1A1A1AB2'
             name='IconArrowRight'
           />
         </CXButton>

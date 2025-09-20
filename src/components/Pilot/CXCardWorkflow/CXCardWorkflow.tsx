@@ -71,14 +71,14 @@ export const CXCardWorkflow: React.FC<CXCardWorkflowProps> = (props: CXCardWorkf
             className='rounded-xl flex-0'
             disabled={isDisabledBtnStart}
             renderLeftContent={() => <CXIcon name='IconExtensionStart' />}
-            variant='primary'
+            variant='default'
             onClick={handleBtnStartClick}
           />
         ) : (
           <CXButton
             className='rounded-xl flex-0'
             renderLeftContent={() => <CXIcon name='IconExtensionStop' />}
-            variant='primary'
+            variant='default'
             onClick={handleBtnStopClick}
           />
         )}
@@ -97,6 +97,7 @@ export const CXCardWorkflow: React.FC<CXCardWorkflowProps> = (props: CXCardWorkf
           <div className='text-[#1A1A1AB2] text-left'>Activities</div>
           <CXIcon
             className={`transition-transform duration-300 ${isFoldActivities ? 'rotate-90' : ''}`}
+            color='#1A1A1AB2'
             name='IconArrowRight'
           />
         </CXButton>

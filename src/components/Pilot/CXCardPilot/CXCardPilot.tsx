@@ -52,32 +52,32 @@ export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps)
 
   return (
     <div className='w-full bg-white box-border p-4 flex flex-col border-2 border-solid border-slate-200 rounded-lg gap-5'>
-      {/*  */}
+      {/* Operate */}
       <div className='flex flex-row gap-2'>
         <CXIcon className='flex-[0_0_auto]' height={30} name='IconFormItemClientName' width={26} />
         <div className='flex-1 w-0 flex flex-row justify-start items-center'>
           <div className='truncate text-[#424242]'>{clientName}</div>
         </div>
         <CXButton
-          className='rounded-xl flex-1 w-0'
+          className='rounded-xl flex-1 w-0 max-w-[170px]'
           disabled={isDisabledBtnDownload}
           renderLeftContent={() => <CXIcon name='IconPilotPDFDownload' />}
           variant='default'
           onClick={handleBtnDownloadClick}
         >
-          <div className='flex-1 w-0 truncate'>Download form</div>
+          <div className='flex-1 w-0 truncate text-center'>Download form</div>
         </CXButton>
         <CXButton
-          className='rounded-xl flex-1 w-0'
+          className='rounded-xl flex-1 w-0 max-w-[170px]'
           disabled={isDisabledBtnStart}
           renderLeftContent={() => <CXIcon name='IconExtensionStart' />}
           variant='primary'
           onClick={handleBtnStartClick}
         >
-          <div className='flex-1 w-0 truncate'>Start auto-fill</div>
+          <div className='flex-1 w-0 truncate text-center'>Start auto-fill</div>
         </CXButton>
       </div>
-      {/*  */}
+      {/* Client Info */}
       <div className='flex flex-row items-center h-4'>
         <div className='box-border pr-2 flex-1 w-0 truncate text-left text-[#1A1A1AB2]'>
           {clientEmail}
@@ -90,28 +90,31 @@ export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps)
         </div>
       </div>
       {/* Summary */}
-      <CXButton
-        block
-        className='!px-0'
-        classNameChildren='flex flex-row justify-between items-center'
-        variant='text'
-        onClick={handleBtnSummaryClick}
-      >
-        <div className='text-[#1A1A1AB2]'>Summary</div>
-        <CXIcon
-          className={`transition-transform duration-300 ${isFoldSummary ? 'rotate-90' : ''}`}
-          name='IconArrowRight'
-        />
-      </CXButton>
-      {/* Summary Content */}
-      <div
-        className='overflow-hidden transition-all duration-300 ease-in-out'
-        style={{
-          maxHeight: isFoldSummary ? `${contentHeight}px` : '0',
-          opacity: isFoldSummary ? 1 : 0,
-        }}
-      >
-        <div ref={contentRef}>{renderSummaryContent?.()}</div>
+      <div className='flex flex-col'>
+        <CXButton
+          block
+          className='!px-0'
+          classNameChildren='flex flex-row justify-between items-center'
+          tabIndex={-1}
+          variant='text'
+          onClick={handleBtnSummaryClick}
+        >
+          <div className='text-[#1A1A1AB2] text-left'>Summary</div>
+          <CXIcon
+            className={`transition-transform duration-300 ${isFoldSummary ? 'rotate-90' : ''}`}
+            name='IconArrowRight'
+          />
+        </CXButton>
+        {/* Summary Content */}
+        <div
+          className='overflow-hidden transition-all duration-300 ease-in-out'
+          style={{
+            maxHeight: isFoldSummary ? `${contentHeight}px` : '0',
+            opacity: isFoldSummary ? 1 : 0,
+          }}
+        >
+          <div ref={contentRef}>{renderSummaryContent?.()}</div>
+        </div>
       </div>
     </div>
   );

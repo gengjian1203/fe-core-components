@@ -182,23 +182,22 @@ function App() {
       >
         这是一个功能丰富的卡片组件，支持头像、标签、元数据等多种内容展示。
       </CXCard>
-    </div>
 
       {/* 专业客户信息卡片组件 */}
       <CXCardPilot
-        clientName="Ahmed Hassan"
-        clientEmail="ahmed.hassan@email.com"
-        clientNationality="Iraq"
-        clientVisaType="Skilled Worker Visa"
+        clientName='Ahmed Hassan'
+        clientEmail='ahmed.hassan@email.com'
+        clientNationality='Iraq'
+        clientVisaType='Skilled Worker Visa'
         isDisabledBtnDownload={false}
         isDisabledBtnStart={false}
         renderSummaryContent={() => (
-          <div className="p-4 space-y-2">
-            <h4 className="font-semibold text-gray-800">Application Summary</h4>
-            <p className="text-gray-600 text-sm">
+          <div className='p-4 space-y-2'>
+            <h4 className='font-semibold text-gray-800'>Application Summary</h4>
+            <p className='text-gray-600 text-sm'>
               Skilled Worker Visa application under the points-based immigration system.
             </p>
-            <ul className="text-gray-600 text-sm space-y-1">
+            <ul className='text-gray-600 text-sm space-y-1'>
               <li>• Educational qualification: Master's degree</li>
               <li>• Work experience: 5+ years in software development</li>
               <li>• English proficiency: IELTS 8.0</li>
@@ -209,6 +208,7 @@ function App() {
         onBtnDownloadClick={() => console.log('Download form clicked')}
         onBtnStartClick={() => console.log('Start auto-fill clicked')}
       />
+    </div>
   );
 }
 ```
@@ -218,6 +218,7 @@ function App() {
 `CXCardPilot` 是专为客户信息管理设计的专业卡片组件，特别适合移民、法务等专业领域：
 
 #### 2.6.1 核心功能
+
 - **客户信息展示** - 显示客户姓名、邮箱、国籍、签证类型等关键信息
 - **可展开摘要** - 支持自定义摘要内容，点击可展开/收起
 - **操作按钮** - 内置下载表单和开始自动填表功能按钮
@@ -225,6 +226,7 @@ function App() {
 - **按钮状态控制** - 支持禁用特定操作按钮
 
 #### 2.6.2 使用场景
+
 ```tsx
 // 基础使用
 <CXCardPilot
@@ -266,7 +268,7 @@ import type {
   CXButtonProps,
   CXCardProps,
   CXCardPilotProps,
-  IconName
+  IconName,
 } from '@cosxai/fe-core-components';
 
 // 完整的类型支持和智能提示

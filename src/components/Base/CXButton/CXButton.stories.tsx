@@ -444,36 +444,40 @@ export const DisabledStates: Story = {
 };
 
 export const Shapes: Story = {
-  render: args => (
-    <div className='flex flex-col gap-4'>
-      <div className='flex gap-4 items-center'>
-        <CXButton {...args} shape='default'>
-          Default
-        </CXButton>
-        <CXButton {...args} shape='round'>
-          Round
-        </CXButton>
-        <CXButton {...args} renderLeftContent={() => <PlusIcon />} shape='circle' />
-        <CXButton
-          {...args}
-          renderLeftContent={() => <SearchIcon />}
-          shape='circle'
-          variant='primary'
-        />
+  render: args => {
+    const { children: _children, ...otherArgs } = args;
+
+    return (
+      <div className='flex flex-col gap-4'>
+        <div className='flex gap-4 items-center'>
+          <CXButton {...otherArgs} shape='default'>
+            Default
+          </CXButton>
+          <CXButton {...otherArgs} shape='round'>
+            Round
+          </CXButton>
+          <CXButton {...otherArgs} renderLeftContent={() => <PlusIcon />} shape='circle' />
+          <CXButton
+            {...otherArgs}
+            renderLeftContent={() => <SearchIcon />}
+            shape='circle'
+            variant='primary'
+          />
+        </div>
+        <div className='flex gap-4 items-center'>
+          <CXButton {...otherArgs} shape='round' variant='dashed'>
+            Round Dashed
+          </CXButton>
+          <CXButton
+            {...otherArgs}
+            renderLeftContent={() => <DownloadIcon />}
+            shape='circle'
+            variant='link'
+          />
+        </div>
       </div>
-      <div className='flex gap-4 items-center'>
-        <CXButton {...args} shape='round' variant='dashed'>
-          Round Dashed
-        </CXButton>
-        <CXButton
-          {...args}
-          renderLeftContent={() => <DownloadIcon />}
-          shape='circle'
-          variant='link'
-        />
-      </div>
-    </div>
-  ),
+    );
+  },
   parameters: {
     docs: {
       description: {

@@ -6,7 +6,7 @@ const meta: Meta<typeof CXCardPilot> = {
   title: 'Pilot/CXCardPilot',
   component: CXCardPilot,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
     docs: {
       description: {
         component:
@@ -300,7 +300,7 @@ export const DisabledButtons: Story = {
 export const DifferentVisaTypes: Story = {
   name: 'Different Visa Types',
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
         story: '展示不同类型的签证申请案例。',

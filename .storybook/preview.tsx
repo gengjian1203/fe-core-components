@@ -140,12 +140,12 @@ const preview: Preview = {
 
       return (
         <div className='relative p-0 box-border w-full'>
-          <div className='relative min-w-[50vw] w-full'>
+          <div className='relative w-full box-border px-8 pb-8'>
             <Story />
           </div>
           {/* 版本信息显示在右下角 */}
           <div
-            className={`fixed bottom-2 right-2 text-xs px-2 py-1 rounded shadow-sm border backdrop-blur-sm ${
+            className={`fixed -bottom-0 right-0 !w-auto text-xs px-2 py-1 rounded shadow-sm border backdrop-blur-sm ${
               theme === 'dark'
                 ? 'text-gray-300 bg-gray-800/80 border-gray-700'
                 : 'text-gray-500 bg-white/80 border-gray-200'
@@ -160,6 +160,12 @@ const preview: Preview = {
 
   // 全局类型定义
   argTypes: {
+    // 隐藏 name 字段
+    name: {
+      table: {
+        disable: true,
+      },
+    },
     // 通用属性类型
     // size: {
     //   control: { type: 'select' },

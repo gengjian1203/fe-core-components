@@ -14,7 +14,7 @@ const meta: Meta<typeof CXCard> = {
   title: 'Case/CXCard',
   component: CXCard,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
     docs: {
       description: {
         component:
@@ -158,7 +158,7 @@ export const Variants: Story = {
     </div>
   ),
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
         story: '不同的卡片变体样式展示。',
@@ -206,7 +206,7 @@ export const StatusStates: Story = {
     </div>
   ),
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
         story: '不同状态的卡片，通过左侧边框颜色区分状态。',
@@ -274,7 +274,7 @@ export const WithHeaderElements: Story = {
     </div>
   ),
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
         story: '带有标题图标和操作按钮的卡片示例。',
@@ -338,7 +338,7 @@ export const WithAvatar: Story = {
     </div>
   ),
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
         story: '带有头像或图标的卡片示例。',
@@ -398,7 +398,7 @@ export const WithTags: Story = {
     </div>
   ),
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
         story: '带有标签的卡片，支持实心和空心两种标签样式。',
@@ -464,7 +464,7 @@ export const WithMetadata: Story = {
     </div>
   ),
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
         story: '带有元数据信息的卡片，适合展示结构化数据。',
@@ -515,7 +515,7 @@ export const WithCover: Story = {
     </div>
   ),
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
         story: '带有封面图片的卡片示例。',
@@ -666,7 +666,7 @@ export const LoadingState: Story = {
     </div>
   ),
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
         story: '加载状态的卡片示例。',
@@ -742,7 +742,7 @@ export const DarkModeSupport: Story = {
     </div>
   ),
   parameters: {
-    layout: 'padded',
+    layout: 'centered',
     docs: {
       description: {
         story: '展示 CXCard 组件在浅色和深色模式下的表现对比。',

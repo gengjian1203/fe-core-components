@@ -1379,9 +1379,15 @@ export const IconExtensionStop = ({
   );
 };
 
-export const IconCheckGreen = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
+export const IconCheckGreen = ({
+  width = 16,
+  height = 16,
+  className = '',
+  color = '#1AC654',
+}: IconProps): JSX.Element => {
   return (
     <svg
+      className={cn(className)}
       fill='none'
       height={height}
       viewBox='0 0 16 16'
@@ -1390,7 +1396,7 @@ export const IconCheckGreen = ({ width = 16, height = 16 }: IconProps): JSX.Elem
     >
       <path
         d='M7.48875 11.8924C7.03935 12.3305 6.30924 12.3305 5.85983 11.8924L2.19204 8.30333C1.74263 7.86522 1.74263 7.14627 2.19204 6.70822C2.64144 6.27017 3.37155 6.27011 3.82096 6.70822L6.67432 9.49975L12.1732 4.11325C12.6226 3.67514 13.3527 3.67514 13.8021 4.11325C14.2515 4.55136 14.2515 5.27031 13.8021 5.70836L7.48885 11.8924H7.48875Z'
-        fill='#1AC654'
+        fill={color}
       />
     </svg>
   );
@@ -1784,7 +1790,12 @@ export const IconSuccess = ({
   );
 };
 
-export const IconFailed = ({ width = 15, height = 14, className = '' }: IconProps): JSX.Element => {
+export const IconFailed = ({
+  width = 15,
+  height = 14,
+  className = '',
+  color = 'currentColor',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
@@ -1797,7 +1808,7 @@ export const IconFailed = ({ width = 15, height = 14, className = '' }: IconProp
       <path
         clipRule='evenodd'
         d='M14.1668 6.99992C14.1668 10.6818 11.1821 13.6666 7.50016 13.6666C3.81826 13.6666 0.833496 10.6818 0.833496 6.99992C0.833496 3.31802 3.81826 0.333252 7.50016 0.333252C11.1821 0.333252 14.1668 3.31802 14.1668 6.99992ZM8.99543 4.56191L7.50009 6.05725L6.00476 4.56191C5.74445 4.3016 5.3224 4.3016 5.06209 4.56191C4.80178 4.82222 4.80178 5.24427 5.0621 5.50458L6.55743 6.99991L5.06209 8.49524C4.80178 8.75556 4.80178 9.1776 5.06209 9.43791C5.3224 9.69822 5.74445 9.69822 6.00476 9.43791L7.50009 7.94258L8.99543 9.43791C9.25574 9.69822 9.67779 9.69822 9.9381 9.43791C10.1984 9.1776 10.1984 8.75556 9.9381 8.49524L8.44276 6.99991L9.9381 5.50458C10.1984 5.24427 10.1984 4.82222 9.9381 4.56191C9.67778 4.3016 9.25574 4.3016 8.99543 4.56191Z'
-        fill='#EB5757'
+        fill={color}
         fillRule='evenodd'
       />
     </svg>

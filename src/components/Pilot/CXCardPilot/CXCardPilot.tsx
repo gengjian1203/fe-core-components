@@ -26,9 +26,10 @@ export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps)
     onBtnStartClick,
   } = props;
 
+  const contentRef = useRef<HTMLDivElement>(null);
+
   const [isFoldSummary, setFoldSummary] = useState<boolean>(false);
   const [contentHeight, setContentHeight] = useState<number>(0);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   const handleBtnDownloadClick = () => {
     onBtnDownloadClick?.();

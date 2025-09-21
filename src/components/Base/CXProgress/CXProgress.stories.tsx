@@ -97,7 +97,7 @@ export const WithText: Story = {
     max: 100,
     showText: '任务进度',
     processColor: 'rgb(251, 191, 36)',
-    successColor: 'rgb(34, 197, 94)',
+    successColor: '#51AC65',
     width: '100%',
     strokeWidth: '12px',
   },
@@ -119,7 +119,7 @@ export const ThickProgress: Story = {
     value: 45,
     max: 100,
     processColor: 'rgb(168, 85, 247)',
-    successColor: 'rgb(34, 197, 94)',
+    successColor: '#51AC65',
     width: '100%',
     strokeWidth: '20px',
     showText: '粗进度条',
@@ -132,7 +132,7 @@ export const SlowAnimation: Story = {
     value: 90,
     max: 100,
     processColor: 'rgb(59, 130, 246)',
-    successColor: 'rgb(34, 197, 94)',
+    successColor: '#51AC65',
     width: '100%',
     strokeWidth: '8px',
     animationDuration: 1500,
@@ -182,7 +182,7 @@ export const AnimatedDemo: Story = {
   args: {
     max: 100,
     processColor: 'rgb(59, 130, 246)',
-    successColor: 'rgb(34, 197, 94)',
+    successColor: '#51AC65',
     showText: '自动演示',
     animationDuration: 800,
   },
@@ -204,7 +204,7 @@ export const ColorTransition: Story = {
           processColor='rgb(59, 130, 246)'
           showText='进行中'
           strokeWidth='10px'
-          successColor='rgb(34, 197, 94)'
+          successColor='#51AC65'
           value={60}
           width='100%'
         />
@@ -215,7 +215,7 @@ export const ColorTransition: Story = {
           processColor='rgb(59, 130, 246)'
           showText='即将完成'
           strokeWidth='10px'
-          successColor='rgb(34, 197, 94)'
+          successColor='#51AC65'
           value={95}
           width='100%'
         />
@@ -226,7 +226,7 @@ export const ColorTransition: Story = {
           processColor='rgb(59, 130, 246)'
           showText='已完成'
           strokeWidth='10px'
-          successColor='rgb(34, 197, 94)'
+          successColor='#51AC65'
           value={100}
           width='100%'
         />
@@ -252,7 +252,7 @@ export const MultipleProgress: Story = {
           processColor='rgb(251, 191, 36)'
           showText='CPU使用率'
           strokeWidth='8px'
-          successColor='rgb(34, 197, 94)'
+          successColor='#51AC65'
           type='linear'
           value={65}
           width='100%'
@@ -264,7 +264,7 @@ export const MultipleProgress: Story = {
           processColor='rgb(239, 68, 68)'
           showText='内存使用率'
           strokeWidth='8px'
-          successColor='rgb(34, 197, 94)'
+          successColor='#51AC65'
           type='linear'
           value={85}
           width='100%'
@@ -276,7 +276,7 @@ export const MultipleProgress: Story = {
           processColor='rgb(59, 130, 246)'
           showText='磁盘使用率'
           strokeWidth='8px'
-          successColor='rgb(34, 197, 94)'
+          successColor='#51AC65'
           type='linear'
           value={45}
           width='100%'
@@ -316,7 +316,7 @@ export const CircularWithText: Story = {
     strokeWidth: '8px',
     showText: '下载进度',
     processColor: 'rgb(59, 130, 246)',
-    successColor: 'rgb(34, 197, 94)',
+    successColor: '#51AC65',
   },
 };
 
@@ -329,7 +329,7 @@ export const CircularSmall: Story = {
     height: 80,
     strokeWidth: '6px',
     processColor: 'rgb(168, 85, 247)',
-    successColor: 'rgb(34, 197, 94)',
+    successColor: '#51AC65',
   },
 };
 
@@ -342,7 +342,7 @@ export const CircularLarge: Story = {
     height: 160,
     strokeWidth: '12px',
     processColor: 'rgb(251, 191, 36)',
-    successColor: 'rgb(34, 197, 94)',
+    successColor: '#51AC65',
     showText: '系统状态',
   },
 };
@@ -356,7 +356,7 @@ export const CircularComplete: Story = {
     height: 120,
     strokeWidth: '8px',
     processColor: 'rgb(59, 130, 246)',
-    successColor: 'rgb(34, 197, 94)',
+    successColor: '#51AC65',
     showText: '已完成',
   },
 };
@@ -372,7 +372,7 @@ export const TypeComparison: Story = {
             processColor='rgb(59, 130, 246)'
             showText='任务A'
             strokeWidth='10px'
-            successColor='rgb(34, 197, 94)'
+            successColor='#51AC65'
             type='linear'
             value={65}
             width='100%'
@@ -382,7 +382,7 @@ export const TypeComparison: Story = {
             processColor='rgb(251, 191, 36)'
             showText='任务B'
             strokeWidth='10px'
-            successColor='rgb(34, 197, 94)'
+            successColor='#51AC65'
             type='linear'
             value={100}
             width='100%'
@@ -398,7 +398,7 @@ export const TypeComparison: Story = {
             processColor='rgb(59, 130, 246)'
             showText='任务A'
             strokeWidth='8px'
-            successColor='rgb(34, 197, 94)'
+            successColor='#51AC65'
             type='circle'
             value={65}
             width={100}
@@ -409,7 +409,7 @@ export const TypeComparison: Story = {
             processColor='rgb(251, 191, 36)'
             showText='任务B'
             strokeWidth='8px'
-            successColor='rgb(34, 197, 94)'
+            successColor='#51AC65'
             type='circle'
             value={100}
             width={100}

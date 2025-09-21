@@ -25,7 +25,7 @@ export const CXProgress: React.FC<CXProgressProps> = (props: CXProgressProps) =>
     max = 100,
     color,
     processColor = '#1559EA',
-    successColor = 'rgb(34, 197, 94)',
+    successColor = '#51AC65',
     backgroundColor = '#DCEBFE',
     className,
     width = (props?.type ?? 'linear') === 'circle' ? 120 : '100%',

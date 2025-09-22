@@ -90,7 +90,7 @@ export const CXProgress: React.FC<CXProgressProps> = (props: CXProgressProps) =>
     return (
       <div className={cn('flex flex-col items-center', className)}>
         {showText && (
-          <div className='flex justify-center items-center mb-2 text-sm text-gray-700 gap-2'>
+          <div className='flex justify-center items-center mb-2 text-sm text-neutral-700 gap-2'>
             <span>{showText}</span>
             <span>{Math.round(percentage)}%</span>
           </div>
@@ -124,7 +124,9 @@ export const CXProgress: React.FC<CXProgressProps> = (props: CXProgressProps) =>
           </svg>
           {!showText && (
             <div className='absolute inset-0 flex items-center justify-center'>
-              <span className='text-sm font-medium text-gray-700'>{Math.round(percentage)}%</span>
+              <span className='text-sm font-medium text-neutral-700'>
+                {Math.round(percentage)}%
+              </span>
             </div>
           )}
         </div>
@@ -135,7 +137,7 @@ export const CXProgress: React.FC<CXProgressProps> = (props: CXProgressProps) =>
   return (
     <div className={cn('w-full', className)}>
       {showText && (
-        <div className='flex justify-start items-center mb-2 text-sm text-gray-700 gap-2'>
+        <div className='flex justify-start items-center mb-2 text-sm text-neutral-700 gap-2'>
           <span>{showText}</span>
           <span>{Math.round(percentage)}%</span>
         </div>

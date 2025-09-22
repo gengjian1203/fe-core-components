@@ -33,28 +33,28 @@ export interface CXCardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
 const variantClasses = {
   default: [
     // Light mode
-    'bg-white text-gray-900 border border-gray-200 rounded-lg',
+    'bg-white text-neutral-900 border border-neutral-200 rounded-lg',
     // Dark mode
-    'dark:bg-gray-800 dark:text-white dark:border-gray-700',
+    'dark_cx:bg-neutral-800 dark_cx:text-white dark_cx:border-neutral-700',
   ].join(' '),
   bordered: [
     // Light mode
-    'bg-white text-gray-900 border-2 border-gray-300 rounded-lg',
+    'bg-white text-neutral-900 border-2 border-neutral-300 rounded-lg',
     // Dark mode
-    'dark:bg-gray-800 dark:text-white dark:border-gray-600',
+    'dark_cx:bg-neutral-800 dark_cx:text-white dark_cx:border-neutral-600',
   ].join(' '),
   shadow: [
     // Light mode
-    'bg-white text-gray-900 border border-gray-200 rounded-lg shadow-lg hover:shadow-xl',
+    'bg-white text-neutral-900 border border-neutral-200 rounded-lg shadow-lg hover:shadow-xl',
     // Dark mode
-    'dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:shadow-gray-900/50',
+    'dark_cx:bg-neutral-800 dark_cx:text-white dark_cx:border-neutral-700 dark_cx:shadow-neutral-900/50',
     'transition-shadow duration-300',
   ].join(' '),
   minimal: [
     // Light mode
-    'bg-transparent text-gray-900 border-0 shadow-none rounded-none',
+    'bg-transparent text-neutral-900 border-0 shadow-none rounded-none',
     // Dark mode
-    'dark:text-white',
+    'dark_cx:text-white',
   ].join(' '),
 };
 
@@ -64,25 +64,25 @@ const statusColors = {
     // Light mode
     'border-l-4 border-l-green-500',
     // Dark mode - brighter green for better visibility
-    'dark:border-l-green-400',
+    'dark_cx:border-l-green-400',
   ].join(' '),
   warning: [
     // Light mode
     'border-l-4 border-l-yellow-500',
     // Dark mode - brighter yellow for better visibility
-    'dark:border-l-yellow-400',
+    'dark_cx:border-l-yellow-400',
   ].join(' '),
   error: [
     // Light mode
     'border-l-4 border-l-red-500',
     // Dark mode - brighter red for better visibility
-    'dark:border-l-red-400',
+    'dark_cx:border-l-red-400',
   ].join(' '),
   info: [
     // Light mode
     'border-l-4 border-l-blue-500',
     // Dark mode - brighter blue for better visibility
-    'dark:border-l-blue-400',
+    'dark_cx:border-l-blue-400',
   ].join(' '),
 };
 
@@ -102,11 +102,11 @@ const getAvatarSizeClass = (size: number | 'large' | 'small' | 'default'): strin
 
 const LoadingSpinner: React.FC = () => (
   <div className='animate-pulse'>
-    <div className='bg-gray-200 dark:bg-gray-700 rounded-lg h-48 mb-4' />
+    <div className='bg-neutral-200 dark_cx:bg-neutral-700 rounded-lg h-48 mb-4' />
     <div className='space-y-3'>
-      <div className='h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4' />
-      <div className='h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2' />
-      <div className='h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6' />
+      <div className='h-4 bg-neutral-200 dark_cx:bg-neutral-700 rounded-sm w-3/4' />
+      <div className='h-4 bg-neutral-200 dark_cx:bg-neutral-700 rounded-sm w-1/2' />
+      <div className='h-4 bg-neutral-200 dark_cx:bg-neutral-700 rounded-sm w-5/6' />
     </div>
   </div>
 );
@@ -140,11 +140,13 @@ export const CXCard: React.FC<CXCardProps> = ({
     if (!title && !extra && !headerIcon && !headerActions) return null;
 
     return (
-      <div className='px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between'>
+      <div className='px-6 py-4 border-b border-neutral-200 dark_cx:border-neutral-700 flex items-center justify-between'>
         <div className='flex items-center gap-2'>
-          {headerIcon && <span className='flex-shrink-0'>{headerIcon}</span>}
+          {headerIcon && <span className='shrink-0'>{headerIcon}</span>}
           {title && (
-            <span className='text-lg font-semibold text-gray-900 dark:text-white'>{title}</span>
+            <span className='text-lg font-semibold text-neutral-900 dark_cx:text-white'>
+              {title}
+            </span>
           )}
         </div>
         <div className='flex items-center gap-2'>
@@ -164,7 +166,7 @@ export const CXCard: React.FC<CXCardProps> = ({
       <div className='mb-4'>
         <div
           className={cn(
-            'rounded-full bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 flex items-center justify-center overflow-hidden',
+            'rounded-full bg-neutral-100 dark_cx:bg-neutral-700 border border-neutral-200 dark_cx:border-neutral-600 flex items-center justify-center overflow-hidden',
             sizeClass
           )}
         >
@@ -173,7 +175,9 @@ export const CXCard: React.FC<CXCardProps> = ({
           ) : (
             (avatar.icon ??
             (avatar.text ? (
-              <span className='font-medium text-gray-600 dark:text-gray-300'>{avatar.text}</span>
+              <span className='font-medium text-neutral-600 dark_cx:text-neutral-300'>
+                {avatar.text}
+              </span>
             ) : null))
           )}
         </div>
@@ -194,12 +198,13 @@ export const CXCard: React.FC<CXCardProps> = ({
                 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium',
                 tag.variant === 'outlined'
                   ? [
-                      'border border-gray-300 bg-transparent text-gray-700',
-                      'dark:border-gray-600 dark:text-gray-300',
+                      'border border-neutral-300 bg-transparent text-neutral-700',
+                      'dark_cx:border-neutral-600 dark_cx:text-neutral-300',
                     ].join(' ')
-                  : ['bg-blue-100 text-blue-800', 'dark:bg-blue-900/30 dark:text-blue-300'].join(
-                      ' '
-                    ),
+                  : [
+                      'bg-blue-100 text-blue-800',
+                      'dark_cx:bg-blue-900/30 dark_cx:text-blue-300',
+                    ].join(' '),
                 tag.color && `bg-${tag.color}-100 text-${tag.color}-800`
               )}
             >
@@ -219,8 +224,10 @@ export const CXCard: React.FC<CXCardProps> = ({
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-2'>
           {metadata.map((item, index) => (
             <div key={index} className='flex flex-col sm:flex-row sm:justify-between'>
-              <span className='text-gray-500 dark:text-gray-400 text-sm'>{item.label}:</span>
-              <span className='font-medium text-gray-900 dark:text-white'>{item.value}</span>
+              <span className='text-neutral-500 dark_cx:text-neutral-400 text-sm'>
+                {item.label}:
+              </span>
+              <span className='font-medium text-neutral-900 dark_cx:text-white'>{item.value}</span>
             </div>
           ))}
         </div>
@@ -246,7 +253,7 @@ export const CXCard: React.FC<CXCardProps> = ({
     if (!footer) return null;
 
     return (
-      <div className='px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50 rounded-b-lg'>
+      <div className='px-6 py-4 border-t border-neutral-200 dark_cx:border-neutral-700 bg-neutral-50 dark_cx:bg-neutral-700/50 rounded-b-lg'>
         {footer}
       </div>
     );
@@ -270,7 +277,8 @@ export const CXCard: React.FC<CXCardProps> = ({
         'transition-all duration-200',
         variantClasses[variant],
         statusColors[status],
-        clickable && ['cursor-pointer hover:shadow-md', 'dark:hover:shadow-gray-900/50'].join(' '),
+        clickable &&
+          ['cursor-pointer hover:shadow-md', 'dark_cx:hover:shadow-neutral-900/50'].join(' '),
         className
       )}
       role={clickable ? 'button' : undefined}

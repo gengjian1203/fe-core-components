@@ -1,6 +1,6 @@
-import { CXButton } from '@/components';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, within } from '@storybook/test';
+import { CXButton } from '../../Base';
 
 // Simple icon components to replace Ant Design icons
 const PlusIcon = () => <span>+</span>;
@@ -337,8 +337,8 @@ export const WithIcons: Story = {
     await expect(downloadIcon).toBe(true);
 
     // 验证按钮包含图标容器
-    const renderLeftContentSpan = addBtn?.querySelector('.flex-shrink-0');
-    const renderRightContentSpan = downloadBtn?.querySelector('.flex-shrink-0');
+    const renderLeftContentSpan = addBtn?.querySelector('.shrink-0');
+    const renderRightContentSpan = downloadBtn?.querySelector('.shrink-0');
 
     await expect(renderLeftContentSpan).toBeInTheDocument();
     await expect(renderRightContentSpan).toBeInTheDocument();

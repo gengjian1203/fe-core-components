@@ -2,7 +2,9 @@
 
 ## 展示文档
 
-[https://fe-component.cosx.dev/](https://fe-component.cosx.dev/)
+**Storybook 交互式文档**: [https://cosxaiai.github.io/fe-core-components/](https://cosxaiai.github.io/fe-core-components/)
+
+**项目仓库**: [https://github.com/cosxaiai/fe-core-components](https://github.com/cosxaiai/fe-core-components)
 
 ## 1. 项目简介特性
 
@@ -26,18 +28,22 @@
 采用**修改版原子化设计**理念，将组件分为两个主要层级：
 
 - **Base Components** (`src/components/Base/`) - 基础组件，提供核心功能
-  - `CXButton` - 增强版按钮，支持 5 种变体、图标配置、加载状态
+  - `CXButton` - 增强版按钮，支持多种变体、图标配置、加载状态
   - `CXIcon` - 内置图标组件，包含丰富的 SVG 图标集
+  - `CXProgress` - 进度条组件，支持多种样式和动画效果
+  - `CXStep` - 步骤组件，支持水平和垂直布局
+  - `CXDemo` - 演示组件，用于展示和测试
 - **Case Components** (`src/components/Case/`) - 复合组件，适用于复杂业务场景
   - `CXCard` - 功能丰富的卡片组件，支持头像、标签、元数据、状态指示
 - **Pilot Components** (`src/components/Pilot/`) - 专业试点组件，适用于特定业务场景
   - `CXCardPilot` - 客户信息卡片组件，支持摘要展开、操作按钮和客户信息展示
+  - `CXCardWorkflow` - 工作流卡片组件，支持状态显示和操作按钮
 
 ### 1.3 技术栈
 
 - **React** 19.x - 最新 React 特性支持
 - **TypeScript** 5.x - 严格类型检查
-- **Tailwind CSS** 3.x - 原子化 CSS 框架
+- **Tailwind CSS** 4.x - 新一代原子化 CSS 框架
 - **Storybook** 9.x - 组件开发与文档
 - **Rollup** - 模块打包工具
 - **pnpm** - 高效包管理器
@@ -83,7 +89,7 @@ yarn add @cosxai/fe-core-components
 
 ```bash
 # 安装必需的对等依赖（项目中如果已经存在则不用安装）
-pnpm add react react-dom tailwindcss
+pnpm add react react-dom tailwindcss@4
 ```
 
 ### 2.4 快速集成
@@ -109,21 +115,35 @@ import '@cosxai/fe-core-components/dist/styles.css'; // 完整路径导入样式
 ### 2.5 基础使用示例
 
 ```tsx
-import { CXButton, CXCard, CXIcon, CXCardPilot } from '@cosxai/fe-core-components';
+import {
+  CXButton,
+  CXCard,
+  CXProgress,
+  CXStep,
+  CXCardPilot,
+  CXCardWorkflow,
+  CXIconGoogle,
+  CXIconLoading,
+  CXIconCompleted,
+  CXIconEdit,
+  CXIconFailed,
+  CXIconDashboard,
+  CXIconFormItemVisaType,
+} from '@cosxai/fe-core-components';
 
 function App() {
   return (
-    <div className='p-6 space-y-4'>
+    <div className='p-6 space-y-6'>
       {/* 基础图标组件 */}
-      <div className='flex items-center space-x-4 mb-4'>
-        <CXIcon name='IconGoogle' size={26} />
-        <CXIcon name='IconLoading' size={20} className='text-blue-500' />
-        <CXIcon name='IconCompleted' size={16} />
-        <CXIcon name='IconFailed' size={16} />
+      <div className='flex items-center space-x-4'>
+        <CXIconGoogle size={26} />
+        <CXIconLoading size={20} className='text-blue-500' />
+        <CXIconCompleted size={16} />
+        <CXIconFailed size={16} />
       </div>
 
       {/* 基础按钮组件 */}
-      <div className='space-y-2'>
+      <div className='space-y-3'>
         <div className='flex gap-4 flex-wrap'>
           <CXButton variant='primary'>Primary</CXButton>
           <CXButton variant='default'>Default</CXButton>
@@ -141,14 +161,32 @@ function App() {
         </div>
       </div>
 
+      {/* 进度条组件 */}
+      <div className='space-y-4'>
+        <CXProgress value={30} showLabel label='进度 30%' />
+        <CXProgress value={65} variant='success' showLabel />
+        <CXProgress value={90} variant='warning' />
+      </div>
+
+      {/* 步骤组件 */}
+      <CXStep
+        current={2}
+        steps={[
+          { title: '完成注册', description: '用户信息填写完成' },
+          { title: '验证身份', description: '正在验证用户身份' },
+          { title: '完成设置', description: '完成账户设置' },
+          { title: '开始使用', description: '开始使用服务' }
+        ]}
+      />
+
       {/* 复合卡片组件 */}
       <CXCard
         title='项目概览'
         variant='shadow'
         status='success'
-        headerIcon={<CXIcon name='IconDashboard' size={16} />}
+        headerIcon={<CXIconDashboard size={16} />}
         avatar={{
-          icon: <CXIcon name='IconFormItemVisaType' size={16} />,
+          icon: <CXIconFormItemVisaType size={16} />,
           size: 'default',
         }}
         tags={[
@@ -164,14 +202,14 @@ function App() {
             <CXButton
               size='small'
               variant='ghost'
-              renderLeftContent={() => <CXIcon name='IconEdit' size={14} />}
+              renderLeftContent={() => <CXIconEdit size={14} />}
             >
               编辑
             </CXButton>
             <CXButton
               size='small'
               variant='primary'
-              renderRightContent={() => <CXIcon name='IconCompleted' size={14} />}
+              renderRightContent={() => <CXIconCompleted size={14} />}
             >
               确认
             </CXButton>
@@ -208,133 +246,15 @@ function App() {
         onBtnDownloadClick={() => console.log('Download form clicked')}
         onBtnStartClick={() => console.log('Start auto-fill clicked')}
       />
+
+      {/* 工作流卡片组件 */}
+      <CXCardWorkflow
+        title='申请审批流程'
+        status='进行中'
+        description='正在处理您的申请材料'
+        onActionClick={() => console.log('查看详情')}
+      />
     </div>
-  );
-}
-```
-
-### 2.6 CXCardPilot 专业组件特性
-
-`CXCardPilot` 是专为客户信息管理设计的专业卡片组件，特别适合移民、法务等专业领域：
-
-#### 2.6.1 核心功能
-
-- **客户信息展示** - 显示客户姓名、邮箱、国籍、签证类型等关键信息
-- **可展开摘要** - 支持自定义摘要内容，点击可展开/收起
-- **操作按钮** - 内置下载表单和开始自动填表功能按钮
-- **响应式设计** - 自适应不同屏幕宽度，文本自动截断
-- **按钮状态控制** - 支持禁用特定操作按钮
-
-#### 2.6.2 使用场景
-
-```tsx
-// 基础使用
-<CXCardPilot
-  clientName="John Smith"
-  clientEmail="john.smith@email.com"
-  clientNationality="United States"
-  clientVisaType="Tourist Visa"
-/>
-
-// 完整功能演示
-<CXCardPilot
-  clientName="Ahmed Hassan"
-  clientEmail="ahmed.hassan@email.com"
-  clientNationality="Iraq"
-  clientVisaType="Skilled Worker Visa"
-  isDisabledBtnDownload={false}
-  isDisabledBtnStart={false}
-  renderSummaryContent={() => (
-    <div className="p-4">
-      <h4 className="font-semibold mb-2">Application Details</h4>
-      <ul className="text-sm space-y-1">
-        <li>• Education: Master's degree</li>
-        <li>• Experience: 5+ years</li>
-        <li>• Language: IELTS 8.0</li>
-      </ul>
-    </div>
-  )}
-  onBtnDownloadClick={() => handleDownload()}
-  onBtnStartClick={() => handleAutoFill()}
-/>
-```
-
-### 2.7 TypeScript 类型支持
-
-组件库提供完整的 TypeScript 类型定义：
-
-```tsx
-import type {
-  CXButtonProps,
-  CXCardProps,
-  CXCardPilotProps,
-  IconName,
-} from '@cosxai/fe-core-components';
-
-// 完整的类型支持和智能提示
-const MyButton: React.FC<CXButtonProps> = props => {
-  return <CXButton {...props} />;
-};
-
-// CXCardPilot 类型支持
-const MyPilotCard: React.FC<CXCardPilotProps> = props => {
-  return <CXCardPilot {...props} />;
-};
-
-// 图标名称有完整的类型约束
-const iconName: IconName = 'IconFormItemVisaType'; // TypeScript 智能提示可用图标
-const MyIcon = () => <CXIcon name={iconName} width={20} height={20} />;
-```
-
-### 2.8 不同框架集成
-
-#### 2.8.1 React + Vite 项目
-
-```bash
-# 安装依赖
-pnpm add @cosxai/fe-core-components tailwindcss
-
-# 配置 vite.config.ts
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-
-export default defineConfig({
-  plugins: [react()]
-});
-```
-
-在 `main.tsx` 中导入：
-
-```tsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import '@cosxai/fe-core-components/styles'; // 导入样式文件（必须）
-import App from './App.tsx';
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-```
-
-#### 2.8.2 Next.js 项目
-
-```bash
-# 安装依赖
-pnpm add @cosxai/fe-core-components tailwindcss
-```
-
-在 `app/layout.tsx` 中：
-
-```tsx
-import '@cosxai/fe-core-components/styles'; // 导入样式文件（必须）
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang='zh'>
-      <body>{children}</body>
-    </html>
   );
 }
 ```
@@ -371,7 +291,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ## 🙏 致谢
 
 - [React](https://reactjs.org/) - UI 库
-- [CXIcon](./src/components/Base/CXIcon/) - 内置图标组件，基于 Lucide 图标
+- [CXIcon](./src/components/Base/CXIcon/) - 内置图标组件，包含丰富的 SVG 图标集
 - [TypeScript](https://www.typescriptlang.org/) - 类型系统
 - [Tailwind CSS](https://tailwindcss.com/) - CSS 框架
 - [Storybook](https://storybook.js.org/) - 组件开发工具

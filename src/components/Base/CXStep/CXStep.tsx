@@ -1,6 +1,6 @@
-import { CXIcon } from '@/components';
 import { cn } from '@/utils';
 import React from 'react';
+import { CXIconCheckGreen, CXIconFailed } from '../../Base/CXIcon';
 
 export type CXStepStatus = 'wait' | 'process' | 'finish' | 'error';
 
@@ -47,11 +47,9 @@ const StepIcon: React.FC<{
   const getStatusIcon = (): React.ReactNode => {
     switch (status) {
       case 'finish':
-        return <CXIcon height={iconSize} name='IconCheckGreen' width={iconSize} />;
+        return <CXIconCheckGreen height={iconSize} width={iconSize} />;
       case 'error':
-        return (
-          <CXIcon className={containerSize} height={iconSize} name='IconFailed' width={iconSize} />
-        );
+        return <CXIconFailed className={containerSize} height={iconSize} width={iconSize} />;
       case 'process':
       case 'wait':
       default:
@@ -77,14 +75,14 @@ const StepIcon: React.FC<{
         return 'bg-primary border-primary text-white';
       case 'wait':
       default:
-        return 'bg-[#D0D0D4] border-[#D0D0D4] text-[#FFFFFF] dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300';
+        return 'bg-[#D0D0D4] border-[#D0D0D4] text-[#FFFFFF] dark_cx:bg-neutral-700 dark_cx:border-neutral-600 dark_cx:text-neutral-300';
     }
   };
 
   return (
     <div
       className={cn(
-        'rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all duration-200',
+        'rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-200',
         containerSize,
         getStatusClasses()
       )}
@@ -116,7 +114,7 @@ const StepConnector: React.FC<{
         <div
           className={cn(
             'h-px w-full transition-all duration-300',
-            isCompleted ? 'bg-primary' : 'bg-[#D0D0D4] dark:bg-gray-600'
+            isCompleted ? 'bg-primary' : 'bg-[#D0D0D4] dark_cx:bg-neutral-600'
           )}
         />
       </div>
@@ -135,7 +133,7 @@ const StepConnector: React.FC<{
     <div
       className={cn(
         'absolute w-px transition-all duration-300',
-        isCompleted ? 'bg-primary' : 'bg-[#D0D0D4] dark:bg-gray-600'
+        isCompleted ? 'bg-primary' : 'bg-[#D0D0D4] dark_cx:bg-neutral-600'
       )}
       style={{
         left: `${leftPosition}px`,
@@ -205,9 +203,9 @@ const CXStep: React.FC<CXStepProps> = ({
               'font-medium transition-colors duration-200 text-left leading-none',
               size === 'small' ? 'text-sm' : 'text-base',
               status === 'process' && 'text-primary',
-              status === 'finish' && 'text-gray-900 dark:text-gray-100',
+              status === 'finish' && 'text-neutral-900 dark_cx:text-neutral-100',
               status === 'error' && 'text-red-500',
-              status === 'wait' && 'text-gray-500 dark:text-gray-400'
+              status === 'wait' && 'text-neutral-500 dark_cx:text-neutral-400'
             )}
           >
             {title}
@@ -217,7 +215,7 @@ const CXStep: React.FC<CXStepProps> = ({
               className={cn(
                 'transition-colors duration-200 mt-1 text-left',
                 size === 'small' ? 'text-xs' : 'text-sm',
-                'text-gray-500 dark:text-gray-400'
+                'text-neutral-500 dark_cx:text-neutral-400'
               )}
             >
               {description}
@@ -266,9 +264,9 @@ const CXStep: React.FC<CXStepProps> = ({
               'font-medium transition-colors duration-200 text-left',
               size === 'small' ? 'text-sm' : 'text-base',
               status === 'process' && 'text-primary',
-              status === 'finish' && 'text-gray-900 dark:text-gray-100',
+              status === 'finish' && 'text-neutral-900 dark_cx:text-neutral-100',
               status === 'error' && 'text-red-500',
-              status === 'wait' && 'text-gray-500 dark:text-gray-400'
+              status === 'wait' && 'text-neutral-500 dark_cx:text-neutral-400'
             )}
           >
             {title}
@@ -278,7 +276,7 @@ const CXStep: React.FC<CXStepProps> = ({
               className={cn(
                 'transition-colors duration-200 mt-1 text-left',
                 size === 'small' ? 'text-xs' : 'text-sm',
-                'text-gray-500 dark:text-gray-400'
+                'text-neutral-500 dark_cx:text-neutral-400'
               )}
             >
               {description}

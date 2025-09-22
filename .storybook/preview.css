@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-
 /* 确保 docs-story 容器具有正确的样式 */
 .docs-story {
   width: 100%;

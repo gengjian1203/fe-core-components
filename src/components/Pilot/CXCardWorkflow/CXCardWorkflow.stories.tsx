@@ -1,7 +1,8 @@
-import { CXButton, CXIcon, CXSteps } from '@/components';
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import React, { useEffect, useState } from 'react';
+import { CXButton, CXSteps } from '../../Base';
+import { CXIconRefresh } from '../../Base/CXIcon';
 import type { CXCardWorkflowProps } from './CXCardWorkflow';
 import { CXCardWorkflow } from './CXCardWorkflow';
 
@@ -164,14 +165,14 @@ export const OnHold: Story = {
     isInterrupt: false,
     renderActivitiesContent: () => (
       <div className='space-y-4 py-3'>
-        <div className='text-sm text-gray-600 mb-3'>
+        <div className='text-sm text-neutral-600 mb-3'>
           Workflow is on hold. Ready to start processing.
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-gray-300 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-neutral-300 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-500'>Waiting for user input</div>
-            <div className='text-xs text-gray-400 mt-1'>Click Start to begin processing</div>
+            <div className='text-sm font-medium text-neutral-500'>Waiting for user input</div>
+            <div className='text-xs text-neutral-400 mt-1'>Click Start to begin processing</div>
           </div>
         </div>
         <div className='bg-blue-50 p-3 rounded-lg'>
@@ -196,29 +197,29 @@ export const Running: Story = {
     renderActivitiesContent: () => (
       <div className='space-y-3 py-3'>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-green-500 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-green-500 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Document Upload</div>
+            <div className='text-sm font-medium text-neutral-900'>Document Upload</div>
             <div className='text-xs text-green-600 mt-1'>✓ Completed - 2.5MB processed</div>
           </div>
-          <div className='text-xs text-gray-500'>10:30 AM</div>
+          <div className='text-xs text-neutral-500'>10:30 AM</div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-blue-500 rounded-full flex-shrink-0 animate-pulse' />
+          <div className='w-3 h-3 bg-blue-500 rounded-full shrink-0 animate-pulse' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Content Analysis</div>
+            <div className='text-sm font-medium text-neutral-900'>Content Analysis</div>
             <div className='text-xs text-blue-600 mt-1'>🔄 Processing section 4 of 6</div>
-            <div className='w-full bg-gray-200 rounded-full h-1 mt-2'>
+            <div className='w-full bg-neutral-200 rounded-full h-1 mt-2'>
               <div className='bg-blue-500 h-1 rounded-full w-2/3 transition-all duration-300' />
             </div>
           </div>
-          <div className='text-xs text-gray-500'>Current</div>
+          <div className='text-xs text-neutral-500'>Current</div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-gray-300 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-neutral-300 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-500'>Legal Validation</div>
-            <div className='text-xs text-gray-400 mt-1'>⏳ Pending analysis completion</div>
+            <div className='text-sm font-medium text-neutral-500'>Legal Validation</div>
+            <div className='text-xs text-neutral-400 mt-1'>⏳ Pending analysis completion</div>
           </div>
         </div>
         <div className='bg-blue-50 p-3 rounded-lg mt-4'>
@@ -252,7 +253,7 @@ export const Interrupted: Story = {
       <div className='space-y-3 py-3'>
         <div className='bg-yellow-50 border border-yellow-200 p-3 rounded-lg mb-4'>
           <div className='flex items-center space-x-2'>
-            <div className='w-4 h-4 bg-yellow-500 rounded-full flex-shrink-0' />
+            <div className='w-4 h-4 bg-yellow-500 rounded-full shrink-0' />
             <div className='text-sm font-medium text-yellow-800'>Workflow Interrupted</div>
           </div>
           <div className='text-xs text-yellow-700 mt-1'>
@@ -260,14 +261,14 @@ export const Interrupted: Story = {
           </div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-green-500 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-green-500 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Initial Processing</div>
+            <div className='text-sm font-medium text-neutral-900'>Initial Processing</div>
             <div className='text-xs text-green-600 mt-1'>✓ Successfully completed</div>
           </div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-yellow-500 rounded-full flex-shrink-0 animate-pulse' />
+          <div className='w-3 h-3 bg-yellow-500 rounded-full shrink-0 animate-pulse' />
           <div className='flex-1'>
             <div className='text-sm font-medium text-yellow-800'>Content Review</div>
             <div className='text-xs text-yellow-700 mt-1'>⚠️ Manual review required</div>
@@ -275,10 +276,10 @@ export const Interrupted: Story = {
           </div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-gray-300 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-neutral-300 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-500'>Final Validation</div>
-            <div className='text-xs text-gray-400 mt-1'>⏸️ Paused until review complete</div>
+            <div className='text-sm font-medium text-neutral-500'>Final Validation</div>
+            <div className='text-xs text-neutral-400 mt-1'>⏸️ Paused until review complete</div>
           </div>
         </div>
         <div className='bg-red-50 p-3 rounded-lg mt-4'>
@@ -304,7 +305,7 @@ export const Completed: Story = {
       <div className='space-y-3 py-3'>
         <div className='bg-green-50 border border-green-200 p-3 rounded-lg mb-4'>
           <div className='flex items-center space-x-2'>
-            <div className='w-4 h-4 bg-green-500 rounded-full flex-shrink-0' />
+            <div className='w-4 h-4 bg-green-500 rounded-full shrink-0' />
             <div className='text-sm font-medium text-green-800'>
               Workflow Completed Successfully
             </div>
@@ -314,40 +315,40 @@ export const Completed: Story = {
           </div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-green-500 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-green-500 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Document Processing</div>
+            <div className='text-sm font-medium text-neutral-900'>Document Processing</div>
             <div className='text-xs text-green-600 mt-1'>✓ 156 pages processed successfully</div>
           </div>
-          <div className='text-xs text-gray-500'>10:30 AM</div>
+          <div className='text-xs text-neutral-500'>10:30 AM</div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-green-500 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-green-500 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Legal Analysis</div>
+            <div className='text-sm font-medium text-neutral-900'>Legal Analysis</div>
             <div className='text-xs text-green-600 mt-1'>
               ✓ 47 clauses analyzed, 3 recommendations generated
             </div>
           </div>
-          <div className='text-xs text-gray-500'>10:35 AM</div>
+          <div className='text-xs text-neutral-500'>10:35 AM</div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-green-500 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-green-500 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Compliance Check</div>
+            <div className='text-sm font-medium text-neutral-900'>Compliance Check</div>
             <div className='text-xs text-green-600 mt-1'>✓ No compliance issues detected</div>
           </div>
-          <div className='text-xs text-gray-500'>10:38 AM</div>
+          <div className='text-xs text-neutral-500'>10:38 AM</div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-green-500 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-green-500 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Report Generation</div>
+            <div className='text-sm font-medium text-neutral-900'>Report Generation</div>
             <div className='text-xs text-green-600 mt-1'>
               ✓ Comprehensive report generated (PDF, 24 pages)
             </div>
           </div>
-          <div className='text-xs text-gray-500'>10:38 AM</div>
+          <div className='text-xs text-neutral-500'>10:38 AM</div>
         </div>
         <div className='grid grid-cols-2 gap-3 mt-4'>
           <div className='bg-blue-50 p-3 rounded-lg'>
@@ -355,10 +356,10 @@ export const Completed: Story = {
             <div className='text-xs text-blue-700 mt-1'>Risk Level: Low</div>
             <div className='text-xs text-blue-700'>Confidence: 94%</div>
           </div>
-          <div className='bg-gray-50 p-3 rounded-lg'>
-            <div className='text-xs font-medium text-gray-800'>Output Files</div>
-            <div className='text-xs text-gray-700 mt-1'>• Analysis Report</div>
-            <div className='text-xs text-gray-700'>• Compliance Summary</div>
+          <div className='bg-neutral-50 p-3 rounded-lg'>
+            <div className='text-xs font-medium text-neutral-800'>Output Files</div>
+            <div className='text-xs text-neutral-700 mt-1'>• Analysis Report</div>
+            <div className='text-xs text-neutral-700'>• Compliance Summary</div>
           </div>
         </div>
       </div>
@@ -372,19 +373,19 @@ export const WithMidContent: Story = {
     pilotStatus: 'RUNNING',
     workflowPercent: 75,
     renderMidContent: () => (
-      <div className='p-4 bg-gray-50 rounded-lg'>
-        <h4 className='text-sm font-medium text-gray-900 mb-2'>Processing Status</h4>
+      <div className='p-4 bg-neutral-50 rounded-lg'>
+        <h4 className='text-sm font-medium text-neutral-900 mb-2'>Processing Status</h4>
         <div className='space-y-1'>
           <div className='flex justify-between text-xs'>
-            <span className='text-gray-600'>Pages Analyzed:</span>
+            <span className='text-neutral-600'>Pages Analyzed:</span>
             <span className='font-medium'>45/60</span>
           </div>
           <div className='flex justify-between text-xs'>
-            <span className='text-gray-600'>Key Terms Found:</span>
+            <span className='text-neutral-600'>Key Terms Found:</span>
             <span className='font-medium'>23</span>
           </div>
           <div className='flex justify-between text-xs'>
-            <span className='text-gray-600'>Estimated Time:</span>
+            <span className='text-neutral-600'>Estimated Time:</span>
             <span className='font-medium'>5 min remaining</span>
           </div>
         </div>
@@ -401,24 +402,24 @@ export const WithActivities: Story = {
     renderActivitiesContent: () => (
       <div className='space-y-3 py-3'>
         <div className='flex items-start space-x-3'>
-          <div className='w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0' />
+          <div className='w-2 h-2 bg-green-500 rounded-full mt-2 shrink-0' />
           <div>
-            <div className='text-sm font-medium text-gray-900'>Document Upload</div>
-            <div className='text-xs text-gray-500'>Completed at 10:30 AM</div>
+            <div className='text-sm font-medium text-neutral-900'>Document Upload</div>
+            <div className='text-xs text-neutral-500'>Completed at 10:30 AM</div>
           </div>
         </div>
         <div className='flex items-start space-x-3'>
-          <div className='w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0' />
+          <div className='w-2 h-2 bg-blue-500 rounded-full mt-2 shrink-0' />
           <div>
-            <div className='text-sm font-medium text-gray-900'>Content Analysis</div>
-            <div className='text-xs text-gray-500'>In progress - 60% complete</div>
+            <div className='text-sm font-medium text-neutral-900'>Content Analysis</div>
+            <div className='text-xs text-neutral-500'>In progress - 60% complete</div>
           </div>
         </div>
         <div className='flex items-start space-x-3'>
-          <div className='w-2 h-2 bg-gray-300 rounded-full mt-2 flex-shrink-0' />
+          <div className='w-2 h-2 bg-neutral-300 rounded-full mt-2 shrink-0' />
           <div>
-            <div className='text-sm font-medium text-gray-500'>Compliance Check</div>
-            <div className='text-xs text-gray-400'>Waiting...</div>
+            <div className='text-sm font-medium text-neutral-500'>Compliance Check</div>
+            <div className='text-xs text-neutral-400'>Waiting...</div>
           </div>
         </div>
       </div>
@@ -439,7 +440,7 @@ export const DisabledButtons: Story = {
       <div className='space-y-3 py-3'>
         <div className='bg-orange-50 border border-orange-200 p-3 rounded-lg mb-4'>
           <div className='flex items-center space-x-2'>
-            <div className='w-4 h-4 bg-orange-500 rounded-full flex-shrink-0' />
+            <div className='w-4 h-4 bg-orange-500 rounded-full shrink-0' />
             <div className='text-sm font-medium text-orange-800'>Restricted Access Mode</div>
           </div>
           <div className='text-xs text-orange-700 mt-1'>
@@ -447,41 +448,41 @@ export const DisabledButtons: Story = {
           </div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-green-500 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-green-500 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Initial Scan</div>
+            <div className='text-sm font-medium text-neutral-900'>Initial Scan</div>
             <div className='text-xs text-green-600 mt-1'>✓ Document structure validated</div>
           </div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-blue-500 rounded-full flex-shrink-0 animate-pulse' />
+          <div className='w-3 h-3 bg-blue-500 rounded-full shrink-0 animate-pulse' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Content Processing</div>
+            <div className='text-sm font-medium text-neutral-900'>Content Processing</div>
             <div className='text-xs text-blue-600 mt-1'>🔄 Processing with limited access</div>
             <div className='text-xs text-orange-600 mt-1'>⚠️ Some features restricted</div>
           </div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-gray-300 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-neutral-300 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-500'>Advanced Analysis</div>
-            <div className='text-xs text-gray-400 mt-1'>🔒 Requires elevated permissions</div>
+            <div className='text-sm font-medium text-neutral-500'>Advanced Analysis</div>
+            <div className='text-xs text-neutral-400 mt-1'>🔒 Requires elevated permissions</div>
           </div>
         </div>
-        <div className='bg-gray-50 p-3 rounded-lg mt-4'>
-          <div className='text-xs font-medium text-gray-800 mb-2'>Access Restrictions:</div>
+        <div className='bg-neutral-50 p-3 rounded-lg mt-4'>
+          <div className='text-xs font-medium text-neutral-800 mb-2'>Access Restrictions:</div>
           <div className='space-y-1'>
             <div className='flex items-center space-x-2'>
               <div className='w-2 h-2 bg-red-400 rounded-full' />
-              <span className='text-xs text-gray-600'>Download functionality disabled</span>
+              <span className='text-xs text-neutral-600'>Download functionality disabled</span>
             </div>
             <div className='flex items-center space-x-2'>
               <div className='w-2 h-2 bg-red-400 rounded-full' />
-              <span className='text-xs text-gray-600'>Manual restart disabled</span>
+              <span className='text-xs text-neutral-600'>Manual restart disabled</span>
             </div>
             <div className='flex items-center space-x-2'>
               <div className='w-2 h-2 bg-yellow-400 rounded-full' />
-              <span className='text-xs text-gray-600'>Limited processing scope</span>
+              <span className='text-xs text-neutral-600'>Limited processing scope</span>
             </div>
           </div>
         </div>
@@ -501,7 +502,7 @@ export const HiddenButtons: Story = {
       <div className='space-y-3 py-3'>
         <div className='bg-blue-50 border border-blue-200 p-3 rounded-lg mb-4'>
           <div className='flex items-center space-x-2'>
-            <div className='w-4 h-4 bg-blue-500 rounded-full flex-shrink-0' />
+            <div className='w-4 h-4 bg-blue-500 rounded-full shrink-0' />
             <div className='text-sm font-medium text-blue-800'>Read-Only Mode</div>
           </div>
           <div className='text-xs text-blue-700 mt-1'>
@@ -509,42 +510,42 @@ export const HiddenButtons: Story = {
           </div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-green-500 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-green-500 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Document Processing</div>
+            <div className='text-sm font-medium text-neutral-900'>Document Processing</div>
             <div className='text-xs text-green-600 mt-1'>✓ Completed successfully</div>
           </div>
-          <div className='text-xs text-gray-500'>12:30 PM</div>
+          <div className='text-xs text-neutral-500'>12:30 PM</div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-blue-500 rounded-full flex-shrink-0 animate-pulse' />
+          <div className='w-3 h-3 bg-blue-500 rounded-full shrink-0 animate-pulse' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Data Validation</div>
+            <div className='text-sm font-medium text-neutral-900'>Data Validation</div>
             <div className='text-xs text-blue-600 mt-1'>🔄 In progress - 75% complete</div>
           </div>
-          <div className='text-xs text-gray-500'>Current</div>
+          <div className='text-xs text-neutral-500'>Current</div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-gray-300 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-neutral-300 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-500'>Report Generation</div>
-            <div className='text-xs text-gray-400 mt-1'>⏳ Waiting for validation</div>
+            <div className='text-sm font-medium text-neutral-500'>Report Generation</div>
+            <div className='text-xs text-neutral-400 mt-1'>⏳ Waiting for validation</div>
           </div>
         </div>
-        <div className='bg-gray-50 p-3 rounded-lg mt-4'>
-          <div className='text-xs font-medium text-gray-800 mb-2'>View Permissions:</div>
+        <div className='bg-neutral-50 p-3 rounded-lg mt-4'>
+          <div className='text-xs font-medium text-neutral-800 mb-2'>View Permissions:</div>
           <div className='space-y-1'>
             <div className='flex items-center space-x-2'>
               <div className='w-2 h-2 bg-green-400 rounded-full' />
-              <span className='text-xs text-gray-600'>Progress monitoring enabled</span>
+              <span className='text-xs text-neutral-600'>Progress monitoring enabled</span>
             </div>
             <div className='flex items-center space-x-2'>
               <div className='w-2 h-2 bg-green-400 rounded-full' />
-              <span className='text-xs text-gray-600'>Activity timeline visible</span>
+              <span className='text-xs text-neutral-600'>Activity timeline visible</span>
             </div>
             <div className='flex items-center space-x-2'>
               <div className='w-2 h-2 bg-red-400 rounded-full' />
-              <span className='text-xs text-gray-600'>Control buttons hidden</span>
+              <span className='text-xs text-neutral-600'>Control buttons hidden</span>
             </div>
           </div>
         </div>
@@ -564,7 +565,7 @@ export const OnlyDownloadButton: Story = {
       <div className='space-y-3 py-3'>
         <div className='bg-green-50 border border-green-200 p-3 rounded-lg mb-4'>
           <div className='flex items-center space-x-2'>
-            <div className='w-4 h-4 bg-green-500 rounded-full flex-shrink-0' />
+            <div className='w-4 h-4 bg-green-500 rounded-full shrink-0' />
             <div className='text-sm font-medium text-green-800'>Automated Workflow Complete</div>
           </div>
           <div className='text-xs text-green-700 mt-1'>
@@ -572,43 +573,43 @@ export const OnlyDownloadButton: Story = {
           </div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-green-500 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-green-500 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Automated Processing</div>
+            <div className='text-sm font-medium text-neutral-900'>Automated Processing</div>
             <div className='text-xs text-green-600 mt-1'>✓ Completed without intervention</div>
           </div>
-          <div className='text-xs text-gray-500'>2:15 PM</div>
+          <div className='text-xs text-neutral-500'>2:15 PM</div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-green-500 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-green-500 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Quality Assurance</div>
+            <div className='text-sm font-medium text-neutral-900'>Quality Assurance</div>
             <div className='text-xs text-green-600 mt-1'>✓ All checks passed</div>
           </div>
-          <div className='text-xs text-gray-500'>2:18 PM</div>
+          <div className='text-xs text-neutral-500'>2:18 PM</div>
         </div>
         <div className='flex items-center space-x-3'>
-          <div className='w-3 h-3 bg-green-500 rounded-full flex-shrink-0' />
+          <div className='w-3 h-3 bg-green-500 rounded-full shrink-0' />
           <div className='flex-1'>
-            <div className='text-sm font-medium text-gray-900'>Final Report</div>
+            <div className='text-sm font-medium text-neutral-900'>Final Report</div>
             <div className='text-xs text-green-600 mt-1'>✓ Generated and ready for download</div>
           </div>
-          <div className='text-xs text-gray-500'>2:20 PM</div>
+          <div className='text-xs text-neutral-500'>2:20 PM</div>
         </div>
         <div className='bg-blue-50 p-3 rounded-lg mt-4'>
           <div className='text-xs font-medium text-blue-800 mb-2'>Workflow Features:</div>
           <div className='space-y-1'>
             <div className='flex items-center space-x-2'>
               <div className='w-2 h-2 bg-green-400 rounded-full' />
-              <span className='text-xs text-gray-600'>Fully automated execution</span>
+              <span className='text-xs text-neutral-600'>Fully automated execution</span>
             </div>
             <div className='flex items-center space-x-2'>
               <div className='w-2 h-2 bg-green-400 rounded-full' />
-              <span className='text-xs text-gray-600'>Download functionality available</span>
+              <span className='text-xs text-neutral-600'>Download functionality available</span>
             </div>
             <div className='flex items-center space-x-2'>
-              <div className='w-2 h-2 bg-gray-400 rounded-full' />
-              <span className='text-xs text-gray-600'>Manual controls not needed</span>
+              <div className='w-2 h-2 bg-neutral-400 rounded-full' />
+              <span className='text-xs text-neutral-600'>Manual controls not needed</span>
             </div>
           </div>
         </div>
@@ -642,7 +643,7 @@ const AnimatedDemo: React.FC = () => {
     {
       title: (
         <div className='flex flex-row justify-between items-center'>
-          <div className='text-gray-700'>John Liu</div>
+          <div className='text-neutral-700'>John Liu</div>
           <div>Sep 5 at 8:22 AM</div>
         </div>
       ),
@@ -680,11 +681,12 @@ const AnimatedDemo: React.FC = () => {
       ),
       description: (
         <div className='flex flex-row items-center text-2xl'>
-          <CXIcon height={32} name='IconRefresh' width={32} />
+          <CXIconRefresh height={32} width={32} />
           <div>A copy of the application form, was downloaded.</div>
-          <CXIcon height={32} name='IconRefresh' width={32} />
-          <CXIcon height={32} name='IconRefresh' width={32} />
-          <CXIcon height={32} name='IconRefresh' width={32} />
+          <CXIconRefresh height={32} width={32} />
+          <CXIconRefresh height={32} width={32} />
+          <CXIconRefresh height={32} width={32} />
+          <CXIconRefresh height={32} width={32} />
         </div>
       ),
       icon: <div className='w-[10px] h-[10px] rounded-full bg-[#FFFFFF]' />,

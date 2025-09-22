@@ -76,7 +76,7 @@ export const AllIcons: Story = {
       if (args['className']) propsArray.push(`className="${args['className']}"`);
       if (args['color']) propsArray.push(`color="${args['color']}"`);
 
-      const jsx = `<CXIcon name="${name}"${propsArray.length > 0 ? ` ${propsArray.join(' ')}` : ''} />`;
+      const jsx = `<${name}${propsArray.length > 0 ? ` ${propsArray.join(' ')}` : ''} />`;
 
       try {
         await navigator.clipboard.writeText(jsx);
@@ -100,7 +100,7 @@ export const AllIcons: Story = {
           <button
             key={name}
             aria-label={`Copy ${name} component`}
-            className='flex flex-col justify-between items-center p-2 border rounded hover:bg-gray-300 active:bg-gray-200 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50'
+            className='flex flex-col justify-between items-center p-2 border rounded-sm hover:bg-neutral-300 active:bg-neutral-200 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500'
             type='button'
             onClick={() => void copyToClipboard(name)}
             onKeyDown={e => handleKeyDown(e, name)}
@@ -108,9 +108,9 @@ export const AllIcons: Story = {
             <IconComponent {...(args as any)} />
             <span
               className='text-xs mt-1 text-center truncate w-full'
-              title={name.replace('Icon', '')}
+              title={name.replace('CXIcon', '')}
             >
-              {name.replace('Icon', '')}
+              {name.replace('CXIcon', '')}
             </span>
           </button>
         ))}

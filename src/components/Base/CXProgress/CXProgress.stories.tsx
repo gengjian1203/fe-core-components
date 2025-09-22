@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useEffect, useState } from 'react';
-import { CXProgress } from './CXProgress';
+import { CXProgress } from '../../Base';
 
 const meta: Meta<typeof CXProgress> = {
   title: 'Base/CXProgress',
@@ -160,11 +160,11 @@ export const AnimatedDemo: Story = {
     return (
       <div className='space-y-8'>
         <div>
-          <h3 className='text-sm font-medium text-gray-700 mb-4'>线形动画进度条</h3>
+          <h3 className='text-sm font-medium text-neutral-700 mb-4'>线形动画进度条</h3>
           <CXProgress {...args} strokeWidth='12px' type='linear' value={progress} width='100%' />
         </div>
         <div>
-          <h3 className='text-sm font-medium text-gray-700 mb-4'>环形动画进度条</h3>
+          <h3 className='text-sm font-medium text-neutral-700 mb-4'>环形动画进度条</h3>
           <div className='flex justify-center'>
             <CXProgress
               {...args}
@@ -365,7 +365,7 @@ export const TypeComparison: Story = {
   render: () => (
     <div className='space-y-8'>
       <div>
-        <h3 className='text-sm font-medium text-gray-700 mb-4'>线形进度条</h3>
+        <h3 className='text-sm font-medium text-neutral-700 mb-4'>线形进度条</h3>
         <div className='space-y-4'>
           <CXProgress
             max={100}
@@ -390,7 +390,7 @@ export const TypeComparison: Story = {
         </div>
       </div>
       <div>
-        <h3 className='text-sm font-medium text-gray-700 mb-4'>环形进度条</h3>
+        <h3 className='text-sm font-medium text-neutral-700 mb-4'>环形进度条</h3>
         <div className='flex gap-8'>
           <CXProgress
             height={100}

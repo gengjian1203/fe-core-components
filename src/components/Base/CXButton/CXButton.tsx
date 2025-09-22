@@ -1,6 +1,6 @@
-import { CXIcon } from '@/components';
 import { cn } from '@/utils';
 import React from 'react';
+import { CXIconLoading } from '../../Base/CXIcon';
 
 export interface CXButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
@@ -71,45 +71,45 @@ const getVariantClasses = (
       'bg-primary text-white border-transparent',
       'hover:bg-primary hover:opacity-90',
       'active:bg-primary active:opacity-80 active:duration-75',
-      'disabled:bg-gray-200 disabled:text-gray-400',
+      'disabled:bg-neutral-200 disabled:text-neutral-400',
       'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     default: [
       // Use theme colors
-      'bg-white text-gray-900 border-gray-300',
+      'bg-white text-neutral-900 border-neutral-300',
       'hover:text-primary hover:border-primary',
-      'active:text-primary text-opacity-80 active:border-primary border-opacity-80',
-      'disabled:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400',
-      'disabled:hover:bg-gray-50 disabled:hover:border-gray-200 disabled:hover:text-gray-400',
+      'active:text-primary/80 active:border-primary/80',
+      'disabled:bg-neutral-50 disabled:border-neutral-200 disabled:text-neutral-400',
+      'disabled:hover:bg-neutral-50 disabled:hover:border-neutral-200 disabled:hover:text-neutral-400',
       // Dark mode
-      'dark:bg-gray-800 dark:text-white dark:border-gray-600',
-      'dark:hover:text-primary dark:hover:border-primary dark:hover:bg-gray-700',
-      'dark:active:bg-gray-900 dark:active:border-primary border-opacity-80',
-      'dark:disabled:bg-gray-800 dark:disabled:border-gray-700 dark:disabled:text-gray-500',
+      'dark_cx:bg-neutral-800 dark_cx:text-white dark_cx:border-neutral-600',
+      'dark_cx:hover:text-primary dark_cx:hover:border-primary dark_cx:hover:bg-neutral-700',
+      'dark_cx:active:bg-neutral-900 dark_cx:active:border-primary/80',
+      'dark_cx:disabled:bg-neutral-800 dark_cx:disabled:border-neutral-700 dark_cx:disabled:text-neutral-500',
       'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     dashed: [
       // Use theme colors
-      'bg-white text-gray-900 border-gray-300 border-dashed',
+      'bg-white text-neutral-900 border-neutral-300 border-dashed',
       'hover:text-primary hover:border-primary',
-      'active:text-primary text-opacity-80 active:border-primary border-opacity-80',
-      'disabled:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400',
-      'disabled:hover:bg-gray-50 disabled:hover:border-gray-200 disabled:hover:text-gray-400',
+      'active:text-primary/80 active:border-primary/80',
+      'disabled:bg-neutral-50 disabled:border-neutral-200 disabled:text-neutral-400',
+      'disabled:hover:bg-neutral-50 disabled:hover:border-neutral-200 disabled:hover:text-neutral-400',
       // Dark mode
-      'dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:border-dashed',
-      'dark:hover:text-primary dark:hover:border-primary dark:hover:bg-gray-700',
-      'dark:active:bg-gray-900 dark:active:border-primary border-opacity-80',
-      'dark:disabled:bg-gray-800 dark:disabled:border-gray-700 dark:disabled:text-gray-500',
+      'dark_cx:bg-neutral-800 dark_cx:text-white dark_cx:border-neutral-600 dark_cx:border-dashed',
+      'dark_cx:hover:text-primary dark_cx:hover:border-primary dark_cx:hover:bg-neutral-700',
+      'dark_cx:active:bg-neutral-900 dark_cx:active:border-primary/80',
+      'dark_cx:disabled:bg-neutral-800 dark_cx:disabled:border-neutral-700 dark_cx:disabled:text-neutral-500',
       'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     link: [
       // Use theme colors
       'bg-transparent text-primary border-transparent',
-      'hover:text-primary text-opacity-80',
-      'active:text-primary text-opacity-60',
-      'disabled:text-gray-400',
-      'disabled:hover:text-gray-400',
-      'dark:text-primary dark:hover:text-primary text-opacity-80 dark:disabled:text-gray-500',
+      'hover:text-primary/80',
+      'active:text-primary/60',
+      'disabled:text-neutral-400',
+      'disabled:hover:text-neutral-400',
+      'dark_cx:text-primary dark_cx:hover:text-primary/80 dark_cx:disabled:text-neutral-500',
       'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     danger: [
@@ -117,66 +117,66 @@ const getVariantClasses = (
       'bg-red-500 text-white border-transparent',
       'hover:bg-red-400',
       'active:bg-red-600',
-      'disabled:bg-gray-200 disabled:text-gray-400',
+      'disabled:bg-neutral-200 disabled:text-neutral-400',
       'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     destructive: [
       'bg-red-500 text-white border-transparent',
       'hover:bg-red-400',
       'active:bg-red-600',
-      'disabled:bg-gray-200 disabled:text-gray-400',
+      'disabled:bg-neutral-200 disabled:text-neutral-400',
       'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     outline: [
-      'bg-transparent text-gray-900 border-gray-300',
-      'hover:bg-gray-50 hover:text-gray-900',
-      'active:bg-gray-100',
-      'disabled:bg-transparent disabled:border-gray-200 disabled:text-gray-400',
+      'bg-transparent text-neutral-900 border-neutral-300',
+      'hover:bg-neutral-50 hover:text-neutral-900',
+      'active:bg-neutral-100',
+      'disabled:bg-transparent disabled:border-neutral-200 disabled:text-neutral-400',
       'disabled:hover:bg-transparent',
       // Dark mode - follow default pattern
-      'dark:bg-transparent dark:text-white dark:border-gray-600',
-      'dark:hover:bg-gray-700 dark:hover:text-white dark:hover:border-gray-600',
-      'dark:active:bg-gray-900 dark:active:border-gray-600',
-      'dark:disabled:bg-transparent dark:disabled:border-gray-700 dark:disabled:text-gray-500',
+      'dark_cx:bg-transparent dark_cx:text-white dark_cx:border-neutral-600',
+      'dark_cx:hover:bg-neutral-700 dark_cx:hover:text-white dark_cx:hover:border-neutral-600',
+      'dark_cx:active:bg-neutral-900 dark_cx:active:border-neutral-600',
+      'dark_cx:disabled:bg-transparent dark_cx:disabled:border-neutral-700 dark_cx:disabled:text-neutral-500',
       'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     secondary: [
-      'bg-gray-100 text-gray-900 border-transparent',
-      'hover:bg-gray-200',
-      'active:bg-gray-300',
-      'disabled:bg-gray-50 disabled:text-gray-400',
-      'disabled:hover:bg-gray-50',
-      'dark:bg-gray-700 dark:text-white',
-      'dark:hover:bg-gray-600',
-      'dark:active:bg-gray-800',
-      'dark:disabled:bg-gray-800 dark:disabled:text-gray-500',
+      'bg-neutral-100 text-neutral-900 border-transparent',
+      'hover:bg-neutral-200',
+      'active:bg-neutral-300',
+      'disabled:bg-neutral-50 disabled:text-neutral-400',
+      'disabled:hover:bg-neutral-50',
+      'dark_cx:bg-neutral-700 dark_cx:text-white',
+      'dark_cx:hover:bg-neutral-600',
+      'dark_cx:active:bg-neutral-800',
+      'dark_cx:disabled:bg-neutral-800 dark_cx:disabled:text-neutral-500',
       'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     ghost: [
-      'bg-transparent text-gray-900 border-transparent',
-      'hover:bg-gray-100 hover:text-gray-900',
-      'active:bg-gray-200',
-      'disabled:bg-transparent disabled:text-gray-400',
-      'disabled:hover:bg-transparent disabled:hover:text-gray-400',
+      'bg-transparent text-neutral-900 border-transparent',
+      'hover:bg-neutral-100 hover:text-neutral-900',
+      'active:bg-neutral-200',
+      'disabled:bg-transparent disabled:text-neutral-400',
+      'disabled:hover:bg-transparent disabled:hover:text-neutral-400',
       // Dark mode - follow default pattern
-      'dark:bg-transparent dark:text-white',
-      'dark:hover:bg-gray-700 dark:hover:text-white',
-      'dark:active:bg-gray-900',
-      'dark:disabled:bg-transparent dark:disabled:text-gray-500',
+      'dark_cx:bg-transparent dark_cx:text-white',
+      'dark_cx:hover:bg-neutral-700 dark_cx:hover:text-white',
+      'dark_cx:active:bg-neutral-900',
+      'dark_cx:disabled:bg-transparent dark_cx:disabled:text-neutral-500',
       'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
     text: [
-      'bg-transparent text-gray-900 border-transparent',
-      'hover:text-gray-700',
-      'active:text-gray-800',
-      'disabled:bg-transparent disabled:text-gray-400',
-      'disabled:hover:text-gray-400',
+      'bg-transparent text-neutral-900 border-transparent',
+      'hover:text-neutral-700',
+      'active:text-neutral-800',
+      'disabled:bg-transparent disabled:text-neutral-400',
+      'disabled:hover:text-neutral-400',
       // Dark mode
-      'dark:bg-transparent dark:text-white',
-      'dark:hover:text-gray-300',
-      'dark:active:text-gray-400',
-      'dark:disabled:bg-transparent dark:disabled:text-gray-500',
-      'dark:disabled:hover:text-gray-500',
+      'dark_cx:bg-transparent dark_cx:text-white',
+      'dark_cx:hover:text-neutral-300',
+      'dark_cx:active:text-neutral-400',
+      'dark_cx:disabled:bg-transparent dark_cx:disabled:text-neutral-500',
+      'dark_cx:disabled:hover:text-neutral-500',
       'disabled:hover:opacity-100 disabled:active:opacity-100',
     ].join(' '),
   };
@@ -201,9 +201,7 @@ const LoadingSpinner: React.FC<{ size: 'small' | 'medium' | 'large' }> = ({ size
     large: 20,
   }[size];
 
-  return (
-    <CXIcon className='animate-spin' height={spinnerSize} name='IconLoading' width={spinnerSize} />
-  );
+  return <CXIconLoading className='animate-spin' height={spinnerSize} width={spinnerSize} />;
 };
 
 export const CXButton: React.FC<CXButtonProps> = ({
@@ -270,15 +268,11 @@ export const CXButton: React.FC<CXButtonProps> = ({
     return (
       <>
         {loading && <LoadingSpinner size={size} />}
-        {!loading && renderLeftContent && (
-          <div className='flex-shrink-0'>{renderLeftContent?.()}</div>
-        )}
+        {!loading && renderLeftContent && <div className='shrink-0'>{renderLeftContent?.()}</div>}
         {children && (
           <div className={cn('flex-1 flex flex-row', classNameChildren)}>{children}</div>
         )}
-        {!loading && renderRightContent && (
-          <div className='flex-shrink-0'>{renderRightContent?.()}</div>
-        )}
+        {!loading && renderRightContent && <div className='shrink-0'>{renderRightContent?.()}</div>}
       </>
     );
   };

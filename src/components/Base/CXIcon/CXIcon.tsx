@@ -3,16 +3,16 @@ import type { IconProps } from './icons';
 import * as Icons from './icons';
 
 export interface CXIconProps extends IconProps {
-  name: keyof typeof Icons;
+  name: string;
 }
 
 export const CXIcon: React.FC<CXIconProps> = (props: CXIconProps) => {
   const { name, size, width, height, ...otherProps } = props || {};
 
-  const IconComponent = Icons[name] as React.ComponentType<IconProps>;
+  const IconComponent = (Icons as Record<string, React.ComponentType<IconProps>>)[name];
 
   if (!IconComponent || typeof IconComponent !== 'function') {
-    console.warn(`Icon "${String(name)}" not found`);
+    console.warn(`Icon "${name}" not found`);
     return <span>?</span>;
   }
 

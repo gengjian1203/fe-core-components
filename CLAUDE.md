@@ -34,10 +34,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Component Structure
 
-The project follows a **modified Atomic Design** methodology with two main categories:
+The project follows a **modified Atomic Design** methodology with three main categories:
 
-- `src/components/Base/` - Foundation components (CXButton)
+- `src/components/Base/` - Foundation components (CXButton, CXIcon, CXProgress, CXStep)
 - `src/components/Case/` - Complex composed components (CXCard)
+- `src/components/Pilot/` - Specialized pilot components (CXCardPilot, CXCardWorkflow)
 
 Each component follows this structure:
 
@@ -104,8 +105,8 @@ This is a **pure React component library**:
 
 ### Adding New Components
 
-1. Create component folder in appropriate category (Base/Case)
-2. Implement component extending Ant Design base component
+1. Create component folder in appropriate category (Base/Case/Pilot)
+2. Implement component using React and Tailwind CSS (pure React components, no external UI dependencies)
 3. Create Storybook stories with controls and documentation
 4. Export component in respective index files
 5. Update main exports in `src/components/index.ts`
@@ -195,3 +196,9 @@ The project uses conventional commits and automated versioning:
 - `feat` - New features (v1.0.0 -> v1.1.0)
 - `fix` - Bug fixes (v1.0.0 -> v1.0.1)
 - `repeat` - Re-run with same version
+
+# important-instruction-reminders
+Do what has been asked; nothing more, nothing less.
+NEVER create files unless they're absolutely necessary for achieving your goal.
+ALWAYS prefer editing an existing file to creating a new one.
+NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.

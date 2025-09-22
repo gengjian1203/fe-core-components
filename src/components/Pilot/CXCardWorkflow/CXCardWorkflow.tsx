@@ -1,5 +1,11 @@
-import { CXButton, CXIcon, CXProgress } from '@/components';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { CXButton, CXProgress } from '../../Base';
+import {
+  CXIconArrowRight,
+  CXIconExtensionStart,
+  CXIconExtensionStop,
+  CXIconPilotPDFDownload,
+} from '../../Base/CXIcon';
 
 export interface CXCardWorkflowProps {
   title?: React.ReactNode;
@@ -71,7 +77,7 @@ export const CXCardWorkflow: React.FC<CXCardWorkflowProps> = (props: CXCardWorkf
   }, [renderActivitiesContent, isFoldActivities]);
 
   return (
-    <div className='w-full bg-white box-border p-4 flex flex-col border-2 border-solid border-slate-200 rounded-lg gap-5'>
+    <div className='w-full bg-white box-border p-4 flex flex-col border-2 border-solid border-neutral-200 rounded-lg gap-5'>
       {/* Operate */}
       <div className='flex flex-row gap-2'>
         <div className='flex-1 w-0 flex flex-row justify-start items-center'>
@@ -81,7 +87,7 @@ export const CXCardWorkflow: React.FC<CXCardWorkflowProps> = (props: CXCardWorkf
           <CXButton
             className='rounded-xl flex-0'
             disabled={isDisabledBtnDownload}
-            renderLeftContent={() => <CXIcon name='IconPilotPDFDownload' />}
+            renderLeftContent={() => <CXIconPilotPDFDownload />}
             variant='default'
             onClick={handleBtnDownloadClick}
           />
@@ -91,14 +97,14 @@ export const CXCardWorkflow: React.FC<CXCardWorkflowProps> = (props: CXCardWorkf
             <CXButton
               className='rounded-xl flex-0'
               disabled={isDisabledBtnStart}
-              renderLeftContent={() => <CXIcon name='IconExtensionStart' />}
+              renderLeftContent={() => <CXIconExtensionStart />}
               variant='default'
               onClick={handleBtnStartClick}
             />
           ) : (
             <CXButton
               className='rounded-xl flex-0'
-              renderLeftContent={() => <CXIcon name='IconExtensionStop' />}
+              renderLeftContent={() => <CXIconExtensionStop />}
               variant='default'
               onClick={handleBtnStopClick}
             />
@@ -130,10 +136,9 @@ export const CXCardWorkflow: React.FC<CXCardWorkflowProps> = (props: CXCardWorkf
             onClick={handleBtnActivitiesClick}
           >
             <div className='text-[#1A1A1AB2] text-left'>Activities</div>
-            <CXIcon
+            <CXIconArrowRight
               className={`transition-transform duration-300 ${isFoldActivities ? 'rotate-90' : ''}`}
               color='#1A1A1AB2'
-              name='IconArrowRight'
             />
           </CXButton>
           {/* Activities Content */}

@@ -3,13 +3,8 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
-import path from 'path';
 import postcss from 'rollup-plugin-postcss';
 import { visualizer } from 'rollup-plugin-visualizer';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // 外部依赖配置 - 这些库不会被打包进最终产物
 const external = ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime'];
@@ -133,7 +128,7 @@ const getPlugins = format => [
 
 // 构建配置
 export default [
-  // CSS构建 - 使用前缀防止样式污染
+  // CSS构建 - 专门处理样式文件
   {
     input: 'src/styles/globals.css',
     output: {

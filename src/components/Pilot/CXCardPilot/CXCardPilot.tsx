@@ -1,5 +1,11 @@
-import { CXButton, CXIcon } from '@/components';
 import React, { useEffect, useRef, useState } from 'react';
+import { CXButton } from '../../Base';
+import {
+  CXIconArrowRight,
+  CXIconExtensionStart,
+  CXIconFormItemClientName,
+  CXIconPilotPDFDownload,
+} from '../../Base/CXIcon';
 
 export interface CXCardPilotProps {
   clientName?: string;
@@ -52,17 +58,17 @@ export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps)
   };
 
   return (
-    <div className='w-full bg-white box-border p-4 flex flex-col border-2 border-solid border-slate-200 rounded-lg gap-5'>
+    <div className='w-full bg-white box-border p-4 flex flex-col border-2 border-solid border-neutral-200 rounded-lg gap-5'>
       {/* Operate */}
       <div className='flex flex-row gap-2'>
-        <CXIcon className='flex-[0_0_auto]' height={30} name='IconFormItemClientName' width={26} />
+        <CXIconFormItemClientName className='flex-[0_0_auto]' height={30} width={26} />
         <div className='flex-1 w-0 flex flex-row justify-start items-center'>
           <div className='truncate text-[#424242]'>{clientName}</div>
         </div>
         <CXButton
           className='rounded-xl flex-1 w-0 max-w-[170px]'
           disabled={isDisabledBtnDownload}
-          renderLeftContent={() => <CXIcon name='IconPilotPDFDownload' />}
+          renderLeftContent={() => <CXIconPilotPDFDownload />}
           variant='default'
           onClick={handleBtnDownloadClick}
         >
@@ -71,7 +77,7 @@ export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps)
         <CXButton
           className='rounded-xl flex-1 w-0 max-w-[170px]'
           disabled={isDisabledBtnStart}
-          renderLeftContent={() => <CXIcon name='IconExtensionStart' />}
+          renderLeftContent={() => <CXIconExtensionStart />}
           variant='primary'
           onClick={handleBtnStartClick}
         >
@@ -83,7 +89,7 @@ export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps)
         <div className='box-border pr-2 flex-1 w-0 truncate text-left text-[#1A1A1AB2]'>
           {clientEmail}
         </div>
-        <div className='box-border px-2 flex-1 w-0 truncate text-center border-r border-l border-solid border-slate-200 text-[#1A1A1AB2]'>
+        <div className='box-border px-2 flex-1 w-0 truncate text-center border-r border-l border-solid border-neutral-200 text-[#1A1A1AB2]'>
           {clientNationality}
         </div>
         <div className='box-border pl-2 flex-1 w-0 truncate text-right text-[#1A1A1AB2]'>
@@ -101,10 +107,9 @@ export const CXCardPilot: React.FC<CXCardPilotProps> = (props: CXCardPilotProps)
           onClick={handleBtnSummaryClick}
         >
           <div className='text-[#1A1A1AB2] text-left'>Summary</div>
-          <CXIcon
+          <CXIconArrowRight
             className={`transition-transform duration-300 ${isFoldSummary ? 'rotate-90' : ''}`}
             color='#1A1A1AB2'
-            name='IconArrowRight'
           />
         </CXButton>
         {/* Summary Content */}

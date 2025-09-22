@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import type { CXDemoProps } from './CXDemo';
-import { CXDemo } from './CXDemo';
+import type { CXDemoProps } from '../../Base';
+import { CXDemo } from '../../Base';
 
 const meta: Meta<CXDemoProps> = {
   title: 'Base/CXDemo',

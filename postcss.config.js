@@ -1,7 +1,7 @@
 export default {
   plugins: {
-    // Tailwind CSS处理
-    tailwindcss: {},
+    // Tailwind CSS v4 处理
+    '@tailwindcss/postcss': {},
     // 自动添加浏览器前缀
     autoprefixer: {},
     // 生产环境CSS优化

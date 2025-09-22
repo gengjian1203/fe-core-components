@@ -11,13 +11,14 @@
 - **Node.js** >= 18.0.0
 - **pnpm** >= 8.0.0（推荐包管理器）
 - **React** >= 19.0.0
+- **Tailwind CSS** >= 4.0.0
 - **Git** 最新版本
 
 ### 1.2 项目克隆和初始化
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/your-org/fe-core-components.git
+git clone https://github.com/cosxaiai/fe-core-components.git
 cd fe-core-components
 
 # 2. 安装依赖
@@ -56,9 +57,15 @@ fe-core-components/
 │   ├── components/
 │   │   ├── Base/          # 基础组件（核心功能）
 │   │   │   ├── CXButton/  # 按钮组件
-│   │   │   └── CXIcon/    # 图标组件
-│   │   └── Case/          # 复合组件（业务场景）
-│   │       └── CXCard/    # 卡片组件
+│   │   │   ├── CXIcon/    # 图标组件
+│   │   │   ├── CXProgress/ # 进度条组件
+│   │   │   ├── CXStep/    # 步骤组件
+│   │   │   └── CXDemo/    # 演示组件
+│   │   ├── Case/          # 复合组件（业务场景）
+│   │   │   └── CXCard/    # 卡片组件
+│   │   └── Pilot/         # 专业试点组件（特定业务场景）
+│   │       ├── CXCardPilot/    # 客户信息卡片组件
+│   │       └── CXCardWorkflow/ # 工作流卡片组件
 │   ├── styles/
 │   │   └── globals.css    # 全局样式
 │   ├── types/             # TypeScript 类型定义
@@ -153,25 +160,83 @@ npm unlink --global
 
 ```tsx
 // 宿主项目的入口文件（main.tsx 或 App.tsx）
-import '@cosxai/fe-core-components/styles.css'; // 本地 link 开发时使用 ESM 版本样式
+import '@cosxai/fe-core-components/dist/styles.css'; // 本地 link 开发时使用 ESM 版本样式
 
 // 导入组件
-import { CXButton, CXCard, CXIcon } from '@cosxai/fe-core-components';
+import {
+  CXButton,
+  CXCard,
+  CXCardPilot,
+  CXCardWorkflow,
+  CXIconCompleted,
+  CXIconDashboard,
+  CXIconFailed,
+  CXIconGoogle,
+  CXProgress,
+  CXSteps,
+} from '@cosxai/fe-core-components';
 
 // 在组件中使用
 function MyComponent() {
   return (
-    <div>
-      <CXIcon name='IconUser' width={20} height={20} />
+    <div className='space-y-4'>
+      {/* 基础图标 */}
+      <div className='flex items-center space-x-4'>
+        <CXIconGoogle width={20} height={20} />
+        <CXIconCompleted width={16} height={16} />
+        <CXIconFailed width={16} height={16} />
+      </div>
+
+      {/* 按钮组件 */}
       <CXButton
         variant='primary'
-        renderLeftContent={() => <CXIcon name='IconCompleted' width={16} height={16} />}
+        renderLeftContent={() => <CXIconCompleted width={16} height={16} />}
       >
         点击我
       </CXButton>
-      <CXCard title='测试卡片' headerIcon={<CXIcon name='IconDashboard' width={16} height={16} />}>
+
+      {/* 进度条组件 */}
+      <CXProgress value={75} showText='进度条' />
+
+      {/* 步骤组件 */}
+      <CXSteps
+        current={2}
+        steps={[
+          { title: '第一步', description: '完成基础配置' },
+          { title: '第二步', description: '正在进行中' },
+          { title: '第三步', description: '待完成' },
+        ]}
+      />
+
+      {/* 卡片组件 */}
+      <CXCard title='测试卡片' headerIcon={<CXIconDashboard width={16} height={16} />}>
         卡片内容
       </CXCard>
+
+      {/* 客户信息卡片 */}
+      <CXCardPilot
+        clientName='张三'
+        clientEmail='zhangsan@example.com'
+        clientNationality='中国'
+        clientVisaType='工作签证'
+        onBtnDownloadClick={() => console.log('下载')}
+        onBtnStartClick={() => console.log('开始')}
+      />
+
+      {/* 工作流卡片 */}
+      <CXCardWorkflow
+        pilotStatus='HOLD'
+        title='审批流程'
+        onBtnDownloadClick={() => {
+          console.log('onBtnDownloadClick');
+        }}
+        onBtnStartClick={() => {
+          console.log('onBtnStartClick');
+        }}
+        onBtnStopClick={() => {
+          console.log('onBtnStopClick');
+        }}
+      />
     </div>
   );
 }
@@ -251,7 +316,7 @@ import './custom-theme.css'; // 再导入自定义主题
 
 在 GitHub 仓库的 `Settings > Secrets and variables > Actions` 中添加：
 
-- `NPM_TOKEN`: GitHub Personal Access Token，需要 `write:packages` 权限
+- `GITHUB_TOKEN`: GitHub Personal Access Token，需要 `write:packages` 权限
 
 #### 2.2.2 Package.json 配置
 
@@ -261,11 +326,11 @@ import './custom-theme.css'; // 再导入自定义主题
 {
   "name": "@cosxai/fe-core-components",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-org/fe-core-components.git"
+    "url": "git+https://github.com/cosxaiai/fe-core-components.git"
   }
 }
 ```
@@ -311,15 +376,24 @@ git tag v1.0.1
 git push origin main --tags
 ```
 
-### 2.4 发布监控和验证
+### 2.4 Storybook 文档部署
 
-#### 2.4.1 发布状态监控
+项目自动部署 Storybook 文档到 GitHub Pages：
+
+- **文档地址**: https://cosxaiai.github.io/fe-core-components/
+- **部署触发**: 推送到 main 分支时自动部署
+- **包含内容**: 所有组件的交互式文档和示例
+
+### 2.5 发布监控和验证
+
+#### 2.5.1 发布状态监控
 
 - 在 GitHub 仓库的 `Actions` 标签页监控工作流执行状态
 - 发布成功后，在 `Packages` 标签页查看已发布的包
 - 检查包大小限制是否符合要求（ESM ≤50KB, CJS ≤55KB）
+- 查看 Storybook 文档部署状态
 
-#### 2.4.2 发布验证
+#### 2.5.2 发布验证
 
 ```bash
 # 验证包是否发布成功
@@ -327,23 +401,26 @@ npm view @cosxai/fe-core-components
 
 # 在测试项目中验证安装
 npm install @cosxai/fe-core-components@latest
+
+# 验证 Storybook 文档
+open https://cosxaiai.github.io/fe-core-components/
 ```
 
-### 2.5 部署最佳实践
+### 2.6 部署最佳实践
 
-#### 2.5.1 版本管理
+#### 2.6.1 版本管理
 
 - **语义化版本**：严格遵循 [Semantic Versioning](https://semver.org/) 规范
 - **变更日志**：每次发布前更新 `CHANGELOG.md`
 - **预发布检查**：确保所有检查通过后再发布
 
-#### 2.5.2 质量保证
+#### 2.6.2 质量保证
 
 - **包大小监控**：定期检查包大小，避免意外增长
 - **依赖安全**：定期更新依赖，修复安全漏洞
 - **自动化测试**：确保 CI 流程覆盖所有质量检查
 
-#### 2.5.3 发布策略
+#### 2.6.3 发布策略
 
 - **主要版本**：包含破坏性更改时发布
 - **次要版本**：添加新功能但保持向后兼容时发布

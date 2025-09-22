@@ -1,7 +1,15 @@
-import type { CXStepItem, CXStepStatus, CXStepsProps } from '@/components';
-import { CXIcon, CXSteps } from '@/components';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useEffect, useState } from 'react';
+import type { CXStepItem, CXStepStatus, CXStepsProps } from '../../Base';
+import { CXSteps } from '../../Base';
+import {
+  CXIconCheckGreen,
+  CXIconEdit,
+  CXIconIssueCheck,
+  CXIconList,
+  CXIconPlus,
+  CXIconRefresh,
+} from '../../Base/CXIcon';
 
 const meta: Meta<CXStepsProps> = {
   title: 'Base/CXStep',
@@ -129,17 +137,17 @@ export const WithIcons: Story = {
       {
         title: 'Planning',
         description: 'Define project requirements',
-        icon: <CXIcon height={16} name='IconList' width={16} />,
+        icon: <CXIconList height={16} width={16} />,
       },
       {
         title: 'Development',
         description: 'Build the application',
-        icon: <CXIcon height={16} name='IconEdit' width={16} />,
+        icon: <CXIconEdit height={16} width={16} />,
       },
       {
         title: 'Testing',
         description: 'Verify functionality',
-        icon: <CXIcon height={16} name='IconIssueCheck' width={16} />,
+        icon: <CXIconIssueCheck height={16} width={16} />,
       },
       {
         title: 'Deployment',
@@ -162,7 +170,7 @@ export const Interactive: Story = {
     return (
       <div className='space-y-6'>
         <CXSteps {...args} current={currentStep} onChange={setCurrentStep} />
-        <div className='text-sm text-gray-600 text-center'>
+        <div className='text-sm text-neutral-600 text-center'>
           Current step: {currentStep + 1} / {args.steps.length}
         </div>
       </div>
@@ -245,7 +253,7 @@ export const LongTitles: Story = {
       {
         title: (
           <div className='flex flex-row justify-between items-center'>
-            <div className='bg-slate-700 text-gray-300'>John Liu</div>
+            <div className='bg-neutral-700 text-neutral-300'>John Liu</div>
             <div>Sep 5 at 8:22 AM</div>
           </div>
         ),
@@ -281,11 +289,12 @@ export const LongTitles: Story = {
         ),
         description: (
           <div className='flex flex-row items-center text-2xl'>
-            <CXIcon height={32} name='IconRefresh' width={32} />
+            <CXIconRefresh height={32} width={32} />
             <div>A copy of the application form, was downloaded.</div>
-            <CXIcon height={32} name='IconRefresh' width={32} />
-            <CXIcon height={32} name='IconRefresh' width={32} />
-            <CXIcon height={32} name='IconRefresh' width={32} />
+            <CXIconRefresh height={32} width={32} />
+            <CXIconRefresh height={32} width={32} />
+            <CXIconRefresh height={32} width={32} />
+            <CXIconRefresh height={32} width={32} />
           </div>
         ),
       },
@@ -302,22 +311,22 @@ export const AnimatedDemo: Story = {
       {
         title: 'Initialize',
         description: 'Setting up the environment',
-        icon: <CXIcon height={16} name='IconPlus' width={16} />,
+        icon: <CXIconPlus height={16} width={16} />,
       },
       {
         title: 'Processing',
         description: 'Processing your request',
-        icon: <CXIcon height={16} name='IconRefresh' width={16} />,
+        icon: <CXIconRefresh height={16} width={16} />,
       },
       {
         title: 'Validation',
         description: 'Validating the results',
-        icon: <CXIcon height={16} name='IconIssueCheck' width={16} />,
+        icon: <CXIconIssueCheck height={16} width={16} />,
       },
       {
         title: 'Complete',
         description: 'Task completed successfully',
-        icon: <CXIcon height={16} name='IconCheckGreen' width={16} />,
+        icon: <CXIconCheckGreen height={16} width={16} />,
       },
     ];
 
@@ -347,7 +356,7 @@ export const AnimatedDemo: Story = {
     return (
       <div className='space-y-8'>
         <div>
-          <h3 className='text-sm font-medium text-gray-700 mb-4'>水平自动演示</h3>
+          <h3 className='text-sm font-medium text-neutral-700 mb-4'>水平自动演示</h3>
           <CXSteps
             {...args}
             current={currentStep}
@@ -357,7 +366,7 @@ export const AnimatedDemo: Story = {
           />
         </div>
         <div>
-          <h3 className='text-sm font-medium text-gray-700 mb-4'>垂直自动演示</h3>
+          <h3 className='text-sm font-medium text-neutral-700 mb-4'>垂直自动演示</h3>
           <CXSteps
             {...args}
             current={currentStep}

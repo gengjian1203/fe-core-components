@@ -16,14 +16,7 @@ export default {
     extend: {
       // 扩展颜色配置，添加主题色变量映射
       colors: {
-        primary: {
-          DEFAULT: 'var(--primary)',
-          dark: 'var(--primary-dark)',
-          light: 'var(--primary-light)',
-          label: 'var(--primary-label)',
-          gray: 'var(--primary-gray)',
-          foreground: 'var(--primary-foreground)',
-        },
+        primary: '#0061FD',
       },
     },
   },

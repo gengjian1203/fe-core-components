@@ -115,21 +115,21 @@ const preview: Preview = {
 
         // 添加到多个元素确保兼容性
         if (theme === 'dark') {
-          root.classList.add('dark');
-          body.classList.add('dark');
+          root.classList.add('dark_cx');
+          body.classList.add('dark_cx');
         } else {
-          root.classList.remove('dark');
-          body.classList.remove('dark');
+          root.classList.remove('dark_cx');
+          body.classList.remove('dark_cx');
         }
 
-        // 配置主题色变量
+        // 配置主题色变量 (RGB 格式用于 Tailwind CSS)
         const themeColors = {
-          '--primary': 'oklch(0.5524 0.2441 261.35)',
-          '--primary-dark': 'oklch(0.4359 0.1786 260.09)',
-          '--primary-light': 'oklch(0.6429 0.2441 261.35)',
-          '--primary-label': 'oklch(0.2723 0.1155 272.57)',
-          '--primary-gray': 'oklch(0.7091 0.0337 267.85)',
-          '--primary-foreground': '#f2f3f7',
+          // '--primary': '99 102 241',        // 蓝色主色调
+          // '--primary-dark': '67 56 202',    // 深蓝色
+          // '--primary-light': '129 140 248', // 浅蓝色
+          // '--primary-label': '55 48 163',   // 标签色
+          // '--primary-gray': '156 163 175',  // 灰色
+          // '--primary-foreground': '242 243 247', // 前景色
         };
 
         // 将主题色变量应用到根元素
@@ -139,7 +139,7 @@ const preview: Preview = {
       }, [theme]);
 
       return (
-        <div className='relative p-0 box-border w-full'>
+        <div className='relative p-[0px] box-border w-[100%]'>
           <div className='relative w-full box-border px-8 pb-8'>
             <Story />
           </div>

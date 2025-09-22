@@ -9,7 +9,11 @@ export type IconProps = Partial<{
   color?: string;
 }>;
 
-export const IconGoogle = ({ width = 20, height = 21, className = '' }: IconProps): JSX.Element => {
+export const CXIconGoogle = ({
+  width = 20,
+  height = 21,
+  className = '',
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
@@ -39,7 +43,7 @@ export const IconGoogle = ({ width = 20, height = 21, className = '' }: IconProp
   );
 };
 
-export const IconCardEdit = ({
+export const CXIconCardEdit = ({
   width = 28,
   height = 28,
   className = '',
@@ -66,7 +70,7 @@ export const IconCardEdit = ({
   );
 };
 
-export const IconLoading = ({
+export const CXIconLoading = ({
   width = 16,
   height = 17,
   className = '',
@@ -124,7 +128,7 @@ export const IconLoading = ({
   );
 };
 
-export const IconStepDot = ({
+export const CXIconStepDot = ({
   width = 16,
   height = 17,
   className = '',
@@ -143,7 +147,7 @@ export const IconStepDot = ({
   );
 };
 
-export const IconStepDown = ({
+export const CXIconStepDown = ({
   width = 10,
   height = 10,
   color = '#98A1B7',
@@ -166,7 +170,7 @@ export const IconStepDown = ({
   );
 };
 
-export const IconStepDeclaration = ({
+export const CXIconStepDeclaration = ({
   width = 16,
   height = 16,
   className = '',
@@ -212,7 +216,7 @@ export const IconStepDeclaration = ({
   );
 };
 
-export const IconStop = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
+export const CXIconStop = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg height={height} style={{ color: 'currentcolor' }} viewBox='0 0 16 16' width={width}>
       <path clipRule='evenodd' d='M3 3H13V13H3V3Z' fill='currentColor' fillRule='evenodd' />
@@ -220,7 +224,7 @@ export const IconStop = ({ width = 16, height = 16 }: IconProps): JSX.Element =>
   );
 };
 
-export const IconLoader = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
+export const CXIconLoader = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
       height={height}
@@ -290,7 +294,7 @@ export const IconLoader = ({ width = 16, height = 16 }: IconProps): JSX.Element 
   );
 };
 
-export const IconFile = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
+export const CXIconFile = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
       height={height}
@@ -309,7 +313,7 @@ export const IconFile = ({ width = 16, height = 16 }: IconProps): JSX.Element =>
   );
 };
 
-export const IconFullscreen = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
+export const CXIconFullscreen = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
       height={height}
@@ -328,7 +332,7 @@ export const IconFullscreen = ({ width = 16, height = 16 }: IconProps): JSX.Elem
   );
 };
 
-export const IconImage = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
+export const CXIconImage = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
       height={height}
@@ -347,7 +351,7 @@ export const IconImage = ({ width = 16, height = 16 }: IconProps): JSX.Element =
   );
 };
 
-export const IconFormItemClientName = ({
+export const CXIconFormItemClientName = ({
   width = 20,
   height = 20,
   className = '',
@@ -371,7 +375,7 @@ export const IconFormItemClientName = ({
   );
 };
 
-export const IconFormItemVisaType = ({
+export const CXIconFormItemVisaType = ({
   width = 20,
   height = 20,
   className = '',
@@ -393,7 +397,7 @@ export const IconFormItemVisaType = ({
   );
 };
 
-export const IconFormItemLawyer = ({
+export const CXIconFormItemLawyer = ({
   width = 20,
   height = 20,
   className = '',
@@ -415,7 +419,7 @@ export const IconFormItemLawyer = ({
   );
 };
 
-export const IconFormItemEmail = ({
+export const CXIconFormItemEmail = ({
   width = 20,
   height = 20,
   className = '',
@@ -439,7 +443,7 @@ export const IconFormItemEmail = ({
   );
 };
 
-export const IconFormItemPassword = ({
+export const CXIconFormItemPassword = ({
   width = 21,
   height = 20,
   className = '',
@@ -461,7 +465,7 @@ export const IconFormItemPassword = ({
   );
 };
 
-export const IconFormItemLink = ({
+export const CXIconFormItemLink = ({
   width = 20,
   height = 20,
   className = '',
@@ -491,7 +495,7 @@ export const IconFormItemLink = ({
   );
 };
 
-export const IconFileStatusError = ({ width = 24, height = 24 }: IconProps): JSX.Element => {
+export const CXIconFileStatusError = ({ width = 24, height = 24 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -516,7 +520,7 @@ export const IconFileStatusError = ({ width = 24, height = 24 }: IconProps): JSX
   );
 };
 
-export const IconFileStatusLoading = ({ width = 24, height = 24 }: IconProps): JSX.Element => {
+export const CXIconFileStatusLoading = ({ width = 24, height = 24 }: IconProps): JSX.Element => {
   return (
     <svg
       className='animate-spin'
@@ -538,7 +542,7 @@ export const IconFileStatusLoading = ({ width = 24, height = 24 }: IconProps): J
   );
 };
 
-export const IconFileStatusSuccess = ({ width = 24, height = 24 }: IconProps): JSX.Element => {
+export const CXIconFileStatusSuccess = ({ width = 24, height = 24 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -555,7 +559,7 @@ export const IconFileStatusSuccess = ({ width = 24, height = 24 }: IconProps): J
   );
 };
 
-export const IconFileTypeDoc = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
+export const CXIconFileTypeDoc = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -580,7 +584,7 @@ export const IconFileTypeDoc = ({ width = 40, height = 40 }: IconProps): JSX.Ele
   );
 };
 
-export const IconFileTypeExcel = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
+export const CXIconFileTypeExcel = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -605,7 +609,7 @@ export const IconFileTypeExcel = ({ width = 40, height = 40 }: IconProps): JSX.E
   );
 };
 
-export const IconFileTypeImage = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
+export const CXIconFileTypeImage = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -634,7 +638,7 @@ export const IconFileTypeImage = ({ width = 40, height = 40 }: IconProps): JSX.E
   );
 };
 
-export const IconFileTypePDF = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
+export const CXIconFileTypePDF = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -659,7 +663,7 @@ export const IconFileTypePDF = ({ width = 40, height = 40 }: IconProps): JSX.Ele
   );
 };
 
-export const IconFileTypePPT = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
+export const CXIconFileTypePPT = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -691,7 +695,7 @@ export const IconFileTypePPT = ({ width = 40, height = 40 }: IconProps): JSX.Ele
   );
 };
 
-export const IconFileTypeTXT = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
+export const CXIconFileTypeTXT = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -713,7 +717,74 @@ export const IconFileTypeTXT = ({ width = 40, height = 40 }: IconProps): JSX.Ele
   );
 };
 
-export const IconFileUpload = ({ width = 24, height = 24 }: IconProps): JSX.Element => {
+export const CXIconFileTypeEML = ({ width = 41, height = 41, className = '' }: IconProps) => {
+  return (
+    <svg
+      className={cn(className)}
+      fill='none'
+      height={height}
+      viewBox='0 0 41 41'
+      width={width}
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        d='M20.5109 4.38567C22.518 5.86406 24.8266 7.62305 26.7271 9.2431C26.5172 9.29283 26.0341 9.24182 25.7929 9.24173L15.2942 9.2439C14.9778 9.24478 14.6511 9.2652 14.336 9.2431C14.5788 8.99469 14.8708 8.78705 15.145 8.57436C16.6689 7.39233 18.1651 6.14546 19.6979 4.99165C19.96 4.79437 20.22 4.53661 20.5109 4.38567Z'
+        fill='#F16F53'
+      />
+      <path
+        d='M35.0408 16.6028C35.0669 16.6069 35.1024 16.6032 35.1282 16.6028L35.1278 33.1233C35.1279 33.8891 35.29 35.0641 34.91 35.7374C34.5917 35.6443 34.326 35.3388 34.0757 35.1339L32.9309 34.2149L24.5178 27.6319C23.986 27.2161 23.4613 26.7481 22.883 26.4003C23.6038 25.72 24.6461 24.9884 25.4379 24.3768L30.2851 20.5653C30.6093 20.3125 30.9481 20.0693 31.2324 19.7708C31.8536 19.3493 32.6302 18.6516 33.2128 18.1648C33.8245 17.6537 34.4765 17.1659 35.0408 16.6028Z'
+        fill='#FCB114'
+      />
+      <path
+        d='M5.92556 16.6028C5.91064 16.5717 5.89893 16.5562 5.87328 16.5322L5.90098 16.5261L5.88864 16.5063C6.33046 16.4907 8.47108 17.9676 8.93121 18.2645C9.20331 18.4402 9.49536 18.58 9.74448 18.7889V19.6752C9.82696 19.8133 13.6273 22.944 14.0541 23.1446C14.3329 23.4131 14.6728 23.722 15.0004 23.9269C15.923 24.796 17.0959 25.5358 18.0667 26.4003C16.6591 27.3059 15.0995 28.697 13.7704 29.7448L9.37588 33.2243C9.01617 33.5069 6.22699 35.5996 6.13858 35.8105C5.64576 35.2277 5.82409 33.6321 5.82414 32.9002L5.82381 16.5602C5.85751 16.5761 5.88951 16.5929 5.92556 16.6028Z'
+        fill='#FCB114'
+      />
+      <path
+        d='M5.92554 16.6028C5.91062 16.5717 5.89891 16.5562 5.87326 16.5322L5.90096 16.5261L5.88862 16.5063C6.33044 16.4907 8.47106 17.9676 8.93119 18.2645C9.20329 18.4402 9.49534 18.58 9.74446 18.7889V19.6752C9.31036 19.4177 8.76871 18.9309 8.35294 18.5999C7.55006 17.9608 6.66743 17.3123 5.92554 16.6028Z'
+        fill='#E75940'
+      />
+      <path
+        d='M20.4472 24.4664C21.2653 25.0117 22.1775 25.9748 22.883 26.4003C23.4613 26.7481 23.986 27.2161 24.5178 27.6319L32.9309 34.2149L34.0757 35.1339C34.326 35.3388 34.5918 35.6443 34.91 35.7374C34.3969 36.3941 33.4695 36.2406 32.734 36.2406L8.89541 36.2399C8.02961 36.2403 6.77485 36.4645 6.13858 35.8105C6.22699 35.5996 9.01617 33.5069 9.37588 33.2243L13.7704 29.7448C15.0995 28.697 16.6591 27.3059 18.0667 26.4003C18.7703 25.7318 19.6852 25.0886 20.4472 24.4664Z'
+        fill='#FECF25'
+      />
+      <path
+        d='M26.7271 9.2431C26.9494 9.30548 27.2267 9.24438 27.4569 9.2435L30.4964 9.24446C30.7405 9.24598 30.9893 9.26464 31.2324 9.2431L31.2332 12.3262C31.2332 12.664 31.1819 13.1561 31.2324 13.4712C31.4199 13.6062 31.607 13.7398 31.784 13.8886C32.1574 14.1597 35.0256 16.3901 35.1254 16.5686L35.1282 16.6028C35.1024 16.6032 35.0669 16.6069 35.0408 16.6028C34.4765 17.1659 33.8245 17.6537 33.2128 18.1648C32.6302 18.6516 31.8536 19.3493 31.2324 19.7708C30.9481 20.0693 30.6093 20.3125 30.2851 20.5653L25.4379 24.3768C24.6461 24.9884 23.6038 25.72 22.883 26.4003C22.1775 25.9748 21.2653 25.0117 20.4471 24.4664C19.6852 25.0886 18.7703 25.7318 18.0667 26.4003C17.0959 25.5358 15.923 24.796 15.0004 23.9269C14.6728 23.722 14.3329 23.4131 14.0541 23.1446C13.6273 22.944 9.82694 19.8133 9.74446 19.6752V18.7889C9.49534 18.58 9.2033 18.4402 8.93119 18.2645C8.47106 17.9676 6.33045 16.4906 5.88862 16.5063L5.90096 16.5261L5.87326 16.5322C5.89891 16.5562 5.91062 16.5717 5.92554 16.6028C5.8895 16.5929 5.8575 16.5761 5.82379 16.5602C5.87339 16.4741 9.2507 13.7354 9.74446 13.4712C9.76889 12.1643 9.80725 10.593 9.74446 9.29227C10.2108 9.34031 10.693 9.26672 11.1594 9.24646C11.8157 9.21795 13.9265 9.3492 14.336 9.2431C14.6511 9.2652 14.9778 9.24478 15.2942 9.2439L25.7928 9.24174C26.034 9.24182 26.5172 9.29283 26.7271 9.2431Z'
+        fill='#DCEAF1'
+      />
+      <path
+        d='M18.0667 23.1446H23.661V23.9269L15.9724 23.9275C15.6491 23.9277 15.3231 23.942 15.0004 23.9269C14.6728 23.722 14.3329 23.4131 14.0541 23.1446C14.1577 23.1377 14.2649 23.153 14.3692 23.1525L18.0667 23.1446Z'
+        fill='#B6B6B7'
+      />
+      <path
+        d='M13.3453 11.3099H16.3559C16.3558 11.6571 16.3843 14.302 16.3415 14.3916L16.2915 14.4044C15.3105 14.4204 14.3266 14.4045 13.3453 14.4044V11.3099Z'
+        fill='#2AA5E6'
+      />
+      <path
+        d='M9.74446 13.4712V18.7889C9.49534 18.58 9.2033 18.4402 8.93119 18.2645C8.47106 17.9676 6.33045 16.4907 5.88862 16.5063L5.90096 16.5261L5.87326 16.5322C5.89891 16.5562 5.91062 16.5717 5.92554 16.6028C5.8895 16.5929 5.8575 16.5761 5.82379 16.5602C5.87339 16.4741 9.2507 13.7354 9.74446 13.4712Z'
+        fill='#F16F53'
+      />
+      <path d='M13.3453 15.7509H27.7843V16.5602H13.3453V15.7509Z' fill='#B6B6B7' />
+      <path
+        d='M27.7205 18.2415L27.7555 18.2398C27.824 18.343 27.7852 18.9148 27.7843 19.0589H13.4682C13.2414 19.0418 13.3431 18.4371 13.3453 18.2415H27.7205Z'
+        fill='#B6B6B7'
+      />
+      <path
+        d='M13.3453 20.9063C13.346 20.518 14.099 20.6926 14.4704 20.6932L24.5182 20.6936C24.7984 20.6937 27.7287 20.6686 27.7773 20.698C27.7801 20.7675 27.7829 20.8368 27.7843 20.9063C27.7864 21.096 27.8158 21.3366 27.7843 21.5209H26.5607C26.3547 21.5336 26.1415 21.5234 25.9347 21.5209H14.6105C14.1958 21.4951 13.7618 21.5202 13.3453 21.5209V20.9063Z'
+        fill='#B6B6B7'
+      />
+      <path
+        d='M31.2324 13.4712C31.4199 13.6062 31.607 13.7398 31.7841 13.8886C32.1574 14.1597 35.0256 16.3901 35.1254 16.5686L35.1282 16.6028C35.1024 16.6032 35.0669 16.6069 35.0408 16.6028C34.4765 17.1659 33.8245 17.6537 33.2128 18.1648C32.6302 18.6516 31.8536 19.3493 31.2324 19.7708C31.2427 19.5248 31.2332 19.2746 31.2324 19.0282V13.4712Z'
+        fill='#F16F53'
+      />
+      <path
+        d='M31.2324 13.4712C31.4199 13.6062 31.607 13.7398 31.7841 13.8886C31.7165 14.2967 31.7859 15.4436 31.7855 15.9104L31.7831 17.8732C31.7827 18.0882 31.7467 18.4149 31.7841 18.6136C32.4104 18.2609 34.5322 16.6603 35.0408 16.6028C34.4765 17.1659 33.8245 17.6537 33.2128 18.1648C32.6302 18.6516 31.8536 19.3493 31.2324 19.7708C31.2427 19.5248 31.2332 19.2746 31.2324 19.0282V13.4712Z'
+        fill='#E75940'
+      />
+    </svg>
+  );
+};
+
+export const CXIconFileUpload = ({ width = 24, height = 24 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -743,7 +814,7 @@ export const IconFileUpload = ({ width = 24, height = 24 }: IconProps): JSX.Elem
   );
 };
 
-export const IconInfo = ({
+export const CXIconInfo = ({
   width = 16,
   height = 16,
   className = '',
@@ -768,7 +839,7 @@ export const IconInfo = ({
   );
 };
 
-export const IconExtension = ({ width = 25, height = 24 }: IconProps): JSX.Element => {
+export const CXIconExtension = ({ width = 25, height = 24 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -797,7 +868,7 @@ export const IconExtension = ({ width = 25, height = 24 }: IconProps): JSX.Eleme
   );
 };
 
-export const IconMagic = ({ width = 25, height = 24 }: IconProps): JSX.Element => {
+export const CXIconMagic = ({ width = 25, height = 24 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -826,7 +897,7 @@ export const IconMagic = ({ width = 25, height = 24 }: IconProps): JSX.Element =
   );
 };
 
-export const IconAutoFill = ({
+export const CXIconAutoFill = ({
   width = 40,
   height = 40,
   isSpin = false,
@@ -867,7 +938,7 @@ export const IconAutoFill = ({
   );
 };
 
-export const IconCompleted = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
+export const CXIconCompleted = ({ width = 40, height = 40 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -899,7 +970,7 @@ export const IconCompleted = ({ width = 40, height = 40 }: IconProps): JSX.Eleme
   );
 };
 
-export const IconIncompleted = ({ width = 32, height = 32 }: IconProps): JSX.Element => {
+export const CXIconIncompleted = ({ width = 32, height = 32 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -927,7 +998,7 @@ export const IconIncompleted = ({ width = 32, height = 32 }: IconProps): JSX.Ele
   );
 };
 
-export const IconPause = ({ width = 20, height = 20 }: IconProps): JSX.Element => {
+export const CXIconPause = ({ width = 20, height = 20 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -952,7 +1023,7 @@ export const IconPause = ({ width = 20, height = 20 }: IconProps): JSX.Element =
   );
 };
 
-export const IconView = ({ width = 20, height = 20 }: IconProps): JSX.Element => {
+export const CXIconView = ({ width = 20, height = 20 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -982,7 +1053,7 @@ export const IconView = ({ width = 20, height = 20 }: IconProps): JSX.Element =>
   );
 };
 
-export const IconFace = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
+export const CXIconFace = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn('text-[#98A1B7]', className)}
@@ -1016,7 +1087,7 @@ export const IconFace = ({ width = 24, height = 24, className }: IconProps): JSX
   );
 };
 
-export const IconRefresh = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
+export const CXIconRefresh = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn('text-[#98A1B7]', className)}
@@ -1038,7 +1109,7 @@ export const IconRefresh = ({ width = 24, height = 24, className }: IconProps): 
   );
 };
 
-export const IconUpload = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
+export const CXIconUpload = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn('text-[#98A1B7]', className)}
@@ -1060,7 +1131,7 @@ export const IconUpload = ({ width = 24, height = 24, className }: IconProps): J
   );
 };
 
-export const IconUpload2 = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
+export const CXIconUpload2 = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
@@ -1091,7 +1162,7 @@ export const IconUpload2 = ({ width = 24, height = 24, className }: IconProps): 
   );
 };
 
-export const IconTrash = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
+export const CXIconTrash = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn('text-[#98A1B7]', className)}
@@ -1117,7 +1188,7 @@ export const IconTrash = ({ width = 24, height = 24, className }: IconProps): JS
   );
 };
 
-export const IconDashboard = ({ width = 48, height = 48, className }: IconProps): JSX.Element => {
+export const CXIconDashboard = ({ width = 48, height = 48, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
@@ -1128,7 +1199,7 @@ export const IconDashboard = ({ width = 48, height = 48, className }: IconProps)
       xmlns='http://www.w3.org/2000/svg'
     >
       <rect
-        className='fill-[#f1f1f4] dark:fill-background/50'
+        className='fill-[#f1f1f4] dark_cx:fill-background/50'
         height='42'
         rx='8'
         width='42'
@@ -1155,7 +1226,7 @@ export const IconDashboard = ({ width = 48, height = 48, className }: IconProps)
   );
 };
 
-export const IconList = ({ width = 48, height = 48, className }: IconProps): JSX.Element => {
+export const CXIconList = ({ width = 48, height = 48, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
@@ -1166,7 +1237,7 @@ export const IconList = ({ width = 48, height = 48, className }: IconProps): JSX
       xmlns='http://www.w3.org/2000/svg'
     >
       <rect
-        className='fill-[#f1f1f4] dark:fill-background/50'
+        className='fill-[#f1f1f4] dark_cx:fill-background/50'
         height='42'
         rx='8'
         width='42'
@@ -1190,7 +1261,7 @@ export const IconList = ({ width = 48, height = 48, className }: IconProps): JSX
   );
 };
 
-export const IconMagicWand = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
+export const CXIconMagicWand = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
@@ -1227,7 +1298,11 @@ export const IconMagicWand = ({ width = 24, height = 24, className }: IconProps)
   );
 };
 
-export const IconEmailDraft = ({ width = 24, height = 24, className }: IconProps): JSX.Element => {
+export const CXIconEmailDraft = ({
+  width = 24,
+  height = 24,
+  className,
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
@@ -1257,7 +1332,7 @@ export const IconEmailDraft = ({ width = 24, height = 24, className }: IconProps
   );
 };
 
-export const IconEdit = ({ width = 18, height = 18, className }: IconProps): JSX.Element => {
+export const CXIconEdit = ({ width = 18, height = 18, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn('text-[#98A1B7]', className)}
@@ -1283,7 +1358,7 @@ export const IconEdit = ({ width = 18, height = 18, className }: IconProps): JSX
   );
 };
 
-export const IconAvatar = ({ width = 16, height = 16, className }: IconProps): JSX.Element => {
+export const CXIconAvatar = ({ width = 16, height = 16, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
@@ -1306,7 +1381,7 @@ export const IconAvatar = ({ width = 16, height = 16, className }: IconProps): J
   );
 };
 
-export const IconExtensionInstall = ({
+export const CXIconExtensionInstall = ({
   width = 16,
   height = 18,
   className = '',
@@ -1329,7 +1404,7 @@ export const IconExtensionInstall = ({
   );
 };
 
-export const IconExtensionStart = ({
+export const CXIconExtensionStart = ({
   width = 12,
   height = 16,
   className = '',
@@ -1352,7 +1427,7 @@ export const IconExtensionStart = ({
   );
 };
 
-export const IconExtensionStop = ({
+export const CXIconExtensionStop = ({
   width = 12,
   height = 14,
   className = '',
@@ -1379,7 +1454,7 @@ export const IconExtensionStop = ({
   );
 };
 
-export const IconCheckGreen = ({
+export const CXIconCheckGreen = ({
   width = 16,
   height = 16,
   className = '',
@@ -1402,7 +1477,11 @@ export const IconCheckGreen = ({
   );
 };
 
-export const IconIssueCheck = ({ width = 16, height = 16, className }: IconProps): JSX.Element => {
+export const CXIconIssueCheck = ({
+  width = 16,
+  height = 16,
+  className,
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
@@ -1425,7 +1504,7 @@ export const IconIssueCheck = ({ width = 16, height = 16, className }: IconProps
   );
 };
 
-export const IconIssueCircle = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
+export const CXIconIssueCircle = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -1439,7 +1518,7 @@ export const IconIssueCircle = ({ width = 16, height = 16 }: IconProps): JSX.Ele
   );
 };
 
-export const IconArrowRightTop = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
+export const CXIconArrowRightTop = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -1458,7 +1537,7 @@ export const IconArrowRightTop = ({ width = 16, height = 16 }: IconProps): JSX.E
   );
 };
 
-export const IconPlus = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
+export const CXIconPlus = ({ width = 16, height = 16 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -1481,7 +1560,7 @@ export const IconPlus = ({ width = 16, height = 16 }: IconProps): JSX.Element =>
   );
 };
 
-export const IconIndividualInfo = ({ width = 28, height = 28 }: IconProps): JSX.Element => {
+export const CXIconIndividualInfo = ({ width = 28, height = 28 }: IconProps): JSX.Element => {
   return (
     <svg
       fill='none'
@@ -1502,7 +1581,7 @@ export const IconIndividualInfo = ({ width = 28, height = 28 }: IconProps): JSX.
   );
 };
 
-export const IconLogo = ({ className, width = 41, height = 33 }: IconProps): JSX.Element => {
+export const CXIconLogo = ({ className, width = 41, height = 33 }: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
@@ -1523,7 +1602,7 @@ export const IconLogo = ({ className, width = 41, height = 33 }: IconProps): JSX
   );
 };
 
-export const IconLogoDark = ({ className, width = 41, height = 33 }: IconProps): JSX.Element => {
+export const CXIconLogoDark = ({ className, width = 41, height = 33 }: IconProps): JSX.Element => {
   return (
     <svg
       className={className}
@@ -1544,7 +1623,7 @@ export const IconLogoDark = ({ className, width = 41, height = 33 }: IconProps):
   );
 };
 
-export const IconBreadcrumbPilot = ({
+export const CXIconBreadcrumbPilot = ({
   width = 20,
   height = 20,
   className = '',
@@ -1566,7 +1645,7 @@ export const IconBreadcrumbPilot = ({
   );
 };
 
-export const IconBreadcrumbPilotProfileVault = ({
+export const CXIconBreadcrumbPilotProfileVault = ({
   width = 20,
   height = 20,
   className = '',
@@ -1588,7 +1667,7 @@ export const IconBreadcrumbPilotProfileVault = ({
   );
 };
 
-export const IconBreadcrumbReference = ({
+export const CXIconBreadcrumbReference = ({
   width = 20,
   height = 20,
   className = '',
@@ -1610,7 +1689,7 @@ export const IconBreadcrumbReference = ({
   );
 };
 
-export const IconActionBarDraftEmail = ({
+export const CXIconActionBarDraftEmail = ({
   width = 24,
   height = 24,
   className = '',
@@ -1632,7 +1711,7 @@ export const IconActionBarDraftEmail = ({
   );
 };
 
-export const IconActionBarDraftEmailMissInfo = ({
+export const CXIconActionBarDraftEmailMissInfo = ({
   width = 24,
   height = 24,
   className = '',
@@ -1654,7 +1733,7 @@ export const IconActionBarDraftEmailMissInfo = ({
   );
 };
 
-export const IconActionBarDraftEmailPDF = ({
+export const CXIconActionBarDraftEmailPDF = ({
   width = 24,
   height = 24,
   className = '',
@@ -1676,7 +1755,7 @@ export const IconActionBarDraftEmailPDF = ({
   );
 };
 
-export const IconActionBarSummarize = ({
+export const CXIconActionBarSummarize = ({
   width = 20,
   height = 20,
   className = '',
@@ -1698,7 +1777,7 @@ export const IconActionBarSummarize = ({
   );
 };
 
-export const IconActionBarStartExtensions = ({
+export const CXIconActionBarStartExtensions = ({
   width = 24,
   height = 24,
   className = '',
@@ -1720,7 +1799,7 @@ export const IconActionBarStartExtensions = ({
   );
 };
 
-export const IconActionBarUpload = ({
+export const CXIconActionBarUpload = ({
   width = 24,
   height = 24,
   className = '',
@@ -1742,7 +1821,7 @@ export const IconActionBarUpload = ({
   );
 };
 
-export const IconActionBarSend = ({
+export const CXIconActionBarSend = ({
   width = 21,
   height = 20,
   className = '',
@@ -1766,7 +1845,7 @@ export const IconActionBarSend = ({
   );
 };
 
-export const IconSuccess = ({
+export const CXIconSuccess = ({
   width = 14,
   height = 14,
   className = '',
@@ -1790,7 +1869,7 @@ export const IconSuccess = ({
   );
 };
 
-export const IconFailed = ({
+export const CXIconFailed = ({
   width = 15,
   height = 14,
   className = '',
@@ -1815,7 +1894,7 @@ export const IconFailed = ({
   );
 };
 
-export const IconReupload = ({
+export const CXIconReupload = ({
   width = 21,
   height = 20,
   className = '',
@@ -1837,7 +1916,7 @@ export const IconReupload = ({
   );
 };
 
-export const IconQuestionCircle = ({
+export const CXIconQuestionCircle = ({
   width = 20,
   height = 20,
   className,
@@ -1861,7 +1940,11 @@ export const IconQuestionCircle = ({
   );
 };
 
-export const IconMarkCircle = ({ width = 20, height = 20, className }: IconProps): JSX.Element => {
+export const CXIconMarkCircle = ({
+  width = 20,
+  height = 20,
+  className,
+}: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
@@ -1879,7 +1962,7 @@ export const IconMarkCircle = ({ width = 20, height = 20, className }: IconProps
   );
 };
 
-export const IconCopy = ({ width = 20, height = 20, className }: IconProps): JSX.Element => {
+export const CXIconCopy = ({ width = 20, height = 20, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
@@ -1897,7 +1980,7 @@ export const IconCopy = ({ width = 20, height = 20, className }: IconProps): JSX
   );
 };
 
-export const IconBroadcast = ({ width = 20, height = 20, className }: IconProps): JSX.Element => {
+export const CXIconBroadcast = ({ width = 20, height = 20, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
@@ -1915,7 +1998,7 @@ export const IconBroadcast = ({ width = 20, height = 20, className }: IconProps)
   );
 };
 
-export const IconLoader2 = ({ width = 37, height = 37, className }: IconProps): JSX.Element => {
+export const CXIconLoader2 = ({ width = 37, height = 37, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
@@ -1960,7 +2043,7 @@ export const IconLoader2 = ({ width = 37, height = 37, className }: IconProps): 
   );
 };
 
-export const IconTrash2 = ({ width = 19, height = 18, className }: IconProps): JSX.Element => {
+export const CXIconTrash2 = ({ width = 19, height = 18, className }: IconProps): JSX.Element => {
   return (
     <svg
       className={cn(className)}
@@ -1985,7 +2068,7 @@ export const IconTrash2 = ({ width = 19, height = 18, className }: IconProps): J
   );
 };
 
-export const IconPilotPDFDownload = ({
+export const CXIconPilotPDFDownload = ({
   width = 16,
   height = 18,
   className,
@@ -2008,7 +2091,7 @@ export const IconPilotPDFDownload = ({
   );
 };
 
-export const IconArrowRight = ({
+export const CXIconArrowRight = ({
   width = 8,
   height = 14,
   className,

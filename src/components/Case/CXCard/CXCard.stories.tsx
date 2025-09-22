@@ -1,6 +1,7 @@
-import { CXButton, CXCard } from '@/components';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
+import { CXButton } from '../../Base';
+import { CXCard } from '../../Case';
 
 // Simple icon components to replace Ant Design icons
 const CalendarIcon = () => <span>📅</span>;
@@ -242,10 +243,10 @@ export const StatusStates: Story = {
     await expect(infoCardElement).toHaveClass('border-l-blue-500');
 
     // 验证暗色模式边框样式
-    await expect(successCardElement).toHaveClass('dark:border-l-green-400');
-    await expect(warningCardElement).toHaveClass('dark:border-l-yellow-400');
-    await expect(errorCardElement).toHaveClass('dark:border-l-red-400');
-    await expect(infoCardElement).toHaveClass('dark:border-l-blue-400');
+    await expect(successCardElement).toHaveClass('dark_cx:border-l-green-400');
+    await expect(warningCardElement).toHaveClass('dark_cx:border-l-yellow-400');
+    await expect(errorCardElement).toHaveClass('dark_cx:border-l-red-400');
+    await expect(infoCardElement).toHaveClass('dark_cx:border-l-blue-400');
   },
 };
 
@@ -554,7 +555,7 @@ export const WithFooter: Story = {
       className='w-full max-w-md'
       footer={
         <div className='flex justify-between items-center'>
-          <span className='text-gray-500'>最后更新：2小时前</span>
+          <span className='text-neutral-500'>最后更新：2小时前</span>
           <div className='flex gap-2'>
             <CXButton size='small' variant='dashed'>
               查看详情
@@ -718,7 +719,7 @@ export const DarkModeSupport: Story = {
 
       <div className='dark'>
         <h3 className='text-lg font-medium mb-4 text-white'>深色模式 (Dark Mode)</h3>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-900 rounded-lg'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-neutral-900 rounded-lg'>
           <CXCard title='默认卡片' variant='default'>
             这是深色模式下的默认卡片样式。
           </CXCard>
@@ -787,7 +788,7 @@ export const Complex: Story = {
       className='w-full max-w-lg'
       footer={
         <div className='flex justify-between items-center'>
-          <span className='text-gray-500 dark:text-gray-400'>团队：前端开发组</span>
+          <span className='text-neutral-500 dark_cx:text-neutral-400'>团队：前端开发组</span>
           <div className='flex gap-2'>
             <CXButton size='small' variant='dashed'>
               查看详情
@@ -824,7 +825,7 @@ export const Complex: Story = {
           <strong>电商平台前端重构项目</strong>
         </p>
         <p>使用 React 18 和 TypeScript 重构现有电商平台的前端界面，提升用户体验和系统性能。</p>
-        <div className='bg-gray-50 dark:bg-gray-700/50 p-3 rounded'>
+        <div className='bg-neutral-50 dark_cx:bg-neutral-700/50 p-3 rounded'>
           <h4 className='font-medium mb-2'>最新进展:</h4>
           <ul className='text-sm space-y-1'>
             <li>✓ 完成组件库搭建</li>

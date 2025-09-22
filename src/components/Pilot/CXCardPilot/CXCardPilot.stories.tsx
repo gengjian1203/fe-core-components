@@ -167,12 +167,12 @@ export const WithSummaryContent: Story = {
   args: {
     renderSummaryContent: () => (
       <div className='p-4 mt-2'>
-        <h4 className='font-semibold text-gray-800 mb-2'>Application Summary</h4>
-        <p className='text-gray-600 text-sm mb-2'>
+        <h4 className='font-semibold text-neutral-800 mb-2'>Application Summary</h4>
+        <p className='text-neutral-600 text-sm mb-2'>
           This client is applying for a Skilled Worker Visa under the points-based immigration
           system.
         </p>
-        <ul className='text-gray-600 text-sm space-y-1'>
+        <ul className='text-neutral-600 text-sm space-y-1'>
           <li>• Educational qualification: Master&apos;s degree</li>
           <li>• Work experience: 5+ years in software development</li>
           <li>• English proficiency: IELTS 8.0</li>
@@ -221,7 +221,7 @@ export const LongContent: Story = {
     clientVisaType: 'Tier 2 (General) Skilled Worker Visa Application',
     renderSummaryContent: () => (
       <div className='p-4 mt-2'>
-        <p className='text-gray-800 text-sm'>
+        <p className='text-neutral-800 text-sm'>
           This is a very long summary content that demonstrates how the component handles extensive
           text content. The summary can contain detailed information about the client&apos;s
           application status, requirements, and other important details that need to be displayed in
@@ -316,7 +316,9 @@ export const DifferentVisaTypes: Story = {
         clientVisaType='Tourist Visa'
         renderSummaryContent={() => (
           <div className='p-3 mt-2'>
-            <p className='text-gray-800 text-sm'>Tourist visa application for 30-day vacation.</p>
+            <p className='text-neutral-800 text-sm'>
+              Tourist visa application for 30-day vacation.
+            </p>
           </div>
         )}
         onBtnDownloadClick={fn()}
@@ -329,7 +331,7 @@ export const DifferentVisaTypes: Story = {
         clientVisaType='Student Visa'
         renderSummaryContent={() => (
           <div className='p-3 mt-2'>
-            <p className='text-gray-800 text-sm'>
+            <p className='text-neutral-800 text-sm'>
               Master&apos;s degree program at University College.
             </p>
           </div>
@@ -344,7 +346,9 @@ export const DifferentVisaTypes: Story = {
         clientVisaType='Work Visa'
         renderSummaryContent={() => (
           <div className='p-3 mt-2'>
-            <p className='text-gray-800 text-sm'>Software engineer position at startup company.</p>
+            <p className='text-neutral-800 text-sm'>
+              Software engineer position at startup company.
+            </p>
           </div>
         )}
         onBtnDownloadClick={fn()}
@@ -390,15 +394,15 @@ export const ResponsiveLayout: Story = {
   render: args => (
     <div className='space-y-4'>
       <div className='w-96'>
-        <h3 className='text-sm font-medium text-gray-600 mb-2'>Medium Width (384px)</h3>
+        <h3 className='text-sm font-medium text-neutral-600 mb-2'>Medium Width (384px)</h3>
         <CXCardPilot {...args} />
       </div>
       <div className='w-80'>
-        <h3 className='text-sm font-medium text-gray-600 mb-2'>Small Width (320px)</h3>
+        <h3 className='text-sm font-medium text-neutral-600 mb-2'>Small Width (320px)</h3>
         <CXCardPilot {...args} />
       </div>
       <div className='w-full max-w-2xl'>
-        <h3 className='text-sm font-medium text-gray-600 mb-2'>Large Width (768px)</h3>
+        <h3 className='text-sm font-medium text-neutral-600 mb-2'>Large Width (768px)</h3>
         <CXCardPilot {...args} />
       </div>
     </div>
@@ -406,7 +410,7 @@ export const ResponsiveLayout: Story = {
   args: {
     renderSummaryContent: () => (
       <div className='p-3 mt-2'>
-        <p className='text-gray-700 text-sm'>Responsive layout demonstration content.</p>
+        <p className='text-neutral-700 text-sm'>Responsive layout demonstration content.</p>
       </div>
     ),
   },

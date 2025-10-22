@@ -1,10 +1,10 @@
-# @cosxai/fe-core-components
+# @xshuliner/common-ui
 
 ## 展示文档
 
-**Storybook 交互式文档**: [https://cosxaiai.github.io/fe-core-components/](https://cosxaiai.github.io/fe-core-components/)
+**Storybook 交互式文档**: [https://xshuliner.github.io/common-ui/](https://xshuliner.github.io/common-ui/)
 
-**项目仓库**: [https://github.com/cosxaiai/fe-core-components](https://github.com/cosxaiai/fe-core-components)
+**项目仓库**: [https://github.com/xshuliner/common-ui](https://github.com/xshuliner/common-ui)
 
 ## 1. 项目简介特性
 
@@ -58,7 +58,7 @@
 vim ~/.npmrc
 
 # 将以下行添加到你的 .npmrc 文件中
-@cosxai:registry=https://npm.pkg.github.com
+@xshuliner:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 
 vim ~/.bashrc
@@ -76,13 +76,13 @@ source ~/.bashrc  #（或其他对应的配置文件）
 
 ```bash
 # 使用 pnpm（推荐）
-pnpm add @cosxai/fe-core-components
+pnpm add @xshuliner/common-ui
 
 # 或使用 npm
-npm install @cosxai/fe-core-components
+npm install @xshuliner/common-ui
 
 # 或使用 yarn
-yarn add @cosxai/fe-core-components
+yarn add @xshuliner/common-ui
 ```
 
 ### 2.3 安装对等依赖
@@ -100,14 +100,14 @@ pnpm add react react-dom tailwindcss@4
 
 ```tsx
 // main.tsx 或 App.tsx
-import '@cosxai/fe-core-components/styles'; // 导入样式文件（必须）
+import '@xshuliner/common-ui/styles'; // 导入样式文件（必须）
 ```
 
 或者使用完整路径：
 
 ```tsx
 // main.tsx 或 App.tsx
-import '@cosxai/fe-core-components/dist/styles.css'; // 完整路径导入样式
+import '@xshuliner/common-ui/dist/styles.css'; // 完整路径导入样式
 ```
 
 如果忘记导入样式文件，组件会正常渲染但没有任何样式效果。
@@ -129,7 +129,7 @@ import {
   CXIconFailed,
   CXIconDashboard,
   CXIconFormItemVisaType,
-} from '@cosxai/fe-core-components';
+} from '@xshuliner/common-ui';
 
 function App() {
   return (

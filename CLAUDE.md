@@ -77,7 +77,7 @@ This is a **pure React component library**:
 - Components are implemented from scratch without external UI dependencies
 - Includes React 19 compatibility patches built into the library
 - Custom utility function `cn()` for className merging (similar to clsx)
-- Published to GitHub Package Registry (`@cosxai/fe-core-components`)
+- Published to GitHub Package Registry (`@xshuliner/common-ui`)
 
 ### Styling System
 
@@ -167,7 +167,7 @@ For local development and testing:
 2. **Link in host project**:
 
    ```bash
-   pnpm link --global @cosxai/fe-core-components
+   pnpm link --global @xshuliner/common-ui
    ```
 
 3. **For real-time updates**:
@@ -178,7 +178,7 @@ For local development and testing:
 
 4. **Style imports for local development**:
    ```tsx
-   import '@cosxai/fe-core-components/styles.css';
+   import '@xshuliner/common-ui/styles.css';
    ```
 
 ### GitHub Actions & Publishing
@@ -186,7 +186,7 @@ For local development and testing:
 - **Manual Deployment**: Triggered via workflow_dispatch with version type selection (major/feat/fix/repeat)
 - **Auto-increment Tags**: Uses `./.github/workflows/auto-increment-tag.yml` to manage versioning
 - **Package Publishing**: Publishes to GitHub Package Registry
-- **Storybook Deployment**: Builds and deploys to GitHub Pages at https://cosxaiai.github.io/fe-core-components/
+- **Storybook Deployment**: Builds and deploys to GitHub Pages at https://xshuliner.github.io/common-ui/
 
 ### Release Process
 

@@ -1,6 +1,6 @@
-# 开发者指南 - @cosxai/fe-core-components
+# 开发者指南 - @xshuliner/common-ui
 
-本文档为 `@cosxai/fe-core-components` 的开发者指南，包含本地开发、构建、测试和部署的详细说明。
+本文档为 `@xshuliner/common-ui` 的开发者指南，包含本地开发、构建、测试和部署的详细说明。
 
 > 📖 **用户使用指南**：如果您是用户，请查看 [README.md](./README.md) 了解安装和使用方法。
 
@@ -18,7 +18,7 @@
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/cosxaiai/fe-core-components.git
+git clone https://github.com/xshuliner/common-ui.git
 cd fe-core-components
 
 # 2. 安装依赖
@@ -102,10 +102,10 @@ npm link
 cd your-host-project
 
 # 链接本地组件库
-pnpm link @cosxai/fe-core-components
+pnpm link @xshuliner/common-ui
 
 # 或者使用 npm
-npm link @cosxai/fe-core-components
+npm link @xshuliner/common-ui
 ```
 
 **⚠️ 本地 Link 开发时的样式导入**：
@@ -114,11 +114,11 @@ npm link @cosxai/fe-core-components
 
 ```tsx
 // 方式一：导入 ESM 版本样式（推荐）
-import '@cosxai/fe-core-components/styles.css';
+import '@xshuliner/common-ui/styles.css';
 
 // 方式二：如果方式一无法解析，使用相对路径
-import '@cosxai/fe-core-components/dist/esm/styles.css';
-import '../node_modules/@cosxai/fe-core-components/dist/esm/styles.css';
+import '@xshuliner/common-ui/dist/esm/styles.css';
+import '../node_modules/@xshuliner/common-ui/dist/esm/styles.css';
 ```
 
 #### 1.5.3 开发时实时更新
@@ -137,10 +137,10 @@ pnpm build:watch
 
 ```bash
 # 在宿主项目中解除链接
-pnpm unlink @cosxai/fe-core-components
+pnpm unlink @xshuliner/common-ui
 
 # 重新安装正式版本
-pnpm install @cosxai/fe-core-components
+pnpm install @xshuliner/common-ui
 ```
 
 ##### 1.5.4.2 组件库项目解除链接
@@ -160,7 +160,7 @@ npm unlink --global
 
 ```tsx
 // 宿主项目的入口文件（main.tsx 或 App.tsx）
-import '@cosxai/fe-core-components/dist/styles.css'; // 本地 link 开发时使用 ESM 版本样式
+import '@xshuliner/common-ui/dist/styles.css'; // 本地 link 开发时使用 ESM 版本样式
 
 // 导入组件
 import {
@@ -174,7 +174,7 @@ import {
   CXIconGoogle,
   CXProgress,
   CXSteps,
-} from '@cosxai/fe-core-components';
+} from '@xshuliner/common-ui';
 
 // 在组件中使用
 function MyComponent() {
@@ -268,7 +268,7 @@ function MyComponent() {
 然后在项目中导入：
 
 ```tsx
-import '@cosxai/fe-core-components/styles.css'; // 必须先导入组件库样式
+import '@xshuliner/common-ui/styles.css'; // 必须先导入组件库样式
 import './custom-theme.css'; // 再导入自定义主题
 ```
 
@@ -324,13 +324,13 @@ import './custom-theme.css'; // 再导入自定义主题
 
 ```json
 {
-  "name": "@cosxai/fe-core-components",
+  "name": "@xshuliner/common-ui",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cosxaiai/fe-core-components.git"
+    "url": "git+https://github.com/xshuliner/common-ui.git"
   }
 }
 ```
@@ -380,7 +380,7 @@ git push origin main --tags
 
 项目自动部署 Storybook 文档到 GitHub Pages：
 
-- **文档地址**: https://cosxaiai.github.io/fe-core-components/
+- **文档地址**: https://xshuliner.github.io/common-ui/
 - **部署触发**: 推送到 main 分支时自动部署
 - **包含内容**: 所有组件的交互式文档和示例
 
@@ -397,13 +397,13 @@ git push origin main --tags
 
 ```bash
 # 验证包是否发布成功
-npm view @cosxai/fe-core-components
+npm view @xshuliner/common-ui
 
 # 在测试项目中验证安装
-npm install @cosxai/fe-core-components@latest
+npm install @xshuliner/common-ui@latest
 
 # 验证 Storybook 文档
-open https://cosxaiai.github.io/fe-core-components/
+open https://xshuliner.github.io/common-ui/
 ```
 
 ### 2.6 部署最佳实践
@@ -501,7 +501,7 @@ pnpm build
 pnpm link --global
 
 # 在使用组件库的项目中
-pnpm link --global @cosxai/fe-core-components
+pnpm link --global @xshuliner/common-ui
 ```
 
 #### pnpm 完整工作流程
@@ -520,7 +520,7 @@ pnpm link --global @cosxai/fe-core-components
 
    ```bash
    cd your-host-project
-   pnpm link --global @cosxai/fe-core-components
+   pnpm link --global @xshuliner/common-ui
    ```
 
 3. **实时开发模式**：
@@ -532,14 +532,14 @@ pnpm link --global @cosxai/fe-core-components
 
 4. **样式导入（在宿主项目中）**：
    ```tsx
-   import '@cosxai/fe-core-components/styles.css';
+   import '@xshuliner/common-ui/styles.css';
    ```
 
 ##### 取消链接：
 
 ```bash
 # 在宿主项目中取消链接
-pnpm unlink --global @cosxai/fe-core-components
+pnpm unlink --global @xshuliner/common-ui
 
 # 在组件库项目中取消全局链接
 pnpm unlink --global
@@ -554,7 +554,7 @@ pnpm unlink --global
 global-bin-dir = ./node_modules/.bin
 
 # GitHub Package Registry 配置
-@cosxai:registry = https://npm.pkg.github.com/
+@xshuliner:registry = https://npm.pkg.github.com/
 
 # 性能优化
 prefer-offline = true
@@ -627,7 +627,7 @@ cd fe-core-components
 pnpm link --global
 
 # 4. 检查链接结果
-pnpm list -g --depth=0 | grep @cosxai
+pnpm list -g --depth=0 | grep @xshuliner
 ```
 
 如果所有步骤都成功，你就可以正常使用 `pnpm link --global` 了！
